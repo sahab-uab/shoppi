@@ -106,7 +106,7 @@ export default function About({ aboutData }) {
                   ></div>
                 </div>
 
-                <Link href="/contact" passHref>
+                <Link href="/contact" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
                     <div className="w-[121px] h-10 mt-5 cursor-pointer">
                       <span className="yellow-btn">
@@ -246,7 +246,10 @@ export default function About({ aboutData }) {
                   <div className="flex space-x-5 rtl:space-x-reverse items-center">
                     <div>
                       <div>
-                        <FontAwesomeCom className="w-8 h-8 text-qblack" icon={item.icon} />
+                        <FontAwesomeCom
+                          className="w-8 h-8 text-qblack"
+                          icon={item.icon}
+                        />
                       </div>
                     </div>
                     <div>

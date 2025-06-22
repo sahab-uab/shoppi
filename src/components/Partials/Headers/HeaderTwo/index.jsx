@@ -41,7 +41,7 @@ export default function HeaderTwo({ className, drawerAction, settings }) {
           </div>
           <div>
             <Link href="/" passHref>
-              <a>
+              {/* <a>
                 {settings && (
                   <Image
                     width="152"
@@ -50,7 +50,8 @@ export default function HeaderTwo({ className, drawerAction, settings }) {
                     alt="logo"
                   />
                 )}
-              </a>
+              </a> */}
+              Anchor
             </Link>
           </div>
           <div className="cart relative cursor-pointer">

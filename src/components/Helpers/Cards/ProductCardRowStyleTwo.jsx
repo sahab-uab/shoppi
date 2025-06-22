@@ -167,6 +167,7 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
                 query: { slug: datas.slug },
               }}
               passHref
+              legacyBehavior
             >
               <a rel="noopener noreferrer">
                 <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
@@ -183,12 +184,14 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
                 }`}
               >
                 {offerPrice ? (
-                  <span><CurrencyConvert price={price}/></span>
+                  <span>
+                    <CurrencyConvert price={price} />
+                  </span>
                 ) : (
                   <>
                     {isProductInFlashSale && (
                       <span className="line-through text-qgray font-500 text-base mr-2">
-                        <CurrencyConvert price={price}/>
+                        <CurrencyConvert price={price} />
                       </span>
                     )}
                     <CheckProductIsExistsInFlashSale

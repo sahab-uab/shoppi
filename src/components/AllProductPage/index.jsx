@@ -175,17 +175,19 @@ export default function AllProductPage({ response, sellerInfo }) {
           };
         })
     );
-    const min = response.data &&
-        response.data.products.data &&
-        Math.min(
-            ...response.data.products.data.map((item) => parseInt(item.price))
-        );
-    const max =  response.data &&
-        response.data.products.data &&
-        Math.max(
-            ...response.data.products.data.map((item) => parseInt(item.price))
-        );
-    const volumeArr = [min,max];
+    const min =
+      response.data &&
+      response.data.products.data &&
+      Math.min(
+        ...response.data.products.data.map((item) => parseInt(item.price))
+      );
+    const max =
+      response.data &&
+      response.data.products.data &&
+      Math.max(
+        ...response.data.products.data.map((item) => parseInt(item.price))
+      );
+    const volumeArr = [min, max];
     setVolume(volumeArr);
   }, [response.data]);
   useEffect(() => {
@@ -509,85 +511,89 @@ export default function AllProductPage({ response, sellerInfo }) {
                   className="mb-[30px]"
                   variantsFilter={variantsFilter}
                 />
-                {response.data && response.data.shopPageSidebarBanner && parseInt(response.data.shopPageSidebarBanner.status)===1&& (
-                  <div
-                    style={{
-                      backgroundImage: `url(${
-                        process.env.NEXT_PUBLIC_BASE_URL +
-                        response.data.shopPageSidebarBanner.image
-                      })`,
-                      backgroundSize: `cover`,
-                      backgroundRepeat: `no-repeat`,
-                    }}
-                    className="w-full hidden py-[35px] ltr:pl-[40px] rtl:pr-[40px] group lg:block h-[295px] relative"
-                  >
-                    <div className="flex flex-col justify-between w-full h-full">
-                      <div>
-                        <div className="mb-[10px]">
-                          <span className="text-qblack uppercase text-xs font-semibold">
-                            {response.data.shopPageSidebarBanner.title_one}
-                          </span>
+                {response.data &&
+                  response.data.shopPageSidebarBanner &&
+                  parseInt(response.data.shopPageSidebarBanner.status) ===
+                    1 && (
+                    <div
+                      style={{
+                        backgroundImage: `url(${
+                          process.env.NEXT_PUBLIC_BASE_URL +
+                          response.data.shopPageSidebarBanner.image
+                        })`,
+                        backgroundSize: `cover`,
+                        backgroundRepeat: `no-repeat`,
+                      }}
+                      className="w-full hidden py-[35px] ltr:pl-[40px] rtl:pr-[40px] group lg:block h-[295px] relative"
+                    >
+                      <div className="flex flex-col justify-between w-full h-full">
+                        <div>
+                          <div className="mb-[10px]">
+                            <span className="text-qblack uppercase text-xs font-semibold">
+                              {response.data.shopPageSidebarBanner.title_one}
+                            </span>
+                          </div>
+                          <div className="mb-[30px]">
+                            <h1 className="w-[162px] text-[24px] leading-[40px] text-qblack font-semibold">
+                              {response.data.shopPageSidebarBanner.title_two}
+                            </h1>
+                          </div>
                         </div>
-                        <div className="mb-[30px]">
-                          <h1 className="w-[162px] text-[24px] leading-[40px] text-qblack font-semibold">
-                            {response.data.shopPageSidebarBanner.title_two}
-                          </h1>
-                        </div>
-                      </div>
-                      <div className="w-[90px]">
-                        <Link
-                          href={{
-                            pathname: "/products",
-                            query: {
-                              category:
-                                response.data.shopPageSidebarBanner
-                                  .product_slug,
-                            },
-                          }}
-                          passhref
-                        >
-                          <a rel="noopener noreferrer">
-                            <div className="cursor-pointer w-full relative">
-                              <div className="inline-flex  space-x-1.5 rtl:space-x-reverse items-center relative z-20">
-                                <span className="text-sm text-qblack font-medium leading-[30px]">
-                                  {ServeLangItem()?.Shop_Now}
-                                </span>
-                                <span className="leading-[30px]">
-                                  <svg
-                                    className={`transform rtl:rotate-180`}
-                                    width="7"
-                                    height="11"
-                                    viewBox="0 0 7 11"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <rect
-                                      x="2.08984"
-                                      y="0.636719"
-                                      width="6.94219"
-                                      height="1.54271"
-                                      transform="rotate(45 2.08984 0.636719)"
-                                      fill="#1D1D1D"
-                                    />
-                                    <rect
-                                      x="7"
-                                      y="5.54492"
-                                      width="6.94219"
-                                      height="1.54271"
-                                      transform="rotate(135 7 5.54492)"
-                                      fill="#1D1D1D"
-                                    />
-                                  </svg>
-                                </span>
+                        <div className="w-[90px]">
+                          <Link
+                            href={{
+                              pathname: "/products",
+                              query: {
+                                category:
+                                  response.data.shopPageSidebarBanner
+                                    .product_slug,
+                              },
+                            }}
+                            passHref
+                            legacyBehavior
+                          >
+                            <a rel="noopener noreferrer">
+                              <div className="cursor-pointer w-full relative">
+                                <div className="inline-flex  space-x-1.5 rtl:space-x-reverse items-center relative z-20">
+                                  <span className="text-sm text-qblack font-medium leading-[30px]">
+                                    {ServeLangItem()?.Shop_Now}
+                                  </span>
+                                  <span className="leading-[30px]">
+                                    <svg
+                                      className={`transform rtl:rotate-180`}
+                                      width="7"
+                                      height="11"
+                                      viewBox="0 0 7 11"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <rect
+                                        x="2.08984"
+                                        y="0.636719"
+                                        width="6.94219"
+                                        height="1.54271"
+                                        transform="rotate(45 2.08984 0.636719)"
+                                        fill="#1D1D1D"
+                                      />
+                                      <rect
+                                        x="7"
+                                        y="5.54492"
+                                        width="6.94219"
+                                        height="1.54271"
+                                        transform="rotate(135 7 5.54492)"
+                                        fill="#1D1D1D"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                                <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[2px] bg-qyellow absolute ltr:left-0 rtl:right-0 bottom-0 z-10"></div>
                               </div>
-                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[2px] bg-qyellow absolute ltr:left-0 rtl:right-0 bottom-0 z-10"></div>
-                            </div>
-                          </a>
-                        </Link>
+                            </a>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
+                  )}
               </div>
 
               <div className="flex-1">
@@ -710,7 +716,14 @@ export default function AllProductPage({ response, sellerInfo }) {
                     <div className="w-full relative text-qblack mb-[40px]">
                       {response.data && response.data.shopPageCenterBanner && (
                         <OneColumnAdsTwo
-                          data={response.data.shopPageCenterBanner && parseInt(response.data.shopPageCenterBanner.status)===1?response.data.shopPageCenterBanner:null}
+                          data={
+                            response.data.shopPageCenterBanner &&
+                            parseInt(
+                              response.data.shopPageCenterBanner.status
+                            ) === 1
+                              ? response.data.shopPageCenterBanner
+                              : null
+                          }
                         />
                       )}
                     </div>

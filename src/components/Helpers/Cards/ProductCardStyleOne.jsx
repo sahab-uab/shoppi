@@ -128,15 +128,15 @@ export default function ProductCardStyleOne({ datas }) {
       token: auth() && auth().access_token,
       quantity: 1,
       variants:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) =>
-              v ? parseInt(v.product_variant_id) : null
-          ),
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) =>
+          v ? parseInt(v.product_variant_id) : null
+        ),
       variantItems:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) => (v ? v.id : null)),
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) => (v ? v.id : null)),
     };
     if (auth()) {
       if (varients) {
@@ -187,7 +187,10 @@ export default function ProductCardStyleOne({ datas }) {
         dispatch(fetchCart());
       }
     } else {
-      localStorage.setItem("data-hold", JSON.stringify({type:"add-to-cart",...data}));
+      localStorage.setItem(
+        "data-hold",
+        JSON.stringify({ type: "add-to-cart", ...data })
+      );
       loginPopupBoard.handlerPopup(true);
     }
   };
@@ -363,6 +366,7 @@ export default function ProductCardStyleOne({ datas }) {
           <Link
             href={{ pathname: "/single-product", query: { slug: datas.slug } }}
             passHref
+            legacyBehavior
           >
             <a rel="noopener noreferrer">
               <p className="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
@@ -370,6 +374,7 @@ export default function ProductCardStyleOne({ datas }) {
               </p>
             </a>
           </Link>
+
           <p className="price">
             <span
               suppressHydrationWarning
@@ -379,7 +384,7 @@ export default function ProductCardStyleOne({ datas }) {
             >
               {offerPrice ? (
                 <span>
-                  <CurrencyConvert price={price}/>
+                  <CurrencyConvert price={price} />
                 </span>
               ) : (
                 <>
@@ -387,7 +392,7 @@ export default function ProductCardStyleOne({ datas }) {
                     <span
                       className={`line-through text-qgray font-500 text-[16px] mr-2`}
                     >
-                       <CurrencyConvert price={price}/>
+                      <CurrencyConvert price={price} />
                     </span>
                   )}
                   <CheckProductIsExistsInFlashSale

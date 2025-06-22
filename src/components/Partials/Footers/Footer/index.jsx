@@ -66,7 +66,7 @@ export default function Footer({ settings }) {
         <div className="w-full flex flex-col items-center mb-[50px]">
           {/* logo area */}
           <div className="mb-[40px]">
-            <Link href="/" passHref>
+            <Link href="/" passHref legacyBehavior>
               <a>
                 {settings && (
                   <Image
@@ -130,7 +130,7 @@ export default function Footer({ settings }) {
                       {firstCol.col_links.length > 0 &&
                         firstCol.col_links.map((item, i) => (
                           <li key={i}>
-                            <Link href={item.link} passHref>
+                            <Link href={item.link} passHref legacyBehavior>
                               <a rel="noopener noreferrer">
                                 <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                   {item.title}
@@ -158,7 +158,7 @@ export default function Footer({ settings }) {
                         {secondCol.col_links.length > 0 &&
                           secondCol.col_links.map((item, i) => (
                             <li key={i}>
-                              <Link href={item.link} passHref>
+                              <Link href={item.link} passHref legacyBehavior>
                                 <a rel="noopener noreferrer">
                                   <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                     {item.title}
@@ -187,7 +187,7 @@ export default function Footer({ settings }) {
                         {thirdCol.col_links.length > 0 &&
                           thirdCol.col_links.map((item, i) => (
                             <li key={i}>
-                              <Link href={item.link} passHref>
+                              <Link href={item.link} passHref legacyBehavior>
                                 <a rel="noopener noreferrer">
                                   <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                     {item.title}
@@ -219,6 +219,15 @@ export default function Footer({ settings }) {
                       icon={item.icon}
                     />
                   </a>
+                  // <Link key={i} href={item.link} passHref legacyBehavior>
+                  //   <a rel="noopener noreferrer" key={i}>
+                  //     <FontAwesomeCom
+                  //       className="w-4 h-4 text-qgray"
+                  //       icon={item.icon}
+                  //     />
+                  //   </a>
+                  //   Anchor
+                  // </Link>
                 ))}
             </div>
             <span className="sm:text-base text-[10px] text-qgray font-300">
@@ -229,7 +238,7 @@ export default function Footer({ settings }) {
           </div>
           {footerContent && footerContent.payment_image ? (
             <div className="mt-2 lg:mt-0">
-              <Link href="#" passHref>
+              <Link href="#" passHref legacyBehavior>
                 <a>
                   <Image
                     width="318"

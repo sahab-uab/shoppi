@@ -41,7 +41,7 @@ export default function Header({ topBarProps,drawerAction, settings, contact }) 
           </div>
           <div className="w-[200px] h-full relative">
             <Link href="/" passHref>
-              <a>
+              {/* <a>
                 {settings && (
                   <Image
                     layout="fill"
@@ -50,7 +50,8 @@ export default function Header({ topBarProps,drawerAction, settings, contact }) 
                     alt="logo"
                   />
                 )}
-              </a>
+              </a> */}
+              Anchor
             </Link>
           </div>
           <div className="cart relative cursor-pointer">

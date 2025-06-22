@@ -76,7 +76,7 @@ export default function Ads() {
               <div>
                 <div className="logo mb-[20px]">
                   <Link href="/" passHref>
-                    <a>
+                    {/* <a>
                       <Image
                         width="152"
                         height="36"
@@ -87,7 +87,8 @@ export default function Ads() {
                         }`}
                         alt="logo"
                       />
-                    </a>
+                    </a> */}
+                    Anchor
                   </Link>
                 </div>
                 <h1 className="md:text-[30px] text-xl font-bold text-qblack mb-1">

@@ -7,8 +7,14 @@ import auth from "../../../../../utils/auth";
 import { useEffect, useState } from "react";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import Multivendor from "../../../Shared/Multivendor";
-export default function TopBar({ className, contact,topBarProps }) {
-  const {allCurrency,defaultCurrency,handler,toggleCurrency,toggleHandler}= topBarProps;
+export default function TopBar({ className, contact, topBarProps }) {
+  const {
+    allCurrency,
+    defaultCurrency,
+    handler,
+    toggleCurrency,
+    toggleHandler,
+  } = topBarProps;
   const [auth, setAuth] = useState(null);
   useEffect(() => {
     setAuth(JSON.parse(localStorage.getItem("auth")));
@@ -26,7 +32,7 @@ export default function TopBar({ className, contact,topBarProps }) {
               <ul className="flex space-x-6">
                 <li className={`rtl:ml-6 ltr:ml-0`}>
                   {auth ? (
-                    <Link href="/profile#dashboard" passHref>
+                    <Link href="/profile#dashboard" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="text-xs leading-6 text-qblack font-500 cursor-pointer">
                           {ServeLangItem()?.Account}
@@ -34,7 +40,7 @@ export default function TopBar({ className, contact,topBarProps }) {
                       </a>
                     </Link>
                   ) : (
-                    <Link href="/login" passHref>
+                    <Link href="/login" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="text-xs leading-6 text-qblack font-500 cursor-pointer">
                           {ServeLangItem()?.Account}
@@ -44,7 +50,7 @@ export default function TopBar({ className, contact,topBarProps }) {
                   )}
                 </li>
                 <li>
-                  <Link href="/tracking-order" passHref>
+                  <Link href="/tracking-order" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
                       <span className="text-xs leading-6 text-qblack font-500 cursor-pointer">
                         {ServeLangItem()?.Track_Order}
@@ -53,39 +59,51 @@ export default function TopBar({ className, contact,topBarProps }) {
                   </Link>
                 </li>
                 {defaultCurrency && allCurrency && (
-                    <li>
-                      <div className="currencyDropdown">
-                        <div className="flex space-x-2 items-center">
-                          <span className="text-xs leading-6 text-qblack font-500">Currency:</span>
-                          <div className="w-20 relative">
-                            <button onClick={()=>toggleHandler(!toggleCurrency)} type="button" className=" flex space-x-2 items-center text-xs bg-qblack text-white px-2 py-1 font-500">
-                              <span className="">{defaultCurrency.currency_icon}</span>
-                              <span>{defaultCurrency.currency_code}</span>
-                            </button>
-                            {toggleCurrency && (
-                                <div
-                                    className="w-24 h-[100px] overflow-y-scroll absolute bg-white left-0 top-[40px] z-50 p-2"
-                                    style={{ boxShadow: "0px 15px 50px 0px rgba(0, 0, 0, 0.14)" }}
-                                >
-                                  <ul className="flex flex-col space-y-2">
-                                    {allCurrency && allCurrency.length>0 && allCurrency.map((item,i)=>(
-                                        <li onClick={()=>handler(item)} key={i}>
-                                            <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
-                                              {item.currency_icon +" "+ item.currency_code}
-                                            </span>
-                                        </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                            )}
-
-                          </div>
+                  <li>
+                    <div className="currencyDropdown">
+                      <div className="flex space-x-2 items-center">
+                        <span className="text-xs leading-6 text-qblack font-500">
+                          Currency:
+                        </span>
+                        <div className="w-20 relative">
+                          <button
+                            onClick={() => toggleHandler(!toggleCurrency)}
+                            type="button"
+                            className=" flex space-x-2 items-center text-xs bg-qblack text-white px-2 py-1 font-500"
+                          >
+                            <span className="">
+                              {defaultCurrency.currency_icon}
+                            </span>
+                            <span>{defaultCurrency.currency_code}</span>
+                          </button>
+                          {toggleCurrency && (
+                            <div
+                              className="w-24 h-[100px] overflow-y-scroll absolute bg-white left-0 top-[40px] z-50 p-2"
+                              style={{
+                                boxShadow:
+                                  "0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
+                              }}
+                            >
+                              <ul className="flex flex-col space-y-2">
+                                {allCurrency &&
+                                  allCurrency.length > 0 &&
+                                  allCurrency.map((item, i) => (
+                                    <li onClick={() => handler(item)} key={i}>
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        {item.currency_icon +
+                                          " " +
+                                          item.currency_code}
+                                      </span>
+                                    </li>
+                                  ))}
+                              </ul>
+                            </div>
+                          )}
                         </div>
                       </div>
-
-                    </li>
+                    </div>
+                  </li>
                 )}
-
               </ul>
             </div>
             <div className="topbar-dropdowns lg:block hidden">
@@ -179,7 +197,6 @@ export default function TopBar({ className, contact,topBarProps }) {
                 {/*</div>*/}
               </div>
             </div>
-
           </div>
         </div>
       </div>

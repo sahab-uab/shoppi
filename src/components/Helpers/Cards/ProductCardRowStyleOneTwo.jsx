@@ -17,11 +17,13 @@ import Compair from "../icons/Compair";
 import QuickViewIco from "../icons/QuickViewIco";
 import ThinLove from "../icons/ThinLove";
 import ServeLangItem from "../ServeLangItem";
-import CurrencyConvert from '../../Shared/CurrencyConvert';
+import CurrencyConvert from "../../Shared/CurrencyConvert";
 const Redirect = () => {
   return (
     <div className="flex space-x-2 items-center">
-      <span className="text-sm text-gray-500">{ServeLangItem()?.Item_added}</span>
+      <span className="text-sm text-gray-500">
+        {ServeLangItem()?.Item_added}
+      </span>
       <Link href="/cart">
         <span className="text-xs border-b border-blue-600 text-blue-600 mr-2 cursor-pointer">
           {ServeLangItem()?.Go_To_Cart}
@@ -233,6 +235,7 @@ export default function ProductCardRowStyleOneTwo({ className, datas }) {
                 query: { slug: datas.slug },
               }}
               passHref
+              legacyBehavior
             >
               <a rel="noopener noreferrer">
                 <p className="title mb-2 sm:text-[20px] text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
@@ -259,7 +262,9 @@ export default function ProductCardRowStyleOneTwo({ className, datas }) {
                 }`}
               >
                 {offerPrice ? (
-                  <span><CurrencyConvert price={price}/></span>
+                  <span>
+                    <CurrencyConvert price={price} />
+                  </span>
                 ) : (
                   <CheckProductIsExistsInFlashSale
                     id={datas.id}

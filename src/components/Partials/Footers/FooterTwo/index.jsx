@@ -46,7 +46,7 @@ export default function Footer({ settings }) {
           <div className="lg:w-4/10 w-full mb-10 lg:mb-0">
             {/* logo area */}
             <div className="mb-14">
-              <Link href="/" passHref>
+              <Link href="/" passHref legacyBehavior>
                 <a>
                   {settings && (
                     <Image
@@ -168,22 +168,23 @@ export default function Footer({ settings }) {
               <a href="#">
                 <Youtube className="fill-current text-qgray hover:text-qblack" />
               </a>
+              3 Anchor
             </div>
             <span className="sm:text-base text-[10px] text-qgray font-300">
               ©2022
-              <Link
+              {/* <Link
                 href="https://quomodosoft.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="font-500 text-qblack mx-1"
               >
                 Quomodosoft
-              </Link>
+              </Link> */}
               All rights reserved
             </span>
           </div>
           <div className="">
-            <Link href="#" passHref>
+            <Link href="#" passHref legacyBehavior>
               <a>
                 <Image
                   width="318"

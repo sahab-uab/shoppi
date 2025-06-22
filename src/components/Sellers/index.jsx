@@ -145,6 +145,8 @@ function Sallers({ sellersData }) {
                               pathname: "/seller-products",
                               query: { seller: seller.slug },
                             }}
+                            passHref
+                            legacyBehavior
                           >
                             <a rel="noopener noreferrer">
                               <div className="w-[116px] h-[40px] cursor-pointer">

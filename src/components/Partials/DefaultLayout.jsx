@@ -58,7 +58,7 @@ export default function DefaultLayout({ children }) {
                 console.log(err);
               });
           // not working
-          // getMessage()
+          getMessage()
         }
       } catch (error) {
         console.log(error)

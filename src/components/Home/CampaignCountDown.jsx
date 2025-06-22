@@ -79,7 +79,7 @@ export default function CampaignCountDown({
                   </h1>
                 </div>
                 <div className="w-[90px]">
-                  <Link href="/flash-sale" passHref>
+                  <Link href="/flash-sale" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
                       <ShopNowBtn />
                     </a>
@@ -121,6 +121,7 @@ export default function CampaignCountDown({
                             : "#"
                         }
                         passHref
+                        legacyBehavior
                       >
                         <a rel="noopener noreferrer">
                           <GooglePlay />
@@ -133,6 +134,7 @@ export default function CampaignCountDown({
                           downloadData.app_store ? downloadData.app_store : "#"
                         }
                         passHref
+                        legacyBehavior
                       >
                         <a rel="noopener noreferrer">
                           <AppleStore />

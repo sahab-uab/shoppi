@@ -47,9 +47,9 @@ export default function Navbar({ className }) {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <rect width="14" height="1"  />
-                        <rect y="8" width="14" height="1"  />
-                        <rect y="4" width="10" height="1"  />
+                        <rect width="14" height="1" />
+                        <rect y="8" width="14" height="1" />
+                        <rect y="4" width="10" height="1" />
                       </svg>
                     </span>
                     <span className="text-sm font-600 text-qblacktext">
@@ -90,6 +90,7 @@ export default function Navbar({ className }) {
                               query: { category: item.slug },
                             }}
                             passHref
+                            legacyBehavior
                           >
                             <a rel="noopener noreferrer">
                               <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
@@ -120,7 +121,6 @@ export default function Navbar({ className }) {
                                         width="5.78538"
                                         height="1.28564"
                                         transform="rotate(45 1.49805 0.818359)"
-
                                       />
                                       <rect
                                         x="5.58984"
@@ -128,7 +128,6 @@ export default function Navbar({ className }) {
                                         width="5.78538"
                                         height="1.28564"
                                         transform="rotate(135 5.58984 4.90918)"
-
                                       />
                                     </svg>
                                   </span>
@@ -157,6 +156,7 @@ export default function Navbar({ className }) {
                                         query: { sub_category: subItem.slug },
                                       }}
                                       passHref
+                                      legacyBehavior
                                     >
                                       <a rel="noopener noreferrer">
                                         <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
@@ -181,7 +181,6 @@ export default function Navbar({ className }) {
                                                   width="5.78538"
                                                   height="1.28564"
                                                   transform="rotate(45 1.49805 0.818359)"
-
                                                 />
                                                 <rect
                                                   x="5.58984"
@@ -189,7 +188,6 @@ export default function Navbar({ className }) {
                                                   width="5.78538"
                                                   height="1.28564"
                                                   transform="rotate(135 5.58984 4.90918)"
-
                                                 />
                                               </svg>
                                             </span>
@@ -224,6 +222,7 @@ export default function Navbar({ className }) {
                                                     },
                                                   }}
                                                   passHref
+                                                  legacyBehavior
                                                 >
                                                   <a rel="noopener noreferrer">
                                                     <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
@@ -290,6 +289,7 @@ export default function Navbar({ className }) {
                                               },
                                             }}
                                             passHref
+                                            legacyBehavior
                                           >
                                             <a rel="noopener noreferrer">
                                               <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
@@ -305,89 +305,89 @@ export default function Navbar({ className }) {
                               </div>
                             ))}
                         </div>
-                        {megaMenuBanner && parseInt(megaMenuBanner.status)===1 && (
-                          <div
-                            style={{
-                              backgroundImage: `url(${
-                                process.env.NEXT_PUBLIC_BASE_URL +
-                                megaMenuBanner.image
-                              })`,
-                              backgroundSize: "contain",
-                              backgroundRepeat: "no-repeat",
-                            }}
-                            className="thumbnil w-[348px] h-[235px] relative flex items-center ltr:pl-[40px] rtl:pr-[40px] group"
-                          >
-                            <div className="flex flex-col justify-between">
-                              <div>
-                                <div className=" mb-[10px]">
-                                  <span className="text-qblack uppercase text-xs font-semibold">
-                                    {megaMenuBanner.title_one}
-                                  </span>
+                        {megaMenuBanner &&
+                          parseInt(megaMenuBanner.status) === 1 && (
+                            <div
+                              style={{
+                                backgroundImage: `url(${
+                                  process.env.NEXT_PUBLIC_BASE_URL +
+                                  megaMenuBanner.image
+                                })`,
+                                backgroundSize: "contain",
+                                backgroundRepeat: "no-repeat",
+                              }}
+                              className="thumbnil w-[348px] h-[235px] relative flex items-center ltr:pl-[40px] rtl:pr-[40px] group"
+                            >
+                              <div className="flex flex-col justify-between">
+                                <div>
+                                  <div className=" mb-[10px]">
+                                    <span className="text-qblack uppercase text-xs font-semibold">
+                                      {megaMenuBanner.title_one}
+                                    </span>
+                                  </div>
+                                  <div className="mb-[30px]">
+                                    <h1 className="w-[160px] text-[24px] leading-[32px] text-qblack font-semibold">
+                                      {megaMenuBanner.title_two}
+                                    </h1>
+                                  </div>
                                 </div>
-                                <div className="mb-[30px]">
-                                  <h1 className="w-[160px] text-[24px] leading-[32px] text-qblack font-semibold">
-                                    {megaMenuBanner.title_two}
-                                  </h1>
-                                </div>
-                              </div>
-                              <div className="w-[90px]">
-                                <Link
-                                  href={{
-                                    pathname: "/products",
-                                    query: {
-                                      category: megaMenuBanner.product_slug,
-                                    },
-                                  }}
-                                  passHref
-                                >
-                                  <a rel="noopener noreferrer">
-                                    <div className="cursor-pointer w-full relative  ">
-                                      <div className="inline-flex  rtl:space-x-reverse space-x-1.5 items-center relative z-20">
-                                        <span className="text-sm text-qblack font-medium leading-[30px]">
-                                          {ServeLangItem()?.Shop_Now}
-                                        </span>
-                                        <span className="leading-[30px]">
-                                          <svg
-                                            className={`transform rtl:rotate-180 fill-current`}
-                                            width="7"
-                                            height="11"
-                                            viewBox="0 0 7 11"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                          >
-                                            <rect
-                                              x="2.08984"
-                                              y="0.636719"
-                                              width="6.94219"
-                                              height="1.54271"
-                                              transform="rotate(45 2.08984 0.636719)"
-
-                                            />
-                                            <rect
-                                              x="7"
-                                              y="5.54492"
-                                              width="6.94219"
-                                              height="1.54271"
-                                              transform="rotate(135 7 5.54492)"
-
-                                            />
-                                          </svg>
-                                        </span>
+                                <div className="w-[90px]">
+                                  <Link
+                                    href={{
+                                      pathname: "/products",
+                                      query: {
+                                        category: megaMenuBanner.product_slug,
+                                      },
+                                    }}
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <div className="cursor-pointer w-full relative  ">
+                                        <div className="inline-flex  rtl:space-x-reverse space-x-1.5 items-center relative z-20">
+                                          <span className="text-sm text-qblack font-medium leading-[30px]">
+                                            {ServeLangItem()?.Shop_Now}
+                                          </span>
+                                          <span className="leading-[30px]">
+                                            <svg
+                                              className={`transform rtl:rotate-180 fill-current`}
+                                              width="7"
+                                              height="11"
+                                              viewBox="0 0 7 11"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <rect
+                                                x="2.08984"
+                                                y="0.636719"
+                                                width="6.94219"
+                                                height="1.54271"
+                                                transform="rotate(45 2.08984 0.636719)"
+                                              />
+                                              <rect
+                                                x="7"
+                                                y="5.54492"
+                                                width="6.94219"
+                                                height="1.54271"
+                                                transform="rotate(135 7 5.54492)"
+                                              />
+                                            </svg>
+                                          </span>
+                                        </div>
+                                        <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 bottom-0 z-10"></div>
                                       </div>
-                                      <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 bottom-0 z-10"></div>
-                                    </div>
-                                  </a>
-                                </Link>
+                                    </a>
+                                  </Link>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        )}
+                          )}
                       </div>
                     </div>
                   </li>
 
                   <li>
-                    <Link href="/sellers" passHref>
+                    <Link href="/sellers" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
                           <span>{ServeLangItem()?.Sellers}</span>
@@ -396,7 +396,7 @@ export default function Navbar({ className }) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/blogs" passHref>
+                    <Link href="/blogs" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
                           <span className="capitalize">
@@ -407,7 +407,7 @@ export default function Navbar({ className }) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/about" passHref>
+                    <Link href="/about" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
                           <span>{ServeLangItem()?.About}</span>
@@ -416,7 +416,7 @@ export default function Navbar({ className }) {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/contact" passHref>
+                    <Link href="/contact" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
                           <span>{ServeLangItem()?.Contact}</span>
@@ -443,7 +443,11 @@ export default function Navbar({ className }) {
                             <div className="category-items">
                               <ul className="flex flex-col space-y-2">
                                 <li>
-                                  <Link href="/privacy-policy" passHref>
+                                  <Link
+                                    href="/privacy-policy"
+                                    passHref
+                                    legacyBehavior
+                                  >
                                     <a rel="noopener noreferrer">
                                       <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
                                         {ServeLangItem()?.Privacy_Policy}
@@ -452,7 +456,11 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <li>
-                                  <Link href="/terms-condition" passHref>
+                                  <Link
+                                    href="/terms-condition"
+                                    passHref
+                                    legacyBehavior
+                                  >
                                     <a rel="noopener noreferrer">
                                       <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
                                         {ServeLangItem()?.Term_and_Conditions}
@@ -465,6 +473,7 @@ export default function Navbar({ className }) {
                                     <Link
                                       href="seller-terms-condition"
                                       passHref
+                                      legacyBehavior
                                     >
                                       <a rel="noopener noreferrer">
                                         <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
@@ -478,7 +487,7 @@ export default function Navbar({ className }) {
                                   </li>
                                 )}
                                 <li>
-                                  <Link href="/faq" passHref>
+                                  <Link href="/faq" passHref legacyBehavior>
                                     <a rel="noopener noreferrer">
                                       <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
                                         {ServeLangItem()?.FAQ}
@@ -495,6 +504,7 @@ export default function Navbar({ className }) {
                                         <Link
                                           href={`/pages?custom=${item.slug}`}
                                           passHref
+                                          legacyBehavior
                                         >
                                           <a rel="noopener noreferrer">
                                             <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
@@ -531,7 +541,7 @@ export default function Navbar({ className }) {
             </div>
             {Multivendor() === 1 && (
               <div className="become-seller-btn">
-                <Link href="/become-seller" passHref>
+                <Link href="/become-seller" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
                     <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
                       <div className="flex rtl:space-x-reverse space-x-2 items-center">

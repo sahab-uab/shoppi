@@ -50,7 +50,7 @@ export default function Middlebar({ className, settings }) {
         <div className="relative h-full">
           <div className="flex justify-between items-center h-full">
             <div className="relative">
-              <Link href="/" passHref>
+              <Link href="/" passHref legacyBehavior>
                 <a rel="noopener noreferrer">
                   {settings && (
                     <Image
@@ -72,7 +72,7 @@ export default function Middlebar({ className, settings }) {
             <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
               <div className="compaire relative">
                 {auth ? (
-                  <Link href="/products-compaire" passHref>
+                  <Link href="/products-compaire" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
                       <span className="cursor-pointer">
                         <Compair className="fill-current" />
@@ -80,7 +80,7 @@ export default function Middlebar({ className, settings }) {
                     </a>
                   </Link>
                 ) : (
-                  <Link href="/login" passHref>
+                  <Link href="/login" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
                       <span className="cursor-pointer">
                         <Compair className="fill-current" />
@@ -94,7 +94,7 @@ export default function Middlebar({ className, settings }) {
                 </span>
               </div>
               <div className="favorite relative">
-                <Link href="/wishlist" passHref>
+                <Link href="/wishlist" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
                     <span className="cursor-pointer">
                       <ThinLove className="fill-current" />
@@ -107,7 +107,7 @@ export default function Middlebar({ className, settings }) {
               </div>
               <div className="cart-wrapper group relative py-4">
                 <div className="cart relative cursor-pointer">
-                  <Link href="/cart" passHref>
+                  <Link href="/cart" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
                       <span className="cursor-pointer">
                         <ThinBag />
@@ -132,7 +132,7 @@ export default function Middlebar({ className, settings }) {
                     </span>
                   </button>
                 ) : (
-                  <Link href="/login" passHref>
+                  <Link href="/login" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
                       <span className="cursor-pointer">
                         <ThinPeople />
@@ -163,7 +163,11 @@ export default function Middlebar({ className, settings }) {
                           </span>
                         </li>
                         <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
-                          <Link href="/profile#dashboard" passHref>
+                          <Link
+                            href="/profile#dashboard"
+                            passHref
+                            legacyBehavior
+                          >
                             <a rel="noopener noreferrer">
                               <span className="capitalize">
                                 {ServeLangItem()?.profile}
@@ -172,7 +176,7 @@ export default function Middlebar({ className, settings }) {
                           </Link>
                         </li>
                         <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
-                          <Link href="/contact" passHref>
+                          <Link href="/contact" passHref legacyBehavior>
                             <a rel="noopener noreferrer">
                               <span className="capitalize">
                                 {ServeLangItem()?.Support}
@@ -181,7 +185,7 @@ export default function Middlebar({ className, settings }) {
                           </Link>
                         </li>
                         <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
-                          <Link href="/faq" passHref>
+                          <Link href="/faq" passHref legacyBehavior>
                             <a rel="noopener noreferrer">
                               <span className="capitalize">
                                 {ServeLangItem()?.FAQ}
