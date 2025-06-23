@@ -11,9 +11,14 @@ export default function BrandSection({ className, sectionTitle, brands = [] }) {
     <div data-aos="fade-up" className={`w-full ${className || ""}`}>
       <div className="container-x mx-auto">
         <div className="section-title flex justify-between items-center mb-5">
-          <h1 className="sm:text-3xl text-xl font-semibold text-qblacktext">
-            {sectionTitle}
-          </h1>
+          <div className="mb-3">
+            <h6 className="border-s-[10px] border-l-[#db4444] pl-1 mb-1">
+              Brand
+            </h6>
+            <h1 className="sm:text-3xl text-xl font-semibold text-qblacktext">
+              {sectionTitle}
+            </h1>
+          </div>
         </div>
 
         <Swiper

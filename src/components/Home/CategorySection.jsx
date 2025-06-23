@@ -16,7 +16,7 @@ function CategorySection({ sectionTitle, categories }) {
           {/*</div>*/}
           <div className="mb-3">
             <h6 className="border-s-[10px] border-l-[#db4444] pl-1 mb-1">Category</h6>
-            <h1 className="text-2xl font-semibold">Browse By Category</h1>
+            <h1 className="text-3xl font-semibold">Browse By Category</h1>
           </div>
           <div className="w-full grid xl:grid-cols-8 md:grid-cols-4 grid-cols-2 gap-5">
             {categories?.slice(0, 8).map((item, i) => (
