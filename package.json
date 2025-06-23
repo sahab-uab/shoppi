@@ -40,6 +40,7 @@
     "react-toastify": "^9.0.1",
     "redux": "^4.2.0",
     "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.8",
     "web-vitals": "^1.0.1",
     "yet-another-react-lightbox": "^3.12.0"
   },
