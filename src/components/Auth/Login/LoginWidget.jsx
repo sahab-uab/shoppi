@@ -192,7 +192,7 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
               {ServeLangItem()?.Remember_Me}
             </span>
             </div>
-            <Link href="/forgot-password" passhref>
+            <Link href="/forgot-password" passhref legacyBehavior>
               <a>
               <span className="text-base text-qyellow cursor-pointer">
                 {ServeLangItem()?.Forgot_password}?

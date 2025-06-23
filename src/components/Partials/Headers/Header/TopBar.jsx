@@ -22,19 +22,19 @@ export default function TopBar({ className, contact, topBarProps }) {
   return (
     <>
       <div
-        className={`w-full bg-white h-10 border-b border-qgray-border ${
+        className={`w-full bg-black/10 h-10 border-b border-qgray-border ${
           className || ""
         }`}
       >
         <div className="container-x mx-auto h-full">
           <div className="flex justify-between items-center h-full">
             <div className="topbar-nav">
-              <ul className="flex space-x-6">
+              <ul className="flex space-x-6 items-center">
                 <li className={`rtl:ml-6 ltr:ml-0`}>
                   {auth ? (
                     <Link href="/profile#dashboard" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="text-xs leading-6 text-qblack font-500 cursor-pointer">
+                        <span className="text-xs leading-6 text-black font-500 cursor-pointer">
                           {ServeLangItem()?.Account}
                         </span>
                       </a>
@@ -42,7 +42,7 @@ export default function TopBar({ className, contact, topBarProps }) {
                   ) : (
                     <Link href="/login" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="text-xs leading-6 text-qblack font-500 cursor-pointer">
+                        <span className="text-xs leading-6 text-black font-500 cursor-pointer">
                           {ServeLangItem()?.Account}
                         </span>
                       </a>
@@ -52,7 +52,7 @@ export default function TopBar({ className, contact, topBarProps }) {
                 <li>
                   <Link href="/tracking-order" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
-                      <span className="text-xs leading-6 text-qblack font-500 cursor-pointer">
+                      <span className="text-xs leading-6 text-black font-500 cursor-pointer">
                         {ServeLangItem()?.Track_Order}
                       </span>
                     </a>
@@ -62,14 +62,14 @@ export default function TopBar({ className, contact, topBarProps }) {
                   <li>
                     <div className="currencyDropdown">
                       <div className="flex space-x-2 items-center">
-                        <span className="text-xs leading-6 text-qblack font-500">
+                        <span className="text-xs leading-6 text-black font-500">
                           Currency:
                         </span>
                         <div className="w-20 relative">
                           <button
                             onClick={() => toggleHandler(!toggleCurrency)}
                             type="button"
-                            className=" flex space-x-2 items-center text-xs bg-qblack text-white px-2 py-1 font-500"
+                            className=" flex space-x-2 items-center text-xs bg-black text-white px-2 py-1 font-500"
                           >
                             <span className="">
                               {defaultCurrency.currency_icon}
@@ -109,23 +109,23 @@ export default function TopBar({ className, contact, topBarProps }) {
             <div className="topbar-dropdowns lg:block hidden">
               <div className="flex ltr:space-x-6 rtl:-space-x-0 items-center">
                 <div className="flex ltr:space-x-2 rtl:space-x-0 items-center rtl:ml-2 ltr:ml-0">
-                  <span className={`rtl:ml-2 ltr:ml-0`}>
+                  <span className={`rtl:ml-1 ltr:ml-0`}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
+                      width="20"
+                      height="20"
                       viewBox="0 0 24 24"
-                      strokeWidth="1.5"
+                      fill="none"
                       stroke="currentColor"
-                      className="w-4 h-4"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-phone-icon lucide-phone"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
-                      />
+                      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
                     </svg>
                   </span>
-                  <span className="text-xs text-qblack font-500 leading-none rtl:ml-2 ltr:ml-0 ">
+                  <span className="text-xs text-black font-500 leading-none rtl:ml-2 ltr:ml-0 ">
                     {contact && contact.phone}
                   </span>
                 </div>
@@ -146,7 +146,7 @@ export default function TopBar({ className, contact, topBarProps }) {
                       />
                     </svg>
                   </span>
-                  <span className="text-xs text-qblack font-500 leading-none">
+                  <span className="text-xs text-black font-500 leading-none">
                     {contact && contact.email}
                   </span>
                 </div>

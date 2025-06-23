@@ -14,46 +14,37 @@ function CategorySection({ sectionTitle, categories }) {
           {/*        </h1>*/}
           {/*    </div>*/}
           {/*</div>*/}
-          <div className="w-full grid xl:grid-cols-8 md:grid-cols-4 grid-cols-2 gap-[30px]">
-            {categories &&
-              categories.length > 0 &&
-              categories
-                .slice(0, categories.length > 8 ? 8 : categories.length)
-                .map((item, i) => (
-                  <div
-                    data-aos="fade-left"
-                    data-aos-delay={i + "00"}
-                    key={i}
-                    className="item w-full cursor-pointer group"
-                  >
-                    <Link
-                      href={{
-                        pathname: "/products",
-                        query: { category: item.slug },
-                      }}
-                      passhref
-                      legacyBehavior
-                    >
-                      <a rel="noopener noreferrer">
-                        <div className="w-full h-[120px] relative rounded bg-white flex justify-center items-center">
-                          <div className="w-full h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
-                            <Image
-                              layout="fill"
-                              objectFit="scale-down"
-                              src={
-                                process.env.NEXT_PUBLIC_BASE_URL + item.image
-                              }
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <p className="text-base text-qgray text-center mt-5 group-hover:text-qgreen transition duration-300 ease-in-out">
-                          {item.name}
-                        </p>
-                      </a>
-                    </Link>
+          <div className="mb-3">
+            <h6 className="border-s-[10px] border-l-[#db4444] pl-1 mb-1">Category</h6>
+            <h1 className="text-2xl font-semibold">Browse By Category</h1>
+          </div>
+          <div className="w-full grid xl:grid-cols-8 md:grid-cols-4 grid-cols-2 gap-5">
+            {categories?.slice(0, 8).map((item, i) => (
+              <Link
+                key={i}
+                href={{ pathname: "/products", query: { category: item.slug } }}
+                passHref
+                legacyBehavior
+              >
+                <a
+                  rel="noopener noreferrer"
+                  className="group flex flex-col justify-between border border-30[#101010] p-5 text-center transition hover:bg-[#db4444] h-[130px]"
+                >
+                  <div className="flex justify-center items-center">
+                    <Image
+                      src={process.env.NEXT_PUBLIC_BASE_URL + item.image}
+                      alt={item.name}
+                      width={35}
+                      height={35}
+                      className="mx-auto transition-transform group-hover:scale-110"
+                    />
                   </div>
-                ))}
+                  <p className="text-sm text-gray-800 group-hover:text-white transition mt-auto mb-0">
+                    {item.name}
+                  </p>
+                </a>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
