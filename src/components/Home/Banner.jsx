@@ -55,17 +55,17 @@ export default function Banner({
                             }}
                             className="flex w-full max-w-full h-full h-auto relative items-center rtl:pr-[30px] ltr:pl-[30px]"
                           >
-                            <div>
-                              <div className="inline-block md:w-[120px] w-[100px] shadow md:h-[25px] h-6 flex items-center justify-center  bg-[#5459AC] rounded-full md:mb-[30px] mb-[15px]">
+                            <div className="p-10">
+                              <div className="inline-block md:w-[120px] w-[100px] shadow md:h-[25px] h-6 flex items-center justify-center  bg-[#101010] rounded-full md:mb-[30px] mb-[15px]">
                                 <span className="text-[#fff] uppercase md:text-xs text-[10px] font-semibold">
                                   {item.badge}
                                 </span>
                               </div>
                               <div className="md:mb-[30px] mb-[15px]">
-                                <p className="md:text-[50px] text-[20px] leading-none text-[#5459AC] md:mb-3">
+                                <p className="md:text-[50px] text-[20px] leading-none text-[#101010] md:mb-3">
                                   {item.title_one}
                                 </p>
-                                <h1 className="md:text-[50px] text-[20px] md:w-[400px] md:leading-[66px] text-[#5459AC] font-bold">
+                                <h1 className="md:text-[50px] text-[20px] md:w-[400px] md:leading-[66px] text-[#101010] font-bold">
                                   {item.title_two}
                                 </h1>
                               </div>
