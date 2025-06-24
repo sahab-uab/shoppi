@@ -292,7 +292,7 @@ export default function Navbar({ className }) {
                                             legacyBehavior
                                           >
                                             <a rel="noopener noreferrer">
-                                              <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                              <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                                 {subItem.sub_category &&
                                                   subItem.sub_category.name}
                                               </span>
@@ -374,7 +374,7 @@ export default function Navbar({ className }) {
                                             </svg>
                                           </span>
                                         </div>
-                                        <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 bottom-0 z-10"></div>
+                                        <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 bottom-0 z-10"></div>
                                       </div>
                                     </a>
                                   </Link>
@@ -449,7 +449,7 @@ export default function Navbar({ className }) {
                                     legacyBehavior
                                   >
                                     <a rel="noopener noreferrer">
-                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                         {ServeLangItem()?.Privacy_Policy}
                                       </span>
                                     </a>
@@ -462,7 +462,7 @@ export default function Navbar({ className }) {
                                     legacyBehavior
                                   >
                                     <a rel="noopener noreferrer">
-                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                         {ServeLangItem()?.Term_and_Conditions}
                                       </span>
                                     </a>
@@ -476,7 +476,7 @@ export default function Navbar({ className }) {
                                       legacyBehavior
                                     >
                                       <a rel="noopener noreferrer">
-                                        <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                           {
                                             ServeLangItem()
                                               ?.Seller_terms_and_conditions
@@ -489,7 +489,7 @@ export default function Navbar({ className }) {
                                 <li>
                                   <Link href="/faq" passHref legacyBehavior>
                                     <a rel="noopener noreferrer">
-                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                         {ServeLangItem()?.FAQ}
                                       </span>
                                     </a>
@@ -507,7 +507,7 @@ export default function Navbar({ className }) {
                                           legacyBehavior
                                         >
                                           <a rel="noopener noreferrer">
-                                            <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                               {item.page_name}
                                             </span>
                                           </a>
@@ -517,14 +517,14 @@ export default function Navbar({ className }) {
                                   ))}
                                 {/*<li>*/}
                                 {/*  <Link href="#">*/}
-                                {/*    <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">*/}
+                                {/*    <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">*/}
                                 {/*      Shop Category Icon*/}
                                 {/*    </span>*/}
                                 {/*  </Link>*/}
                                 {/*</li>*/}
                                 {/*<li>*/}
                                 {/*  <Link href="#">*/}
-                                {/*    <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">*/}
+                                {/*    <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">*/}
                                 {/*      Shop List View*/}
                                 {/*    </span>*/}
                                 {/*  </Link>*/}

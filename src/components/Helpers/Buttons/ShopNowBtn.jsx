@@ -5,12 +5,12 @@ function ShopNowBtn() {
   return (
     <div className="cursor-pointer w-full relative ">
       <div className="inline-flex  space-x-1.5 rtl:space-x-reverse items-center relative z-20">
-        <span className="text-sm text-qblack font-medium leading-[30px]">
+        <span className="text-sm text-black group-hover:text-white duration-300 leading-[30px]">
           {ServeLangItem()?.Shop_Now}
         </span>
         <span className="leading-[30px]">
           <svg
-            className={`transform rtl:rotate-180 text-qblack fill-current`}
+            className={`transform rtl:rotate-180 text-black group-hover:text-white duration-300 fill-current`}
             width="7"
             height="11"
             viewBox="0 0 7 11"
@@ -36,7 +36,7 @@ function ShopNowBtn() {
           </svg>
         </span>
       </div>
-      <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[2px] bg-qyellow absolute left-0 rtl:right-0 bottom-0 z-10"></div>
+      <div className="w-[95px] transition-all duration-300 ease-in-out group-hover:h-7 h-[1px] bg-black/40 absolute -left-2 bottom-0 z-10"></div>
     </div>
   );
 }

@@ -148,7 +148,7 @@ export default function Dashboard({ dashBoardData }) {
           </div>
         </div>
         <div className="quick-view-grid w-full lg:flex justify-between lg:space-x-2 xl:space-x-0 items-center mt-3 ">
-          <div className="qv-item xl:w-[252px] xl:h-[208px] lg:w-1/2 w-full mb-5 xl:mb-0 bg-qblack group hover-bg-qyellow transition-all duration-300 ease-in-out p-6">
+          <div className="qv-item xl:w-[252px] xl:h-[208px] lg:w-1/2 w-full mb-5 xl:mb-0 bg-qblack group hover-bg-[#101010] transition-all duration-300 ease-in-out p-6">
             <div className="w-[62px] h-[62px] rounded bg-white flex justify-center items-center">
             <span>
               <svg
@@ -180,7 +180,7 @@ export default function Dashboard({ dashBoardData }) {
             {dashBoardData.pendingOrder}
           </span>
           </div>
-          <div className="qv-item xl:w-[252px] xl:h-[208px] lg:w-1/2 w-full mb-5 xl:mb-0 bg-qblack group hover-bg-qyellow transition-all duration-300 ease-in-out p-6">
+          <div className="qv-item xl:w-[252px] xl:h-[208px] lg:w-1/2 w-full mb-5 xl:mb-0 bg-qblack group hover-bg-[#101010] transition-all duration-300 ease-in-out p-6">
             <div className="w-[62px] h-[62px] rounded bg-white flex justify-center items-center">
             <span>
               <svg
@@ -204,7 +204,7 @@ export default function Dashboard({ dashBoardData }) {
             {dashBoardData.completeOrder}
           </span>
           </div>
-          <div className="qv-item xl:w-[252px] xl:h-[208px] lg:w-1/2 w-full mb-5 xl:mb-0 bg-qblack group hover-bg-qyellow transition-all duration-300 ease-in-out p-6">
+          <div className="qv-item xl:w-[252px] xl:h-[208px] lg:w-1/2 w-full mb-5 xl:mb-0 bg-qblack group hover-bg-[#101010] transition-all duration-300 ease-in-out p-6">
             <div className="w-[62px] h-[62px] rounded bg-white flex justify-center items-center">
             <span>
               <svg

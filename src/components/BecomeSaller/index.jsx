@@ -561,7 +561,7 @@ function BecomeSaller() {
             </div>
           </div>
           <div
-            className="bg-qyellow"
+            className="bg-[#101010]"
             style={{ width: `${uploadProgress}%`, height: "2px" }}
           ></div>
         </div>

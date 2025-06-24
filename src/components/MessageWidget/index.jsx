@@ -320,7 +320,7 @@ function Index({ pusher }) {
         <button
           onClick={messageToggleAction}
           type="button"
-          className={`w-[150px] text-qblack print:hidden fixed xl:right-[180px] right-[-56px] transform rotate-90 xl:rotate-0 z-30  xl:bottom-0 bottom-[150px] h-[38px] bg-qyellow justify-center flex space-x-2.5 rtl:space-x-reverse items-center cursor-pointer`}
+          className={`w-[150px] text-qblack print:hidden fixed xl:right-[180px] right-[-56px] transform rotate-90 xl:rotate-0 z-30  xl:bottom-0 bottom-[150px] h-[38px] bg-[#101010] justify-center flex space-x-2.5 rtl:space-x-reverse items-center cursor-pointer`}
         >
           <span>
             <svg
@@ -356,7 +356,7 @@ function Index({ pusher }) {
           }`}
           style={{ boxShadow: "0px 4px 109px rgba(0, 0, 0, 0.12)" }}
         >
-          <div className={`w-full h-[38px] bg-qyellow text-qblack`}>
+          <div className={`w-full h-[38px] bg-[#101010] text-qblack`}>
             <div
               className={`w-full h-full flex justify-between items-center px-[26px]`}
             >
@@ -454,7 +454,7 @@ function Index({ pusher }) {
                             />
                           </div>
                           {item.unread_message > 0 && (
-                            <div className="w-[15px] h-[15px] inline-block flex justify-center items-center rounded-full bg-qyellow text-qblack absolute right-0 top-0 text-xs">
+                            <div className="w-[15px] h-[15px] inline-block flex justify-center items-center rounded-full bg-[#101010] text-qblack absolute right-0 top-0 text-xs">
                               <span>
                                 {item.unread_message > 99
                                   ? "99"
@@ -601,7 +601,7 @@ function Index({ pusher }) {
                                 bottom: "-16px",
                               }}
                               type="button"
-                              className={`w-[120px] h-[32px] bg-white text-sm text-qyellow font-semibold absolute shadow-lg`}
+                              className={`w-[120px] h-[32px] bg-white text-sm text-[#101010] font-semibold absolute shadow-lg`}
                             >
                               {ServeLangItem().Send_Product}
                             </button>
@@ -762,7 +762,7 @@ function Index({ pusher }) {
                                     <div className={`flex justify-end `}>
                                       <div>
                                         <div
-                                          className="bg-qyellow py-[8px] px-[17px] flex justify-center rounded-[40px] text-qblack text-sm"
+                                          className="bg-[#101010] py-[8px] px-[17px] flex justify-center rounded-[40px] text-qblack text-sm"
                                           style={{
                                             maxWidth: "fit-content",
                                             minWidth: "82px",
@@ -888,7 +888,7 @@ function Index({ pusher }) {
                     <button
                       onClick={() => send()}
                       type="button"
-                      className={`w-[50px] h-full bg-qyellow flex justify-center items-center text-qblack`}
+                      className={`w-[50px] h-full bg-[#101010] flex justify-center items-center text-qblack`}
                     >
                       <span>
                         <svg

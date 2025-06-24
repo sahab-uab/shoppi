@@ -120,7 +120,7 @@ export default function Blogs({ blogs, nextPageUrl }) {
                                         <button
                                             onClick={nextPageHandler}
                                             type="button"
-                                            className="w-[180px] h-[54px] bg-qyellow rounded mt-10"
+                                            className="w-[180px] h-[54px] bg-[#101010] rounded mt-10"
                                         >
                                             <div className="flex justify-center w-full h-full items-center group rounded relative transition-all duration-300 ease-in-out overflow-hidden cursor-pointer">
                                                 <div className="flex items-center transition-all duration-300 ease-in-out relative z-10  text-qblack hover:text-white">

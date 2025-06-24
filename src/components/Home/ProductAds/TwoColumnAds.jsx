@@ -28,21 +28,21 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                   >
                     <div>
                       <div className="lg:mb-[22px] mb-2.5">
-                        <span className="text-qblack uppercase text-xs font-semibold">
+                        <span className="text-black uppercase text-xs font-semibold">
                           {bannerOne.badge}
                         </span>
                       </div>
                       <div className="lg:mb-[30px] mb-2.5">
-                        <p className="lg:text-[30px] text-[20px] leading-none text-qblack font-semibold lg:mb-3">
+                        <p className="lg:text-[30px] text-[20px] leading-none text-black font-semibold lg:mb-3">
                           {bannerOne.title_one}
                         </p>
-                        <h1 className="lg:text-[30px] text-[20px] lg:leading-[40px] text-qblack font-semibold">
+                        <h1 className="lg:text-[30px] text-[20px] lg:leading-[40px] text-black font-semibold">
                           {bannerOne.title_two}
                         </h1>
                       </div>
                     </div>
                     <div>
-                      <div className="w-[90px]">
+                      <div className="w-[95px]">
                         <Link
                           href={{
                             pathname: "/products",
@@ -74,15 +74,15 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                   >
                     <div>
                       <div className="lg:mb-[22px] mb-2.5">
-                        <span className="text-qblack uppercase text-xs font-semibold">
+                        <span className="text-black uppercase text-xs font-semibold">
                           {bannerTwo.badge}
                         </span>
                       </div>
                       <div className="lg:mb-[30px] mb-2.5">
-                        <p className="lg:text-[30px] leading-none text-qblack font-semibold lg:mb-3">
+                        <p className="lg:text-[30px] leading-none text-black font-semibold lg:mb-3">
                           {bannerTwo.title_one}
                         </p>
-                        <h1 className="lg:text-[30px] text-[20px] lg:leading-[40px] text-qblack font-semibold">
+                        <h1 className="lg:text-[30px] text-[20px] lg:leading-[40px] text-black font-semibold">
                           {bannerTwo.title_two}
                         </h1>
                       </div>
@@ -100,12 +100,12 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                           <a rel="noopener noreferrer">
                             <div className="cursor-pointer w-full relative  ">
                               <div className="inline-flex  space-x-1.5 rtl:space-x-reverse items-center relative z-20">
-                                <span className="text-sm text-qblack font-medium leading-[30px]">
+                                <span className="text-sm text-black group-hover:text-white duration-300 leading-[30px]">
                                   {ServeLangItem()?.Shop_Now}
                                 </span>
                                 <span className="leading-[30px]">
                                   <svg
-                                    className={`transform rtl:rotate-180 text-qblack fill-current`}
+                                    className={`transform rtl:rotate-180 text-black group-hover:text-white duration-300 fill-current`}
                                     width="7"
                                     height="11"
                                     viewBox="0 0 7 11"
@@ -129,7 +129,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                                   </svg>
                                 </span>
                               </div>
-                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 bottom-0 z-10"></div>
+                              <div className="w-[95px] transition-all duration-300 ease-in-out group-hover:h-7 h-[1px] bg-black/40 absolute -left-2 bottom-0 z-10"></div>
                             </div>
                           </a>
                         </Link>

@@ -18,7 +18,7 @@ export default function BlogCard({ className, datas }) {
       </div>
       <div className="p-[24px]">
         <div className="short-data flex space-x-9 rtl:space-x-reverse items-center mb-3">
-          <div className="flex space-x-1.5 rtl:space-x-reverse items-center text-qyellow">
+          <div className="flex space-x-1.5 rtl:space-x-reverse items-center text-[#101010]">
             <span>
               <svg
                 width="12"
@@ -35,7 +35,7 @@ export default function BlogCard({ className, datas }) {
               {ServeLangItem()?.By_Admin}
             </span>
           </div>
-          <div className="flex space-x-1.5 rtl:space-x-reverse items-center text-qyellow">
+          <div className="flex space-x-1.5 rtl:space-x-reverse items-center text-[#101010]">
             <span>
               <svg
                 width="16"
@@ -70,7 +70,7 @@ export default function BlogCard({ className, datas }) {
             className="article-area line-clamp-2"
             dangerouslySetInnerHTML={{ __html: datas.article }}
           ></div>
-          {/* text-qyellow btn */}
+          {/* text-[#101010] btn */}
           <Link href={`/blogs/blog?slug=${datas.slug}`} passHref legacyBehavior>
             <a>
               <div className="flex items-center space-x-2 rtl:space-x-reverse mt-2">

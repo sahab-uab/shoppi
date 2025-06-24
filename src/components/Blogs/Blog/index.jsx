@@ -188,7 +188,7 @@ export default function Blog({ details }) {
                             }`}
                             quotes={details.blog.title}
                           >
-                            <span className="text-base cursor-pointer text-qyellow ">
+                            <span className="text-base cursor-pointer text-[#101010] ">
                               <svg
                                 width="35"
                                 height="35"
@@ -218,7 +218,7 @@ export default function Blog({ details }) {
                             }`}
                             title={details.blog.title}
                           >
-                            <span className="text-base cursor-pointer text-qyellow ">
+                            <span className="text-base cursor-pointer text-[#101010] ">
                               <svg
                                 width="35"
                                 height="35"
@@ -269,7 +269,7 @@ export default function Blog({ details }) {
                       placeholder="Search"
                       className="w-full h-full bg-qyellowlow/10 focus:outline-none focus:ring-0 pl-5 pr-16 placeholder:text-qgraytwo"
                     />
-                    <span className="absolute right-5 top-[17px] text-qyellow">
+                    <span className="absolute right-5 top-[17px] text-[#101010]">
                       <svg
                         width="25"
                         height="25"
@@ -325,7 +325,7 @@ export default function Blog({ details }) {
                               Anchor
                             </Link>
                             <div className="flex space-x-3 rtl:space-x-reverse items-center">
-                              <span className="text-qyellow">
+                              <span className="text-[#101010]">
                                 <svg
                                   width="14"
                                   height="13"
@@ -409,7 +409,7 @@ export default function Blog({ details }) {
                             passhref
                           >
                             {/* <a>
-                              <span className="text-base text-qgraytwo group-hover:text-qyellow cursor-pointer">
+                              <span className="text-base text-qgraytwo group-hover:text-[#101010] cursor-pointer">
                                 {category.name}
                               </span>
                             </a> */}

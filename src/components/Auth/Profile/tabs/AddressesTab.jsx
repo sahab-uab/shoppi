@@ -255,7 +255,7 @@ export default function AddressesTab() {
             </h1>
             <span
               onClick={() => setNewAddress(!newAddress)}
-              className="text-qyellow cursor-pointer"
+              className="text-[#101010] cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -640,7 +640,7 @@ export default function AddressesTab() {
                     <button
                       onClick={() => editAddress(item.id)}
                       type="button"
-                      className="border border-qgray text-qyellow w-[34px] h-[34px] rounded-full flex justify-center items-center"
+                      className="border border-qgray text-[#101010] w-[34px] h-[34px] rounded-full flex justify-center items-center"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

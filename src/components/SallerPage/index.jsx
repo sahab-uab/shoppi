@@ -66,7 +66,7 @@ export default function SallerPage() {
                 backgroundSize: "cover",
               }}
             >
-              <div className="store-status w-[230px] h-[60px] bg-qyellow flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">
+              <div className="store-status w-[230px] h-[60px] bg-[#101010] flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">
                 <span className="text-[26px] font-600 mr-[30px]">
                   Store Open
                 </span>
@@ -219,7 +219,7 @@ export default function SallerPage() {
                   <button
                     onClick={() => setToggle(!filterToggle)}
                     type="button"
-                    className="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-qyellow text-qyellow"
+                    className="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-qyellow text-[#101010]"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

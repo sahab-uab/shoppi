@@ -20,12 +20,12 @@ export default function ViewMoreTitle({
             <Link href={seeMoreUrl} passHref legacyBehavior>
               <a rel="noopener noreferrer">
                 <div className="flex space-x-2 text-qblack items-center cursor-pointer">
-                  <p className="text-base font-600 ">
+                  <p className="text-base font-600 text-[#101010]">
                     {ServeLangItem()?.View_More}
                   </p>
                   <span className="animate-right-dir">
                     <svg
-                      className={`fill-current transform rtl:rotate-180`}
+                      className={`fill-current transform rtl:rotate-180 text-[#101010]`}
                       width="17"
                       height="14"
                       viewBox="0 0 17 14"

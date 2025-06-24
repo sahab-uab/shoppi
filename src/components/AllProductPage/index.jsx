@@ -336,7 +336,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                   backgroundSize: "cover",
                 }}
               >
-                {/*<div className="store-status w-[230px] h-[60px] bg-qyellow flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">*/}
+                {/*<div className="store-status w-[230px] h-[60px] bg-[#101010] flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">*/}
                 {/*  <span className="text-[26px] font-600 mr-[30px]">*/}
                 {/*    {sellerInfo &&*/}
                 {/*      shopStatus(*/}
@@ -586,7 +586,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                                     </svg>
                                   </span>
                                 </div>
-                                <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[2px] bg-qyellow absolute ltr:left-0 rtl:right-0 bottom-0 z-10"></div>
+                                <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[2px] bg-[#101010] absolute ltr:left-0 rtl:right-0 bottom-0 z-10"></div>
                               </div>
                             </a>
                           </Link>
@@ -656,7 +656,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                       <button
                         onClick={() => setToggle(!filterToggle)}
                         type="button"
-                        className="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-qyellow text-qyellow"
+                        className="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-qyellow text-[#101010]"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -770,7 +770,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                         <button
                           onClick={nextPageHandler}
                           type="button"
-                          className="w-[180px] h-[54px] bg-qyellow rounded mt-10"
+                          className="w-[180px] h-[54px] bg-[#101010] rounded mt-10"
                         >
                           <div className="flex justify-center w-full h-full items-center group rounded relative transition-all duration-300 ease-in-out overflow-hidden cursor-pointer">
                             <div className="flex items-center transition-all duration-300 ease-in-out relative z-10  text-white hover:text-white">

@@ -67,7 +67,7 @@ export default function ReviewTab({ className, reviews }) {
                     </div>
                   </div>
                   {parseInt(datas.status) === 0 && (
-                    <div className="absolute ltr:right-3 rtl:left-3 font-medium top-3 px-3 py-1 rounded bg-[#fff6dc] bg-opacity-50 text-qyellow border text-sm border-qyellow">
+                    <div className="absolute ltr:right-3 rtl:left-3 font-medium top-3 px-3 py-1 rounded bg-[#fff6dc] bg-opacity-50 text-[#101010] border text-sm border-qyellow">
                       {ServeLangItem()?.Pending_review}
                     </div>
                   )}

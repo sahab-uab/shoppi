@@ -68,7 +68,7 @@ function Consent() {
                   acceptCookie();
                 }}
                 type="button"
-                className="w-1/2 h-full rounded text-base font-bold bg-qyellow text-qblack antialiased tracking-wide"
+                className="w-1/2 h-full rounded text-base font-bold bg-[#101010] text-qblack antialiased tracking-wide"
               >
                 {ServeLangItem()?.Accept_All}
               </button>

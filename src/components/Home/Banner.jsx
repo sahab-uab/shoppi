@@ -165,7 +165,7 @@ export default function Banner({
                                   </svg>
                                 </span>
                               </div>
-                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 rtl:right-0 bottom-0 z-10"></div>
+                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 rtl:right-0 bottom-0 z-10"></div>
                             </div>
                           </a>
                         </Link>
@@ -244,7 +244,7 @@ export default function Banner({
                                   </svg>
                                 </span>
                               </div>
-                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 rtl:right-0 bottom-0 z-10"></div>
+                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 rtl:right-0 bottom-0 z-10"></div>
                             </div>
                           </a>
                         </Link>

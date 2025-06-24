@@ -294,7 +294,7 @@ export default function ProductCardStyleOne({ datas }) {
             {/*              datas.campaingn_product ? 100 - available : 0*/}
             {/*            }%`,*/}
             {/*          }}*/}
-            {/*          className="h-full absolute left-0 top-0 bg-qyellow"*/}
+            {/*          className="h-full absolute left-0 top-0 bg-[#101010]"*/}
             {/*        ></div>*/}
             {/*      </div>*/}
             {/*    </div>*/}
@@ -308,7 +308,7 @@ export default function ProductCardStyleOne({ datas }) {
             {/*      className={`text-[9px] font-700 leading-none py-[6px] px-3 uppercase text-white rounded-full tracking-wider ${*/}
             {/*        datas.product_type === "popular"*/}
             {/*          ? "bg-[#19CC40]"*/}
-            {/*          : "bg-qyellow"*/}
+            {/*          : "bg-[#101010]"*/}
             {/*      }`}*/}
             {/*    >*/}
             {/*      {datas.product_type}*/}
@@ -425,7 +425,7 @@ export default function ProductCardStyleOne({ datas }) {
             onClick={() => quickViewHandler(datas.slug)}
             type="button"
           >
-            <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+            <span className="hover:bg-[#101010] w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-[#101010] bg-primarygray rounded">
               <QuickViewIco className="fill-current" />
             </span>
           </button>
@@ -435,7 +435,7 @@ export default function ProductCardStyleOne({ datas }) {
               type="button"
               onClick={() => addToWishlist(datas.id)}
             >
-              <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+              <span className="hover:bg-[#101010] w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-[#101010] bg-primarygray rounded">
                 <ThinLove className="fill-current" />
               </span>
             </button>
@@ -445,7 +445,7 @@ export default function ProductCardStyleOne({ datas }) {
               type="button"
               onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
             >
-              <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+              <span className="hover:bg-[#101010] w-10 h-10 flex justify-center items-center bg-primarygray rounded">
                 <ThinLove fill={true} />
               </span>
             </button>
@@ -456,7 +456,7 @@ export default function ProductCardStyleOne({ datas }) {
             type="button"
             onClick={() => productCompare(datas.id)}
           >
-            <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
+            <span className="hover:bg-[#101010] w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-[#101010] bg-primarygray rounded">
               <Compair className="fill-current" />
             </span>
           </button>

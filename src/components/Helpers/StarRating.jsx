@@ -9,7 +9,7 @@ const StarRating = ({ rating, ratingHandler, hoverRating, hoverHandler }) => (
           // eslint-disable-next-line react/no-array-index-key
           key={index}
           className={
-            index <= (hoverRating || rating) ? "text-qyellow" : "text-[#D2D8E1]"
+            index <= (hoverRating || rating) ? "text-[#101010]" : "text-[#D2D8E1]"
           }
           onClick={() => ratingHandler(index)}
           onMouseEnter={() => hoverHandler(index)}

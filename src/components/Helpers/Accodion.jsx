@@ -9,7 +9,7 @@ export default function Accodion({ init, title, des }) {
     <div
 
       className={`accordion-item w-full overflow-hidden ${
-        collaps ? "bg-qyellow" : "bg-white"
+        collaps ? "bg-[#101010]" : "bg-white"
       }`}
     >
       <button

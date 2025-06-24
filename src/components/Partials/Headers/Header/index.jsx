@@ -60,7 +60,7 @@ export default function Header({ topBarProps,drawerAction, settings, contact }) 
                 <ThinBag />
               </span>
             </Link>
-            <span className="w-[18px] h-[18px] rounded-full bg-qyellow absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
+            <span className="w-[18px] h-[18px] rounded-full bg-[#101010] absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
               {cartItems ? cartItems.length : 0}
             </span>
           </div>

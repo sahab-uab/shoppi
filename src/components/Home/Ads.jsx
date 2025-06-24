@@ -137,7 +137,7 @@ export default function Ads() {
                 <button
                   onClick={subscribehandler}
                   type="button"
-                  className="w-[120px] h-full bg-qyellow text-qblack text-sm font-600"
+                  className="w-[120px] h-full bg-[#101010] text-qblack text-sm font-600"
                 >
                   {ServeLangItem()?.Subscribe}
                 </button>

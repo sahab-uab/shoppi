@@ -144,7 +144,7 @@ export default function SearchBox({ className }) {
                   {categories &&
                     categories.map((item, i) => (
                       <li onClick={() => categoryHandler(item)} key={i}>
-                        <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                        <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                           {item.name}
                         </span>
                       </li>
@@ -205,7 +205,7 @@ export default function SearchBox({ className }) {
         {/*          {subCategories &&*/}
         {/*            subCategories.map((item, i) => (*/}
         {/*              <li onClick={() => subCategoryHandler(item)} key={i}>*/}
-        {/*                <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">*/}
+        {/*                <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">*/}
         {/*                  {item.name}*/}
         {/*                </span>*/}
         {/*              </li>*/}

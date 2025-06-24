@@ -55,7 +55,7 @@ export default function OrderTab({ orders }) {
                   <td className="py-4 flex justify-center">
                     <div className="flex space-x-2 rtl:space-x-reverse items-center">
                       <Link href={`/order/${item.order_id}`}>
-                        <div className="w-[116px] h-[46px] bg-qyellow text-qblack font-bold flex justify-center items-center cursor-pointer">
+                        <div className="w-[116px] h-[46px] bg-[#101010] text-qblack font-bold flex justify-center items-center cursor-pointer">
                           <span>{ServeLangItem()?.View_Details}</span>
                         </div>
                       </Link>

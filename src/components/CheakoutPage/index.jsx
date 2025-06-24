@@ -883,8 +883,8 @@ function CheakoutPage() {
                             type="button"
                             className={`px-4 py-3 text-md font-medium rounded-md  ${
                               activeAddress === "billing"
-                                ? "text-qblack bg-qyellow"
-                                : "text-qyellow"
+                                ? "text-qblack bg-[#101010]"
+                                : "text-[#101010]"
                             } `}
                           >
                             {ServeLangItem()?.Billing_Address}
@@ -894,8 +894,8 @@ function CheakoutPage() {
                             type="button"
                             className={`px-4 py-3 text-md font-medium rounded-md ml-1 ${
                               activeAddress === "shipping"
-                                ? "text-qblack bg-qyellow"
-                                : "text-qyellow"
+                                ? "text-qblack bg-[#101010]"
+                                : "text-[#101010]"
                             } `}
                           >
                             {ServeLangItem()?.Shipping_Address}
@@ -1011,7 +1011,7 @@ function CheakoutPage() {
                                   </table>
                                 </div>
                                 {address.id === selectedBilling && (
-                                  <span className="text-qblack bg-qyellow px-2 text-sm absolute right-2 -top-2 font-medium">
+                                  <span className="text-qblack bg-[#101010] px-2 text-sm absolute right-2 -top-2 font-medium">
                                     {ServeLangItem()?.Selected}
                                   </span>
                                 )}
@@ -1122,7 +1122,7 @@ function CheakoutPage() {
                                   </table>
                                 </div>
                                 {address.id === selectedShipping && (
-                                  <span className="text-qblack bg-qyellow px-2 text-sm absolute right-2 -top-2 font-medium">
+                                  <span className="text-qblack bg-[#101010] px-2 text-sm absolute right-2 -top-2 font-medium">
                                     {ServeLangItem()?.Selected}
                                   </span>
                                 )}
@@ -1140,7 +1140,7 @@ function CheakoutPage() {
                         </h1>
                         <span
                           onClick={() => setNewAddress(!newAddress)}
-                          className="text-qyellow cursor-pointer"
+                          className="text-[#101010] cursor-pointer"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -1845,7 +1845,7 @@ function CheakoutPage() {
                               {selectPayment === "cashOnDelivery" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1866,7 +1866,7 @@ function CheakoutPage() {
                           {stripeStatus && (
                             <div
                               onClick={() => setPaymentMethod("stripe")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "stripe"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -1893,7 +1893,7 @@ function CheakoutPage() {
                               {selectPayment === "stripe" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1914,7 +1914,7 @@ function CheakoutPage() {
                           {rezorPayStatue && (
                             <div
                               onClick={() => setPaymentMethod("razorpay")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "razorpay"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -1940,7 +1940,7 @@ function CheakoutPage() {
                               {selectPayment === "razorpay" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1961,7 +1961,7 @@ function CheakoutPage() {
                           {flutterWaveStatus && (
                             <div
                               onClick={() => setPaymentMethod("flutterWave")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "flutterWave"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -1997,7 +1997,7 @@ function CheakoutPage() {
                               {selectPayment === "flutterWave" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -2018,7 +2018,7 @@ function CheakoutPage() {
                           {mollieStatus && (
                             <div
                               onClick={() => setPaymentMethod("mollie")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "mollie"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -2044,7 +2044,7 @@ function CheakoutPage() {
                               {selectPayment === "mollie" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -2065,7 +2065,7 @@ function CheakoutPage() {
                           {fatoorahStatus && (
                               <div
                                   onClick={() => setPaymentMethod("myfatoorah")}
-                                  className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                                  className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                       selectPayment === "myfatoorah"
                                           ? "border-2 border-qyellow"
                                           : "border border-gray-200"
@@ -2100,7 +2100,7 @@ function CheakoutPage() {
                                 {selectPayment === "myfatoorah" && (
                                     <span
                                         data-aos="zoom-in"
-                                        className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                        className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                     >
                                   <svg
                                       xmlns="http://www.w3.org/2000/svg"
@@ -2121,7 +2121,7 @@ function CheakoutPage() {
                           {instaMojoStatus && (
                             <div
                               onClick={() => setPaymentMethod("instamojo")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "instamojo"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -2159,7 +2159,7 @@ function CheakoutPage() {
                               {selectPayment === "instamojo" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -2180,7 +2180,7 @@ function CheakoutPage() {
                           {payStackStatus && (
                             <div
                               onClick={() => setPaymentMethod("paystack")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "paystack"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -2208,7 +2208,7 @@ function CheakoutPage() {
                               {selectPayment === "paystack" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -2229,7 +2229,7 @@ function CheakoutPage() {
                           {paypalStatus && (
                             <div
                               onClick={() => setPaymentMethod("paypal")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "paypal"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -2272,7 +2272,7 @@ function CheakoutPage() {
                               {selectPayment === "paypal" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -2293,7 +2293,7 @@ function CheakoutPage() {
                           {bankPaymentStatus && (
                             <div
                               onClick={() => setPaymentMethod("bankpayment")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "bankpayment"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -2307,7 +2307,7 @@ function CheakoutPage() {
                               {selectPayment === "bankpayment" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -2328,7 +2328,7 @@ function CheakoutPage() {
                           {sslStatus && (
                             <div
                               onClick={() => setPaymentMethod("sslcommerce")}
-                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-qyellow  flex justify-center items-center px-3 uppercase cursor-pointer ${
+                              className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white text-[#101010]  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "sslcommerce"
                                   ? "border-2 border-qyellow"
                                   : "border border-gray-200"
@@ -2342,7 +2342,7 @@ function CheakoutPage() {
                               {selectPayment === "sslcommerce" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-qyellow -right-2.5 -top-2.5"
+                                  className="absolute text-white z-10 w-6 h-6 rounded-full bg-[#101010] -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"

@@ -348,7 +348,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
             type="button"
             onClick={() => quickViewHandler(datas.slug)}
           >
-            <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+            <span className="hover:bg-[#101010] w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-[#101010] bg-primarygray rounded">
               <QuickViewIco className="fill-current" />
             </span>
           </button>
@@ -358,7 +358,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
               type="button"
               onClick={() => addToWishlist(datas.id)}
             >
-              <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+              <span className="hover:bg-[#101010] w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-[#101010] bg-primarygray rounded">
                 <ThinLove className="fill-current" />
               </span>
             </button>
@@ -368,7 +368,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
               type="button"
               onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
             >
-              <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+              <span className="hover:bg-[#101010] w-10 h-10 flex justify-center items-center bg-primarygray rounded">
                 <ThinLove fill={true} />
               </span>
             </button>
@@ -378,7 +378,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
             type="button"
             onClick={() => productCompare(datas.id)}
           >
-            <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
+            <span className="hover:bg-[#101010] w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-[#101010] bg-primarygray rounded">
               <Compair className="fill-current" />
             </span>
           </button>

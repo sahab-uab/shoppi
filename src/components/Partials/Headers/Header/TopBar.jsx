@@ -89,7 +89,7 @@ export default function TopBar({ className, contact, topBarProps }) {
                                   allCurrency.length > 0 &&
                                   allCurrency.map((item, i) => (
                                     <li onClick={() => handler(item)} key={i}>
-                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                         {item.currency_icon +
                                           " " +
                                           item.currency_code}

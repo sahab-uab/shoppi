@@ -552,7 +552,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                     />
                     <div
                       onClick={browseprofileImg}
-                      className="w-[32px] h-[32px] absolute bottom-7 right-0  bg-qyellow rounded-full cursor-pointer"
+                      className="w-[32px] h-[32px] absolute bottom-7 right-0  bg-[#101010] rounded-full cursor-pointer"
                     >
                       <svg
                         width="32"
@@ -583,7 +583,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
             <button
               onClick={updateProfile}
               type="button"
-              className="w-[164px] h-[50px] bg-qyellow rounded text-qblack text-sm"
+              className="w-[164px] h-[50px] bg-[#101010] rounded text-qblack text-sm"
             >
               {ServeLangItem()?.Update_Profile}
             </button>

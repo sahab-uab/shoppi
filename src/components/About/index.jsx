@@ -194,7 +194,7 @@ export default function About({ aboutData }) {
                 <button
                   onClick={prev}
                   type="button"
-                  className="w-[48px] h-[48px] rounded-full overflow-hidden flex justify-center items-center border primary-border text-qyellow"
+                  className="w-[48px] h-[48px] rounded-full overflow-hidden flex justify-center items-center border primary-border text-[#101010]"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +214,7 @@ export default function About({ aboutData }) {
                 <button
                   onClick={next}
                   type="button"
-                  className="w-[48px] h-[48px] rounded-full overflow-hidden flex justify-center items-center border primary-border text-qyellow"
+                  className="w-[48px] h-[48px] rounded-full overflow-hidden flex justify-center items-center border primary-border text-[#101010]"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +238,7 @@ export default function About({ aboutData }) {
         <div className="container-x mx-auto my-[60px]">
           <div
             data-aos="fade-down"
-            className="best-services w-full bg-qyellow flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
+            className="best-services w-full bg-[#101010] flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
           >
             {aboutData &&
               aboutData.services.map((item) => (

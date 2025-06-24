@@ -170,7 +170,7 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
               legacyBehavior
             >
               <a rel="noopener noreferrer">
-                <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
+                <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-black/60 leading-[24px] line-clamp-1 hover:text-[#1f1d1d] cursor-pointer">
                   {datas.title}
                 </p>
               </a>
