@@ -262,7 +262,7 @@ export default function Banner({
                 <div key={service.id} className="item">
                   <div className="flex space-x-5 rtl:space-x-reverse items-center">
                     <div>
-                      <span className="w-10 h-10 text-qyellow">
+                      <span className="w-10 h-10 text-[#101010]">
                         <FontAwesomeCom
                           className="w-8 h-8"
                           icon={service.icon}

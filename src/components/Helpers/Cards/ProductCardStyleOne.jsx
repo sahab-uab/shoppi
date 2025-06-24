@@ -256,7 +256,7 @@ export default function ProductCardStyleOne({ datas }) {
   return (
     <div className="main-wrapper-card relative">
       <div
-        className="product-card-one w-full h-[445px] bg-white relative group overflow-hidden"
+        className="product-card-one w-full h-[430px] bg-white relative group overflow-hidden"
         style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
       >
         <div className="product-card-img w-full h-[300px] -mt-2">
@@ -271,7 +271,7 @@ export default function ProductCardStyleOne({ datas }) {
               layout="fill"
               objectFit="scale-down"
               src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
-              alt=""
+              alt="product image"
               onLoadingComplete={() => loadImg(datas.image)}
               className="w-full h-full object-contain"
             />
@@ -317,13 +317,14 @@ export default function ProductCardStyleOne({ datas }) {
             {/*)}*/}
           </div>
         </div>
-        <div className="product-card-details px-[30px] pb-[30px] relative pt-2">
+        <div className="product-card-details px-[15px] pb-[15px] relative pt-2">
           {/* add to card button */}
-          <div className="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[85px] transition-all duration-300 ease-in-out">
+          <div className="absolute w-full h-10 px-[00px] left-0 top-40 group-hover:-top-[45px] transition-all duration-300 ease-in-out">
+
             <button
               onClick={() => addToCart(datas.id)}
               type="button"
-              className="yellow-btn group relative w-full h-full flex shadow  justify-center items-center overflow-hidden"
+              className="yellow-btn group relative w-full h-full flex shadow justify-center items-center overflow-hidden"
             >
               <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
                 <span>
@@ -343,7 +344,61 @@ export default function ProductCardStyleOne({ datas }) {
               <div className="bg-shape w-full h-full absolute  bg-qblack"></div>
             </button>
           </div>
-          <div className="reviews flex space-x-[1px] mb-3">
+          
+
+          <Link
+            href={{ pathname: "/single-product", query: { slug: datas.slug } }}
+            passHref
+            legacyBehavior
+          >
+            <a rel="noopener noreferrer">
+              <p className="title mb-1 text-[15px] font-600 text-black/70 leading-[24px] line-clamp-2 hover:text-black cursor-pointer">
+                {datas.title}
+              </p>
+            </a>
+          </Link>
+
+          <p className="price">
+            <span
+              suppressHydrationWarning
+              className={`main-price font-600 text-[16px] ${
+                offerPrice ? "line-through text-qgray" : "text-qred"
+              }`}
+            >
+              {offerPrice ? (
+                <span>
+                  <CurrencyConvert price={price} />
+                </span>
+              ) : (
+                <>
+                  {isProductInFlashSale && (
+                    <span
+                      className={`line-through text-qgray font-500 text-[14px] mr-2`}
+                    >
+                      <CurrencyConvert price={price} />
+                    </span>
+                  )}
+                  <CheckProductIsExistsInFlashSale
+                    id={datas.id}
+                    price={price}
+                  />
+                </>
+              )}
+            </span>
+            {offerPrice && (
+              <span
+                suppressHydrationWarning
+                className="offer-price text-qred font-600 text-[16px] ml-2"
+              >
+                <CheckProductIsExistsInFlashSale
+                  id={datas.id}
+                  price={offerPrice}
+                />
+              </span>
+            )}
+          </p>
+
+          <div className="reviews flex space-x-[1px] mt-2">
             {Array.from(Array(datas.review), () => (
               <span key={datas.review + Math.random()}>
                 <Star />
@@ -362,58 +417,6 @@ export default function ProductCardStyleOne({ datas }) {
               </>
             )}
           </div>
-
-          <Link
-            href={{ pathname: "/single-product", query: { slug: datas.slug } }}
-            passHref
-            legacyBehavior
-          >
-            <a rel="noopener noreferrer">
-              <p className="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
-                {datas.title}
-              </p>
-            </a>
-          </Link>
-
-          <p className="price">
-            <span
-              suppressHydrationWarning
-              className={`main-price  font-600 text-[18px] ${
-                offerPrice ? "line-through text-qgray" : "text-qred"
-              }`}
-            >
-              {offerPrice ? (
-                <span>
-                  <CurrencyConvert price={price} />
-                </span>
-              ) : (
-                <>
-                  {isProductInFlashSale && (
-                    <span
-                      className={`line-through text-qgray font-500 text-[16px] mr-2`}
-                    >
-                      <CurrencyConvert price={price} />
-                    </span>
-                  )}
-                  <CheckProductIsExistsInFlashSale
-                    id={datas.id}
-                    price={price}
-                  />
-                </>
-              )}
-            </span>
-            {offerPrice && (
-              <span
-                suppressHydrationWarning
-                className="offer-price text-qred font-600 text-[18px] ml-2"
-              >
-                <CheckProductIsExistsInFlashSale
-                  id={datas.id}
-                  price={offerPrice}
-                />
-              </span>
-            )}
-          </p>
         </div>
         {/* quick-access-btns */}
         <div className="quick-access-btns flex flex-col space-y-2">
