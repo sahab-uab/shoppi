@@ -270,7 +270,7 @@ export default function Banner({
                       </span>
                     </div>
                     <div>
-                      <p className="text-black text-[15px] font-700 tracking-wide mb-1">
+                      <p className="text-black text-[15px] font-medium tracking-wide mb-1">
                         {service.title}
                       </p>
                       <p className="text-sm text-qgray line-clamp-1">

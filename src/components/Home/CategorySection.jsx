@@ -28,7 +28,7 @@ function CategorySection({ sectionTitle, categories }) {
               >
                 <a
                   rel="noopener noreferrer"
-                  className="group flex flex-col justify-between border border-30[#101010] p-5 text-center transition hover:bg-[#db4444] h-[130px]"
+                  className="group flex flex-col justify-between border duration-300 border-30[#101010] p-5 text-center transition hover:bg-[#db4444] h-[130px]"
                 >
                   <div className="flex justify-center items-center">
                     <Image

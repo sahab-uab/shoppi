@@ -251,7 +251,7 @@ export default function Navbar({ className }) {
               <div className="nav">
                 <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5">
                   <li>
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-white">
                       <span>{ServeLangItem()?.Shop}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />
@@ -389,7 +389,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/sellers" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-white">
                           <span>{ServeLangItem()?.Sellers}</span>
                         </span>
                       </a>
@@ -398,7 +398,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/blogs" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-white">
                           <span className="capitalize">
                             {ServeLangItem()?.blogs}
                           </span>
@@ -409,7 +409,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/about" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-white">
                           <span>{ServeLangItem()?.About}</span>
                         </span>
                       </a>
@@ -418,14 +418,14 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/contact" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-white">
                           <span>{ServeLangItem()?.Contact}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
                   <li className="relative">
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-white">
                       <span>{ServeLangItem()?.Pages}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />

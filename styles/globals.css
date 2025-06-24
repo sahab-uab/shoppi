@@ -311,7 +311,7 @@ body {
   content:'';
 }
 .slider-wrapper .slick-dots li button{
-  background-color: rgba(255,255,255,.2);
+  background-color: #ffffff33;
   backdrop-filter: sepia(100%);
   width: 30px;
   height: 4px;
@@ -344,7 +344,7 @@ body {
   @apply w-full h-full focus:outline-none focus:ring-0 ltr:pl-5 rtl:pr-5 text-xs font-500 placeholder:text-qgraytwo;
 }
 .black-btn {
-  @apply bg-qblack text-white;
+  @apply bg-black text-white;
 }
 .breadcrumb-wrapper span:last-child .sperator {
   display: none;
@@ -411,49 +411,53 @@ body {
 
 /*TODO:=========home one=========*/
 .search-btn {
-  @apply text-qblack;
-  background: rgb(var(--primary-color));
+  @apply text-white;
+  background: black;
 }
 .cart-wrappwer {
-  border-color: rgb(var(--primary-color));
+  border-color: black;
 }
 .quomodo-shop-middle-bar :is(.compaire>span,.favorite>span,.cart-wrapper .cart>span){
 
-  @apply text-qblack;
-  background: rgb(var(--primary-color));
-
+  @apply text-white;
+  background: black;
+  font-weight: bold;
 }
 .quomodo-shop-middle-bar .cart-wrapper .cart-wrappwer{
-  border-color: rgb(var(--primary-color));
+  border-color: black;
 }
 .nav-widget-wrapper .nav .nav-wrapper li{
-  @apply  text-qblacktext
+  color: black !important;
 
 }
 .quomodo-shop-nav-bar.nav-widget-wrapper {
-  background: rgb(var(--primary-color));
+  background: black;
+  color: white !important;
 }
 .nav-widget-wrapper .become-seller-btn{
-  @apply text-white bg-qblack;
+  @apply text-black bg-white hover:bg-white/80 duration-200;
 }
 
 .nav-widget-wrapper .category-dropdown .categories-list .category-item{
-  @apply bg-white text-qblack
+  @apply bg-white text-black;
 }
 .nav-widget-wrapper .category-dropdown .categories-list .category-item:hover{
-  background: rgb(var(--primary-color));
+  background: #5a5a5a;
+  color: white;
 }
 .nav-widget-wrapper .category-dropdown .categories-list .category-item .sub-category-lvl-two ul li.category-item{
-  @apply bg-white text-qblack
+  @apply bg-white text-black
 }
 .nav-widget-wrapper .category-dropdown .categories-list .category-item .sub-category-lvl-two ul li.category-item:hover{
-  background: rgb(var(--primary-color));
+  background: #5a5a5a;
+  color: white;
 }
 .nav-widget-wrapper .category-dropdown .categories-list .category-item .sub-category-lvl-two .sub-category-lvl-three ul li.category-item{
-  @apply bg-white  text-qblack
+  @apply bg-white text-black
 }
 .nav-widget-wrapper .category-dropdown .categories-list .category-item .sub-category-lvl-two .sub-category-lvl-three ul li.category-item:hover{
-  background: rgb(var(--primary-color));
+  background: #5a5a5a;
+  color: white;
 }
 /*TODO: ========== home two =============*/
 .home-two .search-btn {
