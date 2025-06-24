@@ -36,7 +36,7 @@ function ShopNowBtn() {
           </svg>
         </span>
       </div>
-      <div className="w-[95px] transition-all duration-300 ease-in-out group-hover:h-7 h-[1px] bg-black/40 absolute -left-2 bottom-0 z-10"></div>
+      <div className="w-[95px] transition-all duration-300 ease-in-out group-hover:h-7 h-[1px] bg-[#483AA0] absolute -left-2 bottom-0 z-10"></div>
     </div>
   );
 }
