@@ -32,13 +32,11 @@ export default function Banner({
       <div className={`w-full ${className || ""}`}>
         <div className="container-x mx-auto">
           <div className="main-wrapper w-full">
-            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[600px]  mb-[30px] ">
+            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[422px] mb-[30px] ">
               <div
                 data-aos="fade-right"
                 className={` rtl:ml-[30px] ltr:ml-0 w-full xl:h-full md:h-[500px] h-[220px] xl:mb-0 mb-2 ${
-                  sidebarImgOne || sidebarImgTwo
-                    ? "xl:w-[740px] w-full"
-                    : "w-full"
+                  sidebarImgOne || sidebarImgTwo ? "xl:w-full w-full" : "w-full"
                 }`}
               >
                 <div className="slider-wrapper w-full h-full">
@@ -53,6 +51,7 @@ export default function Banner({
                               })`,
                               backgroundSize: "cover",
                               backgroundRepeat: "no-repeat",
+                              backgroundPosition: "center", // ✅ Added this line to center the image
                             }}
                             className="flex w-full max-w-full h-full h-auto relative items-center rtl:pr-[30px] ltr:pl-[30px]"
                           >
@@ -91,7 +90,7 @@ export default function Banner({
                   </SimpleSlider>
                 </div>
               </div>
-              <div
+              {/* <div
                 data-aos="fade-left"
                 className="flex-1 flex xl:flex-col flex-row  xl:space-y-[30px] xl:h-full md:h-[350px] h-[150px]"
               >
@@ -252,7 +251,7 @@ export default function Banner({
                     </div>
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
             <div
               data-aos="fade-up"
