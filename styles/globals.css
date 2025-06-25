@@ -431,8 +431,8 @@ body {
 
 }
 .quomodo-shop-nav-bar.nav-widget-wrapper {
-  background: black;
-  color: white !important;
+  background: #2f8111;
+  color: black !important;
 }
 .nav-widget-wrapper .become-seller-btn{
   @apply text-black bg-white hover:bg-white/80 duration-200;
@@ -607,7 +607,7 @@ li {
   height: 0.3rem !important;
 }
 .range-slider .range-slider__thumb,.range-slider .range-slider__range {
-  background: rgb(var(--primary-color)) !important;
+  background: #101010 !important;
 }
 .range-slider .range-slider__thumb {
   background: #ffffff !important;
