@@ -21,7 +21,7 @@ function SubscribeInputWidget(props) {
       data-aos="fade-right"
       className="sm:w-[543px] w-[300px] h-[54px] flex mt-8"
     >
-      <div className="flex-1 bg-white ltr:pl-4 rtl:pr-4 flex rtl:space-x-reverse space-x-2 items-center h-full focus-within:text-[#101010] text-qblack">
+      <div className="flex-1 bg-white ltr:pl-4 rtl:pr-4 flex rtl:space-x-reverse space-x-2 items-center h-full focus-within:text-[#101010] text-[#65c741]">
         <span>
           <svg
             width="17"

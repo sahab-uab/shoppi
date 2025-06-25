@@ -34,7 +34,7 @@ export default function CampaignCountDown({
                 <div className="countdown-wrapper w-full flex lg:justify-between justify-evenly lg:mb-10 mb-2">
                   <div className="countdown-item">
                     <div className="countdown-number sm:w-[100px] sm:h-[100px] w-[50px] h-[50px] rounded-full bg-white flex justify-center items-center">
-                      <span className="font-700 sm:text-[30px] text-[14px] text-[#EB5757]">
+                      <span className="font-700 sm:text-[30px] text-[14px] text-[#7ace5b]">
                         {showDate}
                       </span>
                     </div>
@@ -44,7 +44,7 @@ export default function CampaignCountDown({
                   </div>
                   <div className="countdown-item">
                     <div className="countdown-number sm:w-[100px] sm:h-[100px] w-[50px] h-[50px] rounded-full bg-white flex justify-center items-center">
-                      <span className="font-700 sm:text-[30px] text-[14px] text-[#2F80ED]">
+                      <span className="font-700 sm:text-[30px] text-[14px] text-[#888]">
                         {showHour}
                       </span>
                     </div>
@@ -74,7 +74,7 @@ export default function CampaignCountDown({
                   </div>
                 </div>
                 <div className="countdown-title mb-4">
-                  <h1 className="text-[44px] text-qblack font-600">
+                  <h1 className="text-[44px] text-[#65c741] font-600">
                     {flashSaleData.title}
                   </h1>
                 </div>
@@ -102,12 +102,12 @@ export default function CampaignCountDown({
             >
               <div className="flex flex-col h-full justify-between">
                 <div className="get-app">
-                  <p className="text-[13px] font-600 text-qblack mb-3">
+                  <p className="text-[13px] font-600 text-[#65c741] mb-3">
                     {ServeLangItem()?.MOBILE_APP_VERSION}
                   </p>
-                  <h1 className="lg:text-[30px] text-2xl font-600 text-qblack leading-10 mb-8">
+                  <h1 className="lg:text-[30px] text-2xl font-600 text-[#65c741] leading-10 mb-8">
                     {ServeLangItem()?.Get_Our}
-                    <span className="text-qred border-b-2 border-qred mx-2">
+                    <span className="text-qred border-b-2 border-green-800 mx-2">
                       {ServeLangItem()?.Mobile_App}
                     </span>
                     <br /> {ServeLangItem()?.Its_Make_easy_for_you_life}
