@@ -55,7 +55,7 @@ export default function Banner({
                             }}
                             className="flex w-full max-w-full h-full h-auto relative items-center rtl:pr-[30px] ltr:pl-[30px]"
                           >
-                            <div className="p-10">
+                            <div className="md:p-10">
                               <div className="inline-block md:w-[120px] w-[100px] shadow md:h-[25px] h-6 flex items-center justify-center  bg-[#101010] rounded-full md:mb-[30px] mb-[15px]">
                                 <span className="text-[#fff] uppercase md:text-xs text-[10px] font-semibold">
                                   {item.badge}

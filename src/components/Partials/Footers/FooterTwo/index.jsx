@@ -168,18 +168,18 @@ export default function Footer({ settings }) {
               <a href="#">
                 <Youtube className="fill-current text-qgray hover:text-qblack" />
               </a>
-              3 Anchor
+              
             </div>
             <span className="sm:text-base text-[10px] text-qgray font-300">
-              ©2022
-              {/* <Link
+              ©2025
+              <Link
                 href="https://quomodosoft.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="font-500 text-qblack mx-1"
               >
                 Quomodosoft
-              </Link> */}
+              </Link>
               All rights reserved
             </span>
           </div>

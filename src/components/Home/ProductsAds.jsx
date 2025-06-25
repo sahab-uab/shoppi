@@ -22,8 +22,8 @@ export default function ProductsAds({
               ads.length > 1 && ads.length <= 2 ? "sm:w-1/2 w-full" : "w-full"
             }  `}
           >
-            <Link href={links[0]} passHref>
-              {/* <a>
+            <Link href={links[0]} passHref legacyBehavior>
+              <a>
                 <Image
                   layout="fill"
                   objectFit="scale-down"
@@ -31,14 +31,13 @@ export default function ProductsAds({
                   alt=""
                   className="w-full sm:h-full h-auto"
                 />
-              </a> */}
-              Anchor
+              </a>
             </Link>
           </div>
           {ads.length > 1 && ads.length <= 2 && (
             <div data-aos="fade-left" className="relative flex-1 h-full">
-              <Link href={links[1]} passHref>
-                {/* <a>
+              <Link href={links[1]} passHref legacyBehavior>
+                <a>
                   <Image
                     layout="fill"
                     objectFit="scale-down"
@@ -46,8 +45,7 @@ export default function ProductsAds({
                     alt=""
                     className="w-full h-full"
                   />
-                </a> */}
-                Anchor
+                </a>
               </Link>
             </div>
           )}

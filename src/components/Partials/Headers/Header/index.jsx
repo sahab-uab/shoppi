@@ -7,7 +7,12 @@ import Middlebar from "./Middlebar";
 import Navbar from "./Navbar";
 import TopBar from "./TopBar";
 
-export default function Header({ topBarProps,drawerAction, settings, contact }) {
+export default function Header({
+  topBarProps,
+  drawerAction,
+  settings,
+  contact,
+}) {
   const { cart } = useSelector((state) => state.cart);
   const [cartItems, setCartItem] = useState(null);
   useEffect(() => {
@@ -16,7 +21,11 @@ export default function Header({ topBarProps,drawerAction, settings, contact }) 
 
   return (
     <header className="header-section-wrapper relative print:hidden">
-      <TopBar topBarProps={topBarProps} contact={contact && contact} className="quomodo-shop-top-bar" />
+      <TopBar
+        topBarProps={topBarProps}
+        contact={contact && contact}
+        className="quomodo-shop-top-bar"
+      />
       <Middlebar
         settings={settings && settings}
         className="quomodo-shop-middle-bar lg:block hidden"
@@ -40,8 +49,8 @@ export default function Header({ topBarProps,drawerAction, settings, contact }) 
             </svg>
           </div>
           <div className="w-[200px] h-full relative">
-            <Link href="/" passHref>
-              {/* <a>
+            <Link href="/" passHref legacyBehavior>
+              <a>
                 {settings && (
                   <Image
                     layout="fill"
@@ -50,8 +59,7 @@ export default function Header({ topBarProps,drawerAction, settings, contact }) 
                     alt="logo"
                   />
                 )}
-              </a> */}
-              Anchor
+              </a>
             </Link>
           </div>
           <div className="cart relative cursor-pointer">
@@ -60,7 +68,7 @@ export default function Header({ topBarProps,drawerAction, settings, contact }) 
                 <ThinBag />
               </span>
             </Link>
-            <span className="w-[18px] h-[18px] rounded-full bg-[#101010] absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
+            <span className="w-[18px] h-[18px] rounded-full bg-[#101010] text-white absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
               {cartItems ? cartItems.length : 0}
             </span>
           </div>
