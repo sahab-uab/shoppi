@@ -238,7 +238,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
     <div className="main-wrapper-card relative">
       <div
         data-aos="fade-left"
-        className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-white group relative overflow-hidden ${
+        className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-[#dcf5d3] group relative overflow-hidden ${
           className || ""
         }`}
       >
@@ -284,7 +284,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
                 legacyBehavior
               >
                 <a rel="noopener noreferrer">
-                  <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
+                  <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-[#888888] hover:text-[#706e6e] duration-300 leading-[24px] line-clamp-2 cursor-pointer">
                     {datas.title}
                   </p>
                 </a>
@@ -293,7 +293,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
                 <span
                   suppressHydrationWarning
                   className={`main-price  font-600 text-[18px] ${
-                    offerPrice ? "line-through text-qgray" : "text-qred"
+                    offerPrice ? "line-through text-[#888888]" : "text-qred"
                   }`}
                 >
                   {offerPrice ? (

@@ -255,10 +255,10 @@ export default function Banner({
             </div>
             <div
               data-aos="fade-up"
-              className="best-services w-full bg-white flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
+              className="best-services w-full bg-[#dcf5d3] overflow-x-auto flex flex-row space-x-10 px-10 py-10 lg:space-x-0 lg:justify-between lg:items-center lg:h-[110px] lg:overflow-x-visible"
             >
               {services.map((service) => (
-                <div key={service.id} className="item">
+                <div key={service.id} className="min-w-[200px] flex-shrink-0">
                   <div className="flex space-x-5 rtl:space-x-reverse items-center">
                     <div>
                       <span className="w-10 h-10 text-[#101010]">
@@ -272,7 +272,7 @@ export default function Banner({
                       <p className="text-black text-[15px] font-medium tracking-wide mb-1">
                         {service.title}
                       </p>
-                      <p className="text-sm text-qgray line-clamp-1">
+                      <p className="text-sm text-[#888] line-clamp-1">
                         {service.description}
                       </p>
                     </div>
