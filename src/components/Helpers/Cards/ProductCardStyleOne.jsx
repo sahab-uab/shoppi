@@ -256,10 +256,10 @@ export default function ProductCardStyleOne({ datas }) {
   return (
     <div className="main-wrapper-card relative">
       <div
-        className="product-card-one w-full h-[430px] bg-white relative group overflow-hidden"
+        className="product-card-one w-full lg:h-[430px]  bg-white relative group overflow-hidden"
         style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
       >
-        <div className="product-card-img w-full h-[300px] -mt-2">
+        <div className="product-card-img w-full md:h-[300px] h-[260px] -mt-2">
           <div
             className="w-full h-full relative flex justify-center items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out"
             // style={{
