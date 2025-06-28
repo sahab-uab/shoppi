@@ -253,13 +253,14 @@ export default function ProductCardStyleOne({ datas }) {
     // }, time);
     setImgSrc(value);
   };
+  
   return (
     <div className="main-wrapper-card relative">
       <div
-        className="product-card-one w-full lg:h-[430px]  bg-white relative group overflow-hidden"
+        className="product-card-one w-full lg:h-[260px] bg-white relative group overflow-hidden"
         style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
       >
-        <div className="product-card-img w-full md:h-[300px] h-[260px] -mt-2">
+        <div className="product-card-img w-full md:h-[160px] h-[210px] -mt-2">
           <div
             className="w-full h-full relative flex justify-center items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out"
             // style={{
@@ -317,16 +318,16 @@ export default function ProductCardStyleOne({ datas }) {
             {/*)}*/}
           </div>
         </div>
-        <div className="product-card-details px-[15px] pb-[15px] relative pt-2">
+        <div className="product-card-details px-[12px] pb-[15px] relative pt-2">
           {/* add to card button */}
-          <div className="absolute w-full h-10 px-[00px] left-0 top-40 group-hover:-top-[45px] transition-all duration-300 ease-in-out">
+          <div className="absolute w-full h-8 px-[00px] left-0 top-40 group-hover:-top-[28px] transition-all duration-300 ease-in-out">
 
             <button
               onClick={() => addToCart(datas.id)}
               type="button"
               className="yellow-btn group relative w-full h-full flex shadow justify-center items-center overflow-hidden"
             >
-              <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
+              <div className="btn-co ntent flex items-center space-x-3 rtl:space-x-reverse relative z-10">
                 <span>
                   <svg
                     width="14"
@@ -341,7 +342,7 @@ export default function ProductCardStyleOne({ datas }) {
                 </span>
                 <span>{ServeLangItem()?.Add_To_Cart}</span>
               </div>
-              <div className="bg-shape w-full h-full absolute  bg-qblack"></div>
+              <div className="bg-shape w-full h-full absolute bg-qblack"></div>
             </button>
           </div>
           
@@ -352,7 +353,7 @@ export default function ProductCardStyleOne({ datas }) {
             legacyBehavior
           >
             <a rel="noopener noreferrer">
-              <p className="title mb-1 text-[15px] font-600 text-black/70 leading-[24px] line-clamp-2 hover:text-black cursor-pointer">
+              <p className="title text-xs font-600 text-black/70 leading-[17px] line-clamp-2 hover:text-black cursor-pointer">
                 {datas.title}
               </p>
             </a>
@@ -361,7 +362,7 @@ export default function ProductCardStyleOne({ datas }) {
           <p className="price">
             <span
               suppressHydrationWarning
-              className={`main-price font-600 text-[16px] ${
+              className={`main-price font-600 text-[14px] ${
                 offerPrice ? "line-through text-qgray" : "text-qred"
               }`}
             >
@@ -373,7 +374,7 @@ export default function ProductCardStyleOne({ datas }) {
                 <>
                   {isProductInFlashSale && (
                     <span
-                      className={`line-through text-qgray font-500 text-[14px] mr-2`}
+                      className={`line-through text-qgray font-500 text-[12px] mr-2`}
                     >
                       <CurrencyConvert price={price} />
                     </span>
@@ -388,7 +389,7 @@ export default function ProductCardStyleOne({ datas }) {
             {offerPrice && (
               <span
                 suppressHydrationWarning
-                className="offer-price text-qred font-600 text-[16px] ml-2"
+                className="offer-price text-qred font-600 text-[14px] ml-2"
               >
                 <CheckProductIsExistsInFlashSale
                   id={datas.id}
@@ -398,7 +399,7 @@ export default function ProductCardStyleOne({ datas }) {
             )}
           </p>
 
-          <div className="reviews flex space-x-[1px] mt-2">
+          <div className="reviews flex space-x-[1px] mt-1">
             {Array.from(Array(datas.review), () => (
               <span key={datas.review + Math.random()}>
                 <Star />
@@ -419,45 +420,45 @@ export default function ProductCardStyleOne({ datas }) {
           </div>
         </div>
         {/* quick-access-btns */}
-        <div className="quick-access-btns flex flex-col space-y-2">
+        <div className="quick-access-btns flex flex-col space-y-1">
           <button
-            className=" absolute group-hover:right-4 -right-10 top-20  transition-all ease-in-out"
+            className=" absolute group-hover:right-4 -right-10 top-5 transition-all ease-in-out"
             onClick={() => quickViewHandler(datas.slug)}
             type="button"
           >
-            <span className="hover:bg-[#101010] w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-[#101010] bg-primarygray rounded">
-              <QuickViewIco className="fill-current" />
+            <span className="hover:bg-[#101010] w-6 h-6 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-[#101010] bg-primarygray rounded">
+              <QuickViewIco className="fill-current h-3" />
             </span>
           </button>
           {!arWishlist ? (
             <button
-              className=" absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+              className=" absolute group-hover:right-4 -right-10 top-12  transition-all duration-300 ease-in-out"
               type="button"
               onClick={() => addToWishlist(datas.id)}
             >
-              <span className="hover:bg-[#101010] w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-[#101010] bg-primarygray rounded">
-                <ThinLove className="fill-current" />
+              <span className="hover:bg-[#101010] w-6 h-6 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-[#101010] bg-primarygray rounded">
+                <ThinLove className="fill-current h-3" />
               </span>
             </button>
           ) : (
             <button
-              className="absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+              className="absolute group-hover:right-4 -right-10 top-14 transition-all duration-300 ease-in-out"
               type="button"
               onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
             >
-              <span className="hover:bg-[#101010] w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+              <span className="hover:bg-[#101010] w-6 h-6 flex justify-center items-center bg-primarygray rounded">
                 <ThinLove fill={true} />
               </span>
             </button>
           )}
 
           <button
-            className=" absolute group-hover:right-4 -right-10 top-[168px]  transition-all duration-500 ease-in-out"
+            className=" absolute group-hover:right-4 -right-10 top-20  transition-all duration-500 ease-in-out"
             type="button"
             onClick={() => productCompare(datas.id)}
           >
-            <span className="hover:bg-[#101010] w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-[#101010] bg-primarygray rounded">
-              <Compair className="fill-current" />
+            <span className="hover:bg-[#101010] w-6 h-6 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-[#101010] bg-primarygray rounded">
+              <Compair className="fill-current h-[14px]" />
             </span>
           </button>
         </div>
@@ -465,7 +466,7 @@ export default function ProductCardStyleOne({ datas }) {
           <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
             <div
               onClick={() => setQuickView(!quickViewModal)}
-              className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
+              className="w-full h-full fixed left-0 right-0 bg-black bg-opacity-25"
             ></div>
             <div
               data-aos="fade-up"
@@ -487,7 +488,7 @@ export default function ProductCardStyleOne({ datas }) {
                 type="button"
                 className="absolute right-3 top-3"
               >
-                <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
+                <span className="text-red-500 w-6 h-6 flex justify-center items-center rounded border border-qred">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
