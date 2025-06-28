@@ -16,6 +16,7 @@ export default function SectionStyleOne({
   const [selectedId, setId] = useState(
     categories.length > 0 && categories[0].category_id
   );
+  
   const [load, setLoad] = useState(false);
   const cp =
     products.length > 0 &&
@@ -42,6 +43,7 @@ export default function SectionStyleOne({
       setLoad(false);
     }, 500);
   };
+
   return (
     <>
       {categories.length > 0 && products.length > 0 && (
@@ -70,7 +72,7 @@ export default function SectionStyleOne({
                       datas={filterProducts}
                       startLength={0}
                       endLength={
-                        filterProducts.length > 3 ? 3 : filterProducts.length
+                        filterProducts.length > 6 ? 5 : filterProducts.length
                       }
                     >
                       {({ datas }) => (
@@ -81,7 +83,7 @@ export default function SectionStyleOne({
                     </DataIteration>
                   )
                 ) : (
-                  <div className="loading  h-[445px] flex justify-center items-center col-span-3">
+                  <div className="loading h-[445px] flex justify-center items-center col-span-3">
                     <LoaderStyleTwo />
                   </div>
                 )}

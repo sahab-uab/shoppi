@@ -37,6 +37,8 @@ const Redirect = () => {
 };
 
 export default function ProductCardStyleOne({ datas }) {
+  console.log(datas);
+
   const router = useRouter();
   const dispatch = useDispatch();
   const { wishlistData } = useSelector((state) => state.wishlistData);
@@ -253,16 +255,16 @@ export default function ProductCardStyleOne({ datas }) {
     // }, time);
     setImgSrc(value);
   };
-  
+
   return (
     <div className="main-wrapper-card relative">
       <div
         className="product-card-one w-full lg:h-[260px] bg-white relative group overflow-hidden"
         style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
       >
-        <div className="product-card-img w-full md:h-[160px] h-[210px] -mt-2">
+        <div className="product-card-img md:h-[160px] mx-auto w-[140px] h-[180px]">
           <div
-            className="w-full h-full relative flex justify-center items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out"
+            className="w-full h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out"
             // style={{
             //   background: `url(${datas.image}) no-repeat center`,
             //   backgroundSize: "contain",
@@ -270,7 +272,7 @@ export default function ProductCardStyleOne({ datas }) {
           >
             <Image
               layout="fill"
-              objectFit="scale-down"
+              // objectFit="scale-down"
               src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
               alt="product image"
               onLoadingComplete={() => loadImg(datas.image)}
@@ -321,7 +323,6 @@ export default function ProductCardStyleOne({ datas }) {
         <div className="product-card-details px-[12px] pb-[15px] relative pt-2">
           {/* add to card button */}
           <div className="absolute w-full h-8 px-[00px] left-0 top-40 group-hover:-top-[28px] transition-all duration-300 ease-in-out">
-
             <button
               onClick={() => addToCart(datas.id)}
               type="button"
@@ -345,7 +346,6 @@ export default function ProductCardStyleOne({ datas }) {
               <div className="bg-shape w-full h-full absolute bg-qblack"></div>
             </button>
           </div>
-          
 
           <Link
             href={{ pathname: "/single-product", query: { slug: datas.slug } }}
