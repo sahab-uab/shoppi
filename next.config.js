@@ -5,7 +5,7 @@ const { hostname } = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}`);
 const nextConfig={
   reactStrictMode: true,
   images: {
-    domains: [`${hostname}`]
+    domains: [`${hostname}` , 'preview.codesuab.com']
   },
 }
 const pwa = process.env.NEXT_PWA_STATUS;

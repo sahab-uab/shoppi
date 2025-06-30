@@ -16,8 +16,14 @@ import TwoColumnAds from "./ProductAds/TwoColumnAds";
 import OneColumnAdsOne from "./ProductAds/OneColumnAdsOne";
 import OneColumnAdsTwo from "./ProductAds/OneColumnAdsTwo";
 import CategorySection from "./CategorySection";
+import CombinedCategorySection from "./combined-category-section";
+import TopRatedSection from "./top-rated-section";
+import BestSellersSection from "./best-sellers-section";
+import FeaturedProductsSection from "./featured-products-section";
+import NewArrivalsSection from "./new-arrivals-section";
 
 export default function Home({ homepageData }) {
+  console.log("homepageData", homepageData);
   const getsectionTitles = homepageData.section_title;
   const [sectionTitles, setSectionTitles] = useState(null);
   useEffect(() => {
@@ -45,22 +51,45 @@ export default function Home({ homepageData }) {
     <>
       <Layout childrenClasses="pt-[30px] pb-[60px]">
         <Ads />
-        {homepage && homepage.sliders.length>0&& (
+        {homepage && homepage.sliders.length > 0 && (
           <Banner
             images={homepage.sliders}
             services={homepage.services}
-            sidebarImgOne={homepage.sliderBannerOne && parseInt(homepage.sliderBannerOne.status)===1? homepage.sliderBannerOne:null}
-            sidebarImgTwo={homepage.sliderBannerTwo && parseInt(homepage.sliderBannerTwo.status)===1? homepage.sliderBannerTwo:null}
+            sidebarImgOne={
+              homepage.sliderBannerOne &&
+              parseInt(homepage.sliderBannerOne.status) === 1
+                ? homepage.sliderBannerOne
+                : null
+            }
+            sidebarImgTwo={
+              homepage.sliderBannerTwo &&
+              parseInt(homepage.sliderBannerTwo.status) === 1
+                ? homepage.sliderBannerTwo
+                : null
+            }
             className="banner-wrapper md:mb-[60px] mb-[30px]"
           />
         )}
-        {homepage && (
+        {/* {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}
             sectionTitle={sectionTitles && sectionTitles.Trending_Category}
           />
-        )}
+        )} */}
+
         {homepage && (
+          <CombinedCategorySection
+            featuredCategories={homepage.homepage_categories}
+            popularCategories={homepage.popularCategories}
+            popularProducts={homepage.popularCategoryProducts}
+            categoryBackground={
+              process.env.NEXT_PUBLIC_BASE_URL +
+              homepage.popularCategorySidebarBanner
+            }
+            sectionTitles={sectionTitles}
+          />
+        )}
+        {/* {homepage && (
           <SectionStyleOne
             products={homepage.popularCategoryProducts}
             categories={homepage.popularCategories}
@@ -73,7 +102,7 @@ export default function Home({ homepageData }) {
             seeMoreUrl={`/products?highlight=popular_category`}
             className="category-products md:mb-[60px] mb-[30px]"
           />
-        )}
+        )} */}
         {homepage && (
           <BrandSection
             brands={homepage.brands.length > 0 ? homepage.brands : []}
@@ -91,41 +120,44 @@ export default function Home({ homepageData }) {
           />
         )}
         {homepage && (
-          <ViewMoreTitle
-            className="top-selling-product md:mb-[60px] mb-[30px]"
+          <TopRatedSection
+            products={
+              homepage.topRatedProducts.length &&
+              homepage.topRatedProducts.length > 0
+                ? homepage.topRatedProducts
+                : []
+            }
+            sectionTitle={sectionTitles && sectionTitles.Top_Rated_Products}
             seeMoreUrl={`/products?highlight=top_product`}
-            categoryTitle={sectionTitles && sectionTitles.Top_Rated_Products}
-          >
-            <SectionStyleTwo
-              products={
-                homepage.topRatedProducts.length&& homepage.topRatedProducts.length > 0
-                  ? homepage.topRatedProducts
-                  : []
-              }
-            />
-          </ViewMoreTitle>
+          />
         )}
 
         {homepage && isMultivendor === 1 && (
-          <ViewMoreTitle
-            className="best-sallers-section md:mb-[60px] mb-[30px]"
+          <BestSellersSection
+            sellers={homepage.sellers.length > 0 ? homepage.sellers : []}
+            sectionTitle={sectionTitles && sectionTitles.Best_Seller}
             seeMoreUrl="/sellers"
-            categoryTitle={sectionTitles && sectionTitles.Best_Seller}
-          >
-            <BestSellers
-              sallers={homepage.sellers.length > 0 ? homepage.sellers : []}
-            />
-          </ViewMoreTitle>
+          />
         )}
 
         {homepage && (
           <TwoColumnAds
-            bannerOne={homepage.twoColumnBannerOne && parseInt(homepage.twoColumnBannerOne.status)===1?homepage.twoColumnBannerOne:null}
-            bannerTwo={homepage.twoColumnBannerTwo && parseInt(homepage.twoColumnBannerTwo.status)===1?homepage.twoColumnBannerTwo:null}
+            bannerOne={
+              homepage.twoColumnBannerOne &&
+              parseInt(homepage.twoColumnBannerOne.status) === 1
+                ? homepage.twoColumnBannerOne
+                : null
+            }
+            bannerTwo={
+              homepage.twoColumnBannerTwo &&
+              parseInt(homepage.twoColumnBannerTwo.status) === 1
+                ? homepage.twoColumnBannerTwo
+                : null
+            }
           />
         )}
         {homepage && (
-          <SectionStyleOne
+          <FeaturedProductsSection
             categories={
               homepage.featuredCategories.length > 0
                 ? homepage.featuredCategories
@@ -146,9 +178,18 @@ export default function Home({ homepageData }) {
             className="category-products md:mb-[60px] mb-[30px]"
           />
         )}
-        {homepage && <OneColumnAdsOne data={homepage.singleBannerOne && parseInt(homepage.singleBannerOne.status)===1?homepage.singleBannerOne:null} />}
         {homepage && (
-          <SectionStyleThree
+          <OneColumnAdsOne
+            data={
+              homepage.singleBannerOne &&
+              parseInt(homepage.singleBannerOne.status) === 1
+                ? homepage.singleBannerOne
+                : null
+            }
+          />
+        )}
+        {homepage && (
+          <NewArrivalsSection
             products={
               homepage.newArrivalProducts.length > 0
                 ? homepage.newArrivalProducts.slice(
@@ -164,11 +205,17 @@ export default function Home({ homepageData }) {
             className="new-products md:mb-[60px] mb-[30px]"
           />
         )}
-
         {homepage && (
           <div className="w-full text-white md:mb-[60px] mb-[30px]">
             <div className="container-x mx-auto">
-              <OneColumnAdsTwo data={homepage.singleBannerTwo && parseInt(homepage.singleBannerTwo.status)===1?homepage.singleBannerTwo:null} />
+              <OneColumnAdsTwo
+                data={
+                  homepage.singleBannerTwo &&
+                  parseInt(homepage.singleBannerTwo.status) === 1
+                    ? homepage.singleBannerTwo
+                    : null
+                }
+              />
             </div>
           </div>
         )}

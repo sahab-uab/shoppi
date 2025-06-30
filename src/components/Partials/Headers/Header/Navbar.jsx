@@ -24,15 +24,15 @@ export default function Navbar({ className }) {
   }, [categoryToggle]);
   return (
     <div
-      className={`nav-widget-wrapper w-full  h-[60px] relative z-30  ${
+      className={`nav-widget-wrapper w-full bg-[#FCF5E5] h-[60px] relative z-30  ${
         className || ""
       }`}
     >
-      <div className="container-x mx-auto h-full">
+      <div className="container-x mx-auto h-full ">
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-between items-center">
             <div className="category-and-nav flex xl:rtl:space-x-reverse space-x-7 rtl:space-x-reverse space-x-3 items-center">
-              <div className="category w-[270px] h-[53px] bg-white px-5 rounded-t-md mt-[6px] relative">
+              <div className="category w-[270px] h-[53px]  px-5 rounded-t-md mt-[6px] relative">
                 <button
                   onClick={handler}
                   type="button"
@@ -52,9 +52,9 @@ export default function Navbar({ className }) {
                         <rect y="4" width="10" height="1" />
                       </svg>
                     </span>
-                    <span className="text-sm font-600 text-qblacktext">
+                    {<span className="text-sm font-600 text-qblacktext">
                       {ServeLangItem()?.All_Categories}
-                    </span>
+                    </span>}
                   </div>
                   <div>
                     <Arrow
@@ -93,7 +93,7 @@ export default function Navbar({ className }) {
                             legacyBehavior
                           >
                             <a rel="noopener noreferrer">
-                              <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
+                              <div className=" flex justify-between items-center px-5 h-10 transition-all duration-100 ease-out cursor-pointer">
                                 <div className="flex items-center rtl:space-x-reverse space-x-6">
                                   <span>
                                     <FontAwesomeCom
@@ -225,7 +225,7 @@ export default function Navbar({ className }) {
                                                   legacyBehavior
                                                 >
                                                   <a rel="noopener noreferrer">
-                                                    <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
+                                                    <div className=" flex justify-between items-center px-5 h-10  transition-all duration-100 ease-out cursor-pointer">
                                                       <div>
                                                         <span className="text-xs font-400">
                                                           {subsubitem.name}
@@ -251,7 +251,7 @@ export default function Navbar({ className }) {
               <div className="nav">
                 <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5">
                   <li>
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-white">
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext ">
                       <span>{ServeLangItem()?.Shop}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />
@@ -374,7 +374,7 @@ export default function Navbar({ className }) {
                                             </svg>
                                           </span>
                                         </div>
-                                        <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 bottom-0 z-10"></div>
+                                        <div className="w-[82px] transition-all duration-100 ease-out  group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 bottom-0 z-10"></div>
                                       </div>
                                     </a>
                                   </Link>
@@ -389,7 +389,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/sellers" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-white">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
                           <span>{ServeLangItem()?.Sellers}</span>
                         </span>
                       </a>
@@ -398,7 +398,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/blogs" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-white">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
                           <span className="capitalize">
                             {ServeLangItem()?.blogs}
                           </span>
@@ -409,7 +409,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/about" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-white">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
                           <span>{ServeLangItem()?.About}</span>
                         </span>
                       </a>
@@ -418,14 +418,14 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/contact" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-white">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
                           <span>{ServeLangItem()?.Contact}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
                   <li className="relative">
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-white">
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
                       <span>{ServeLangItem()?.Pages}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />

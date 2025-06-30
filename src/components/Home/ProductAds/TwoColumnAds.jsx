@@ -24,7 +24,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                       backgroundSize: `cover`,
                       backgroundRepeat: `no-repeat`,
                     }}
-                    className="w-full h-full relative ltr:pl-[50px] rtl:pr-[50px] py-[35px] flex flex-col justify-between group"
+                    className="w-full  shadow-md rounded-2xl h-full relative ltr:pl-[50px] rtl:pr-[50px] py-[35px] flex flex-col justify-between group"
                   >
                     <div>
                       <div className="lg:mb-[22px] mb-2.5">
@@ -70,7 +70,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                       backgroundSize: `cover`,
                       backgroundRepeat: `no-repeat`,
                     }}
-                    className="w-full h-full relative bg-blue-100  ltr:pl-[50px] rtl:pr-[50px] py-[35px] flex flex-col justify-between group"
+                    className="w-full h-full shadow-md rounded-2xl relative bg-blue-100  ltr:pl-[50px] rtl:pr-[50px] py-[35px] flex flex-col justify-between group"
                   >
                     <div>
                       <div className="lg:mb-[22px] mb-2.5">

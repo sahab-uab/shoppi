@@ -51,28 +51,30 @@ export default function Layout({ children, childrenClasses }) {
   const [defaultCurrency, setDefaultCurrency] = useState(null);
   const [allCurrency, setAllCurrency] = useState(null);
   const [toggleCurrency, setToggleCurrency] = useState(false);
-  const changeCurrencyHandler =(value)=>{
+  const changeCurrencyHandler = (value) => {
     localStorage.setItem("shopoDefaultCurrency", JSON.stringify(value));
-    setTimeout(()=>{
+    setTimeout(() => {
       window.location.reload();
       setToggleCurrency(false);
-    },1000)
-  }
+    }, 1000);
+  };
   useEffect(() => {
-    if(!allCurrency){
-      setAllCurrency(websiteSetup &&
-          websiteSetup.payload &&
-          websiteSetup.payload.currencies)
+    if (!allCurrency) {
+      setAllCurrency(
+        websiteSetup && websiteSetup.payload && websiteSetup.payload.currencies
+      );
     }
   }, [allCurrency]);
 
   useEffect(() => {
-    if(!defaultCurrency){
+    if (!defaultCurrency) {
       const getCurrency = localStorage.getItem("shopoDefaultCurrency");
-      if(getCurrency){
-        setDefaultCurrency(JSON.parse(localStorage.getItem("shopoDefaultCurrency")))
-      }else{
-        setDefaultCurrency(null)
+      if (getCurrency) {
+        setDefaultCurrency(
+          JSON.parse(localStorage.getItem("shopoDefaultCurrency"))
+        );
+      } else {
+        setDefaultCurrency(null);
       }
     }
   }, [defaultCurrency]);
@@ -81,27 +83,27 @@ export default function Layout({ children, childrenClasses }) {
       <Drawer open={drawer} action={() => setDrawer(!drawer)} />
       <div className="w-full overflow-x-hidden">
         <Header
-            topBarProps={{
-              defaultCurrency,
-              allCurrency,
-              toggleCurrency,
-              toggleHandler:setToggleCurrency,
-              handler:changeCurrencyHandler
-            }}
+          topBarProps={{
+            defaultCurrency,
+            allCurrency,
+            toggleCurrency,
+            toggleHandler: setToggleCurrency,
+            handler: changeCurrencyHandler,
+          }}
           contact={contact && contact}
           settings={settings}
           drawerAction={() => setDrawer(!drawer)}
         />
         <div
-          className={`w-full min-h-screen  ${
+          className={`w-full  min-h-screen  ${
             childrenClasses || "pt-[30px] pb-[60px]"
           }`}
         >
           {children && children}
         </div>
-        {subscribeData && <DiscountBanner datas={subscribeData} />}
+        {/* {subscribeData && <DiscountBanner datas={subscribeData} />} */}
 
-        <Footer settings={settings} />
+        <Footer settings={settings} contact={contact && contact} />
       </div>
     </>
   );

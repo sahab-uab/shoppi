@@ -21,14 +21,15 @@ export default function Header({
 
   return (
     <header className="header-section-wrapper relative print:hidden">
-      <TopBar
+      {/* <TopBar
         topBarProps={topBarProps}
         contact={contact && contact}
         className="quomodo-shop-top-bar"
-      />
+      /> */}
       <Middlebar
         settings={settings && settings}
-        className="quomodo-shop-middle-bar lg:block hidden"
+         topBarProps={topBarProps}
+        className="quomodo-shop-middle-bar lg:block hidden "
       />
       <div className="quomodo-shop-drawer lg:hidden block w-full h-[60px] bg-white">
         <div className="w-full h-full flex justify-between items-center px-5">
@@ -74,7 +75,7 @@ export default function Header({
           </div>
         </div>
       </div>
-      <Navbar className="quomodo-shop-nav-bar lg:block hidden" />
+      <Navbar className="quomodo-shop-nav-bar  lg:block hidden  shadow-sm border-b  "/>
     </header>
   );
 }

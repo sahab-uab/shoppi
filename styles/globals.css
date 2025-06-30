@@ -224,7 +224,7 @@ body {
 }
 .container-x {
   @apply md:px-6 px-2 w-full;
-  max-width: 1216px !important;
+  max-width: 1300px !important;
 }
 .animate-right-dir {
   animation: rightDir 1s infinite;
@@ -431,8 +431,8 @@ body {
 
 }
 .quomodo-shop-nav-bar.nav-widget-wrapper {
-  background: #2f8111;
-  color: black !important;
+  /* background: #2f8111; */
+  color: rgb(32, 31, 31) !important;
 }
 .nav-widget-wrapper .become-seller-btn{
   @apply text-black bg-white hover:bg-white/80 duration-200;

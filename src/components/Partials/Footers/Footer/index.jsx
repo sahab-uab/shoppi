@@ -1,238 +1,271 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import Facebook from "../../../Helpers/icons/Facebook";
-import Instagram from "../../../Helpers/icons/Instagram";
-import Youtube from "../../../Helpers/icons/Youtube";
-import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
+"use client"
 
-export default function Footer({ settings }) {
-  const { websiteSetup } = useSelector((state) => state.websiteSetup);
-  const [firstCol, setFirstCol] = useState(null);
-  const [secondCol, setSecondCol] = useState(null);
-  const [thirdCol, setThirdCol] = useState(null);
-  const [footerContent, setFooterContent] = useState(null);
-  const [socialLink, setSocialLink] = useState(null);
+import { useState, useEffect } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { useSelector } from "react-redux"
+import { Mail, Phone, MapPin, ArrowRight, Heart } from "lucide-react"
 
-  useEffect(() => {
-    if (!footerContent) {
-      setFooterContent(
-        websiteSetup && websiteSetup.payload && websiteSetup.payload.footer
-      );
-    }
-  });
+export default function ModernFooter({ settings, contact }) {
+  const { websiteSetup } = useSelector((state) => state.websiteSetup)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [email, setEmail] = useState("")
+
+  // State for footer data
+  const [firstCol, setFirstCol] = useState(null)
+  const [secondCol, setSecondCol] = useState(null)
+  const [thirdCol, setThirdCol] = useState(null)
+  const [footerContent, setFooterContent] = useState(null)
+  const [socialLink, setSocialLink] = useState(null)
 
   useEffect(() => {
-    if (!socialLink) {
-      setSocialLink(
-        websiteSetup &&
-          websiteSetup.payload &&
-          websiteSetup.payload.social_links
-      );
-    }
-  });
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 200)
+    return () => clearTimeout(timer)
+  }, [])
 
+  // Initialize footer data
   useEffect(() => {
-    if (!firstCol) {
-      setFirstCol(
-        websiteSetup &&
-          websiteSetup.payload &&
-          websiteSetup.payload.footer_first_col
-      );
+    if (websiteSetup?.payload) {
+      setFooterContent(websiteSetup.payload.footer)
+      setSocialLink(websiteSetup.payload.social_links)
+      setFirstCol(websiteSetup.payload.footer_first_col)
+      setSecondCol(websiteSetup.payload.footer_second_col)
+      setThirdCol(websiteSetup.payload.footer_third_col)
     }
-  });
-  useEffect(() => {
-    if (!secondCol) {
-      setSecondCol(
-        websiteSetup &&
-          websiteSetup.payload &&
-          websiteSetup.payload.footer_second_col
-      );
-    }
-  });
-  useEffect(() => {
-    if (!thirdCol) {
-      setThirdCol(
-        websiteSetup &&
-          websiteSetup.payload &&
-          websiteSetup.payload.footer_third_col
-      );
-    }
-  });
+  }, [websiteSetup])
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault()
+    // Handle newsletter subscription
+    console.log("Newsletter subscription:", email)
+    setEmail("")
+  }
 
   return (
     <>
-      <footer className="bg-black text-white">
-        <div className="container-x block mx-auto pt-[56px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Exclusive Section */}
-            <div className="lg:col-span-1">
-              {/* logo area */}
-              <div className="mb-[40px]">
-                <Link href="/" passHref legacyBehavior>
-                  <a>
-                    {settings && (
-                      <Image
-                        width="153"
-                        height="44"
-                        objectFit="scale-down"
-                        src={`${
-                          process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                        }`}
-                        alt="logo"
-                      />
-                    )}
-                  </a>
-                </Link>
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+      `}</style>
+
+      <footer className="bg-white border-t border-gray-200">
+        {/* Newsletter Section */}
+        <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
+          <div className="container-x mx-auto px-4 py-12">
+            <div className={`max-w-2xl mx-auto text-center opacity-0 ${isLoaded ? "animate-fade-in-up" : ""}`}>
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Stay Updated</h3>
+                <p className="text-gray-600">Get the latest offers and updates delivered to your inbox</p>
               </div>
-              <h4 className="text-lg mb-4 font-bold">About Us</h4>
-              <p className="text-gray-300 mb-4">
-                We know there are a lot of three developers our but we pride
-                into a firm in the industry.
-              </p>
-            </div>
 
-            {/* Account Section */}
-            <div className="lg:col-span-1">
-              {firstCol && (
-                <>
-                  <div className="mb-5">
-                    <h6 className="text-[18] font-500 text-white">
-                      {firstCol.columnTitle}
-                    </h6>
-                  </div>
-                  <div>
-                    <ul className="flex flex-col space-y-4 ">
-                      {firstCol.col_links.length > 0 &&
-                        firstCol.col_links.map((item, i) => (
-                          <li key={i}>
-                            <Link href={item.link} passHref legacyBehavior>
-                              <a rel="noopener noreferrer">
-                                <span className="text-[#cacaca] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
-                                  {item.title}
-                                </span>
-                              </a>
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                </>
-              )}
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <div className="relative flex-1">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center space-x-2 group"
+                >
+                  <span>Subscribe</span>
+                  <ArrowRight className="w-4 h-4 transform transition-transform duration-200 group-hover:translate-x-1" />
+                </button>
+              </form>
             </div>
-
-            {/* General Link Section */}
-            <div className="lg:col-span-1">
-              {secondCol && (
-                <>
-                  <div className="mb-5">
-                    <h6 className="text-[18] font-500 text-white">
-                      {secondCol.columnTitle}
-                    </h6>
-                  </div>
-                  <div>
-                    <ul className="flex flex-col space-y-4 ">
-                      {secondCol.col_links.length > 0 &&
-                        secondCol.col_links.map((item, i) => (
-                          <li key={i}>
-                            <Link href={item.link} passHref legacyBehavior>
-                              <a rel="noopener noreferrer">
-                                <span className="text-[#cacaca] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
-                                  {item.title}
-                                </span>
-                              </a>
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Helpful Section */}
-            <div className="lg:col-span-1">
-              {thirdCol && (
-                <>
-                  <div className="mb-5">
-                    <h6 className="text-[18] font-500 text-white">
-                      {thirdCol.columnTitle}
-                    </h6>
-                  </div>
-                  <div>
-                    <ul className="flex flex-col space-y-4 ">
-                      {thirdCol.col_links.length > 0 &&
-                        thirdCol.col_links.map((item, i) => (
-                          <li key={i}>
-                            <Link href={item.link} passHref legacyBehavior>
-                              <a rel="noopener noreferrer">
-                                <span className="text-[#cacaca] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
-                                  {item.title}
-                                </span>
-                              </a>
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Bottom part */}
           </div>
+        </div>
 
-          <div
-            className="bottom-bar lg:h-[82px] flex lg:flex-row flex-col-reverse
-         justify-between items-center"
-          >
-            <div className="flex rtl:space-x-reverse lg:space-x-5 space-x-2.5 justify-between items-center mb-3">
-              <div className="flex rtl:space-x-reverse space-x-5 items-center">
-                {socialLink &&
-                  socialLink.length > 0 &&
-                  socialLink.map((item, i) => (
-                    <a
-                      key={i}
-                      href={item.link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <FontAwesomeCom
-                        className="w-4 h-4 text-qgray"
-                        icon={item.icon}
-                      />
-                    </a>
-                  ))}
-              </div>
-              <span className="sm:text-base text-[10px] text-[#cacaca]">
-                {footerContent && footerContent.copyright
-                  ? footerContent.copyright
-                  : ""}
-              </span>
-            </div>
-            {footerContent && footerContent.payment_image ? (
-              <div className="mt-2 lg:mt-0">
-                <Link href="#" passHref legacyBehavior>
-                  <a>
+        {/* Main Footer Content */}
+        <div className="container-x mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            {/* Company Info */}
+            <div className={`lg:col-span-2 opacity-0 ${isLoaded ? "animate-fade-in-up stagger-1" : ""}`}>
+              {/* Logo */}
+              <div className="mb-6">
+                <Link href="/" className="inline-block">
+                  {settings && (
                     <Image
-                      width="318"
-                      height="28"
-                      src={`${
-                        process.env.NEXT_PUBLIC_BASE_URL +
-                        footerContent.payment_image
-                      }`}
-                      alt="payment-getways"
+                      width={120}
+                      height={40}
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo}`}
+                      alt="logo"
+                      className="h-10 w-auto"
                     />
-                  </a>
+                  )}
                 </Link>
               </div>
-            ) : (
-              ""
+
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">About Our Store</h4>
+                <p className="text-gray-600 leading-relaxed max-w-md">
+                  We pride ourselves on delivering quality products and exceptional customer service. Your satisfaction
+                  is our top priority.
+                </p>
+              </div>
+
+              {/* Contact Info */}
+              <div className="space-y-3">
+                {contact?.phone && (
+                  <div className="flex items-center space-x-3 text-gray-600">
+                    <Phone className="w-4 h-4 text-gray-400" />
+                    <span className="text-sm">{contact.phone}</span>
+                  </div>
+                )}
+                {contact?.email && (
+                  <div className="flex items-center space-x-3 text-gray-600">
+                    <Mail className="w-4 h-4 text-gray-400" />
+                    <span className="text-sm">{contact.email}</span>
+                  </div>
+                )}
+                {contact?.address && (
+                  <div className="flex items-start space-x-3 text-gray-600">
+                    <MapPin className="w-4 h-4 text-gray-400 mt-0.5" />
+                    <span className="text-sm">{contact.address}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* First Column */}
+            {firstCol && (
+              <div className={`opacity-0 ${isLoaded ? "animate-fade-in-up stagger-2" : ""}`}>
+                <h5 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
+                  {firstCol.columnTitle}
+                </h5>
+                <ul className="space-y-3">
+                  {firstCol.col_links?.map((item, i) => (
+                    <li key={i}>
+                      <Link
+                        href={item.link}
+                        className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 capitalize"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
+
+            {/* Second Column */}
+            {secondCol && (
+              <div className={`opacity-0 ${isLoaded ? "animate-fade-in-up stagger-3" : ""}`}>
+                <h5 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
+                  {secondCol.columnTitle}
+                </h5>
+                <ul className="space-y-3">
+                  {secondCol.col_links?.map((item, i) => (
+                    <li key={i}>
+                      <Link
+                        href={item.link}
+                        className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 capitalize"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Third Column */}
+            {thirdCol && (
+              <div className={`opacity-0 ${isLoaded ? "animate-fade-in-up stagger-4" : ""}`}>
+                <h5 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
+                  {thirdCol.columnTitle}
+                </h5>
+                <ul className="space-y-3">
+                  {thirdCol.col_links?.map((item, i) => (
+                    <li key={i}>
+                      <Link
+                        href={item.link}
+                        className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 capitalize"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-200 bg-gray-50">
+          <div className="container-x mx-auto px-4 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              {/* Copyright & Social */}
+              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
+                <p className="text-sm text-gray-600 flex items-center">
+                  {footerContent?.copyright || `© ${new Date().getFullYear()} All rights reserved`}
+                  <Heart className="w-3 h-3 text-red-500 mx-1" />
+                </p>
+
+                {/* Social Links */}
+                {socialLink && socialLink.length > 0 && (
+                  <div className="flex items-center space-x-4">
+                    {socialLink.map((item, i) => (
+                      <a
+                        key={i}
+                        href={item.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                      >
+                        <div className="w-5 h-5">
+                          {/* You can replace this with your FontAwesome component */}
+                          <div className="w-full h-full bg-gray-400 rounded-full"></div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Payment Methods */}
+              {footerContent?.payment_image && (
+                <div className="flex items-center">
+                  <span className="text-xs text-gray-500 mr-3">We accept:</span>
+                  <Image
+                    width={200}
+                    height={24}
+                    src={`${process.env.NEXT_PUBLIC_BASE_URL + footerContent.payment_image}`}
+                    alt="payment methods"
+                    className="h-6 w-auto opacity-70"
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </footer>
     </>
-  );
+  )
 }

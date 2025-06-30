@@ -1,75 +1,198 @@
-import Link from "next/link";
-import { useEffect } from "react";
-import settings from "../../../utils/settings";
-import ShopNowBtn from "../Helpers/Buttons/ShopNowBtn";
-import ServeLangItem from "../Helpers/ServeLangItem";
-import SimpleSlider from "../Helpers/SliderCom";
-import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
-export default function Banner({
-  className,
-  images = [],
-  sidebarImgOne,
-  sidebarImgTwo,
-  services = [],
-}) {
+"use client"
+
+import Link from "next/link"
+import { useEffect, useState } from "react"
+import settings from "../../../utils/settings"
+import ShopNowBtn from "../Helpers/Buttons/ShopNowBtn"
+import SimpleSlider from "../Helpers/SliderCom"
+import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom"
+
+export default function Banner({ className, images = [], sidebarImgOne, sidebarImgTwo, services = [] }) {
+  const [isLoaded, setIsLoaded] = useState(false)
+
   const settingBanner = {
     infinite: true,
     dots: true,
-    autoplay: false,
+    autoplay: true,
+    autoplaySpeed: 4000,
     arrows: false,
     fade: true,
-  };
-  const { text_direction } = settings();
+    pauseOnHover: true,
+  }
+
+  const { text_direction } = settings()
+
   useEffect(() => {
-    const getSliderInitElement = document.querySelector(
-      ".slider-wrapper .slick-slider.slick-initialized"
-    );
-    getSliderInitElement.setAttribute("dir", `${text_direction}`);
-  }, [text_direction]);
+    const getSliderInitElement = document.querySelector(".slider-wrapper .slick-slider.slick-initialized")
+    if (getSliderInitElement) {
+      getSliderInitElement.setAttribute("dir", `${text_direction}`)
+    }
+  }, [text_direction])
+
+  useEffect(() => {
+    // Trigger animations after component mounts
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <>
+      <style jsx>{`
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes bounceIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.3);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.05);
+          }
+          70% {
+            transform: scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-slide-in-left {
+          animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-in-right {
+          animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-in-up {
+          animation: slideInUp 0.6s ease-out forwards;
+        }
+        
+        .animate-fade-in-scale {
+          animation: fadeInScale 0.7s ease-out forwards;
+        }
+        
+        .animate-bounce-in {
+          animation: bounceIn 0.8s ease-out forwards;
+        }
+        
+        .animate-delay-200 {
+          animation-delay: 0.2s;
+        }
+        
+        .animate-delay-400 {
+          animation-delay: 0.4s;
+        }
+        
+        .animate-delay-600 {
+          animation-delay: 0.6s;
+        }
+        
+        .banner-content > * {
+          opacity: 0;
+        }
+        
+        .banner-content.loaded > * {
+          opacity: 1;
+        }
+      `}</style>
+
       <div className={`w-full ${className || ""}`}>
         <div className="container-x mx-auto">
           <div className="main-wrapper w-full">
-            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[422px] mb-[30px] ">
+            <div className="banner-card flex flex-col lg:flex-row lg:space-x-[30px] rtl:space-x-0 mb-[30px]">
+              {/* Banner Slider - Left Side, Smaller */}
               <div
-                data-aos="fade-right"
-                className={` rtl:ml-[30px] ltr:ml-0 w-full xl:h-full md:h-[500px] h-[220px] xl:mb-0 mb-2 ${
-                  sidebarImgOne || sidebarImgTwo ? "xl:w-full w-full" : "w-full"
+                className={`w-full lg:w-[60%] xl:w-[65%] h-[280px] md:h-[320px] lg:h-[350px] mb-4 lg:mb-0 opacity-0 ${
+                  isLoaded ? "animate-slide-in-left" : ""
                 }`}
               >
-                <div className="slider-wrapper w-full h-full">
-                  <SimpleSlider settings={settingBanner}>
-                    {images.length > 0 &&
-                      images.map((item, i) => (
+                <div className="slider-wrapper w-full h-full rounded-2xl overflow-hidden shadow-lg bg-gray-100 min-h-[280px] md:min-h-[320px] lg:min-h-[350px] transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                  {images.length > 0 ? (
+                    <SimpleSlider settings={settingBanner}>
+                      {images.map((item, i) => (
                         <div key={i} className="item w-full h-full group">
                           <div
                             style={{
-                              backgroundImage: `url(${
-                                process.env.NEXT_PUBLIC_BASE_URL + item.image
-                              })`,
+                              backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + item.image})`,
                               backgroundSize: "cover",
                               backgroundRepeat: "no-repeat",
                               backgroundPosition: "center",
                             }}
-                            className="flex w-full max-w-full h-full h-auto relative items-center rtl:pr-[30px] ltr:pl-[30px]"
+                            className="flex w-full h-full relative items-center rtl:pr-[20px] ltr:pl-[20px] rounded-2xl bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-500"
+                            onError={(e) => {
+                              e.target.style.backgroundImage = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                            }}
                           >
-                            <div className="md:p-10">
-                              <div className="inline-block md:w-[120px] w-[100px] shadow md:h-[25px] h-6 flex items-center justify-center  bg-[#101010] rounded-full md:mb-[30px] mb-[15px]">
-                                <span className="text-[#fff] uppercase md:text-xs text-[10px] font-semibold">
+                            <div className={`banner-content p-6 md:p-8 ${isLoaded ? "loaded" : ""}`}>
+                              <div
+                                className={`inline-block w-[90px] md:w-[110px] shadow h-5 md:h-6 flex items-center justify-center bg-[#101010] rounded-full mb-4 md:mb-6 transform transition-all duration-300 hover:scale-110 ${
+                                  isLoaded ? "animate-bounce-in animate-delay-200" : ""
+                                }`}
+                              >
+                                <span className="text-[#fff] uppercase text-[9px] md:text-xs font-semibold">
                                   {item.badge}
                                 </span>
                               </div>
-                              <div className="md:mb-[30px] mb-[15px]">
-                                <p className="md:text-[50px] text-[20px] leading-none text-[#101010] md:mb-3">
+                              <div
+                                className={`mb-4 md:mb-6 ${isLoaded ? "animate-slide-in-up animate-delay-400" : ""}`}
+                              >
+                                <p className="text-[18px] md:text-[32px] lg:text-[40px] leading-none text-[#101010] mb-1 md:mb-2 transform transition-all duration-300 hover:translate-x-2">
                                   {item.title_one}
                                 </p>
-                                <h1 className="md:text-[50px] text-[20px] md:w-[400px] md:leading-[66px] text-[#101010] font-bold">
+                                <h1 className="text-[18px] md:text-[32px] lg:text-[40px] leading-tight text-[#101010] font-bold max-w-[280px] md:max-w-[350px] transform transition-all duration-300 hover:translate-x-2">
                                   {item.title_two}
                                 </h1>
                               </div>
-                              <div className="w-[90px]">
+                              <div
+                                className={`w-[80px] md:w-[90px] ${isLoaded ? "animate-fade-in-scale animate-delay-600" : ""}`}
+                              >
                                 <Link
                                   href={{
                                     pathname: "/single-product",
@@ -78,7 +201,10 @@ export default function Banner({
                                   passHref
                                   legacyBehavior
                                 >
-                                  <a rel="noopener noreferrer">
+                                  <a
+                                    rel="noopener noreferrer"
+                                    className="transform transition-all duration-300 hover:scale-105 inline-block"
+                                  >
                                     <ShopNowBtn />
                                   </a>
                                 </Link>
@@ -87,192 +213,80 @@ export default function Banner({
                           </div>
                         </div>
                       ))}
-                  </SimpleSlider>
+                    </SimpleSlider>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl">
+                      <div className={`text-center text-white ${isLoaded ? "animate-fade-in-scale" : ""}`}>
+                        <h2 className="text-2xl font-bold mb-2">No Banner Images</h2>
+                        <p>Please add banner images to display the slider</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-              {/* <div
-                data-aos="fade-left"
-                className="flex-1 flex xl:flex-col flex-row  xl:space-y-[30px] xl:h-full md:h-[350px] h-[150px]"
-              >
-                {sidebarImgOne && (
-                  <div
-                    className="w-full xl:h-1/2 xl:mr-0 mr-2 relative flex items-center group rtl:md:pr-[40px] ltr:md:pl-[40px] rtl:pr-[30] ltr:pl-[30px]"
-                    style={{
-                      backgroundImage: `url(${
-                        process.env.NEXT_PUBLIC_BASE_URL + sidebarImgOne.image
-                      })`,
-                      backgroundSize: "cover",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  >
-                    <div className="flex flex-col justify-between">
-                      <div>
-                        <div className="inline-block md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center  bg-white rounded-full md:mb-[22px] mb-[15px]">
-                          <span className="text-qblack uppercase md:text-xs text-[10px] font-semibold">
-                            {sidebarImgOne.badge}
-                          </span>
-                        </div>
-                        <div className="md:mb-[30px] mb-2.5">
-                          <p className="md:text-[30px] leading-none text-qblack font-semibold md:mb-3">
-                            {sidebarImgOne.title_one}
-                          </p>
-                          <h1 className="md:text-[30px] md:leading-[40px] text-qblack font-semibold">
-                            {sidebarImgOne.title_two}
-                          </h1>
-                        </div>
-                      </div>
-                      <div className="w-[90px]">
-                        <Link
-                          href={{
-                            pathname: "/products",
-                            query: { category: sidebarImgOne.product_slug },
-                          }}
-                          passHref
-                          legacyBehavior
-                        >
-                          <a rel="noopener noreferrer">
-                            <div className="cursor-pointer w-full relative  ">
-                              <div className="inline-flex rtl:space-x-reverse  space-x-1.5 items-center relative z-20">
-                                <span className="text-sm text-qblack font-medium leading-[30px]">
-                                  {ServeLangItem()?.Shop_Now}
-                                </span>
-                                <span className="leading-[30px]">
-                                  <svg
-                                    className={`transform rtl:rotate-180`}
-                                    width="7"
-                                    height="11"
-                                    viewBox="0 0 7 11"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <rect
-                                      x="2.08984"
-                                      y="0.636719"
-                                      width="6.94219"
-                                      height="1.54271"
-                                      transform="rotate(45 2.08984 0.636719)"
-                                      fill="#1D1D1D"
-                                    />
-                                    <rect
-                                      x="7"
-                                      y="5.54492"
-                                      width="6.94219"
-                                      height="1.54271"
-                                      transform="rotate(135 7 5.54492)"
-                                      fill="#1D1D1D"
-                                    />
-                                  </svg>
-                                </span>
-                              </div>
-                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 rtl:right-0 bottom-0 z-10"></div>
-                            </div>
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                )}
 
-                {sidebarImgTwo && (
-                  <div
-                    style={{
-                      backgroundImage: `url(${
-                        process.env.NEXT_PUBLIC_BASE_URL + sidebarImgTwo.image
-                      })`,
-                      backgroundSize: "cover",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                    className="w-full xl:h-1/2 relative flex items-center rtl:md:pr-[40px] ltr:md:pl-[40px] rtl:pr-[30] ltr:pl-[30px] group"
-                  >
-                    <div className="flex flex-col justify-between">
-                      <div>
-                        <div className="inline-block md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center  bg-white rounded-full md:mb-[22px] mb-[15px]">
-                          <span className="text-qblack uppercase md:text-xs text-[10px] font-semibold">
-                            {sidebarImgTwo.badge}
-                          </span>
-                        </div>
-                        <div className="md:mb-[30px] mb-2.5">
-                          <p className="md:text-[30px] leading-none text-qblack font-semibold md:mb-3">
-                            {sidebarImgTwo.title_one}
-                          </p>
-                          <h1 className="md:text-[30px] md:leading-[40px] text-qblack font-semibold">
-                            {sidebarImgTwo.title_two}
-                          </h1>
-                        </div>
-                      </div>
-                      <div className="w-[90px]">
-                        <Link
-                          href={{
-                            pathname: "/products",
-                            query: { category: sidebarImgTwo.product_slug },
-                          }}
-                          passHref
-                          legacyBehavior
-                        >
-                          <a rel="noopener noreferrer">
-                            <div className="cursor-pointer w-full relative  ">
-                              <div className="inline-flex rtl:space-x-reverse  space-x-1.5 items-center relative z-20">
-                                <span className="text-sm text-qblack font-medium leading-[30px]">
-                                  {ServeLangItem()?.Shop_Now}
-                                </span>
-                                <span className="leading-[30px]">
-                                  <svg
-                                    className={`transform rtl:rotate-180`}
-                                    width="7"
-                                    height="11"
-                                    viewBox="0 0 7 11"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <rect
-                                      x="2.08984"
-                                      y="0.636719"
-                                      width="6.94219"
-                                      height="1.54271"
-                                      transform="rotate(45 2.08984 0.636719)"
-                                      fill="#1D1D1D"
-                                    />
-                                    <rect
-                                      x="7"
-                                      y="5.54492"
-                                      width="6.94219"
-                                      height="1.54271"
-                                      transform="rotate(135 7 5.54492)"
-                                      fill="#1D1D1D"
-                                    />
-                                  </svg>
-                                </span>
-                              </div>
-                              <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 rtl:right-0 bottom-0 z-10"></div>
-                            </div>
-                          </a>
-                        </Link>
-                      </div>
+              {/* Right Side Content - Optional sidebar images */}
+              {(sidebarImgOne || sidebarImgTwo) && (
+                <div
+                  className={`w-full lg:w-[40%] xl:w-[35%] flex flex-col space-y-4 opacity-0 ${
+                    isLoaded ? "animate-slide-in-right animate-delay-200" : ""
+                  }`}
+                >
+                  {sidebarImgOne && (
+                    <div className="h-[140px] lg:h-[170px] rounded-xl overflow-hidden shadow-md transform transition-all duration-300 hover:shadow-xl hover:scale-105">
+                      <div
+                        style={{
+                          backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + sidebarImgOne.image})`,
+                          backgroundSize: "cover",
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "center",
+                        }}
+                        className="w-full h-full rounded-xl transition-transform duration-500 hover:scale-110"
+                      />
                     </div>
-                  </div>
-                )}
-              </div> */}
+                  )}
+                  {sidebarImgTwo && (
+                    <div className="h-[140px] lg:h-[170px] rounded-xl overflow-hidden shadow-md transform transition-all duration-300 hover:shadow-xl hover:scale-105">
+                      <div
+                        style={{
+                          backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + sidebarImgTwo.image})`,
+                          backgroundSize: "cover",
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "center",
+                        }}
+                        className="w-full h-full rounded-xl transition-transform duration-500 hover:scale-110"
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
+
+            {/* Services Section */}
             <div
-              data-aos="fade-up"
-              className="best-services w-full bg-[#dcf5d3] overflow-x-auto flex flex-row space-x-10 px-10 py-10 lg:space-x-0 lg:justify-between lg:items-center lg:h-[110px] lg:overflow-x-visible"
+              className={`best-services w-full bg-[#dcf5d3] rounded-2xl overflow-x-auto flex flex-row space-x-10 px-6 py-6 lg:px-10 lg:py-8 lg:space-x-0 lg:justify-between lg:items-center lg:h-[110px] lg:overflow-x-visible transform transition-all duration-300 hover:shadow-lg opacity-0 ${
+                isLoaded ? "animate-slide-in-up animate-delay-400" : ""
+              }`}
             >
-              {services.map((service) => (
-                <div key={service.id} className="min-w-[200px] flex-shrink-0">
+              {services.map((service, index) => (
+                <div
+                  key={service.id}
+                  className={`min-w-[200px] flex-shrink-0 transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
+                    isLoaded ? "animate-fade-in-scale" : ""
+                  }`}
+                  style={{ animationDelay: `${0.6 + index * 0.1}s` }}
+                >
                   <div className="flex space-x-5 rtl:space-x-reverse items-center">
-                    <div>
+                    <div className="transform transition-all duration-300 hover:rotate-12 hover:scale-110">
                       <span className="w-10 h-10 text-[#101010]">
-                        <FontAwesomeCom
-                          className="w-8 h-8"
-                          icon={service.icon}
-                        />
+                        <FontAwesomeCom className="w-8 h-8" icon={service.icon} />
                       </span>
                     </div>
                     <div>
-                      <p className="text-black text-[15px] font-medium tracking-wide mb-1">
+                      <p className="text-black text-[15px] font-medium tracking-wide mb-1 transition-colors duration-300 hover:text-green-700">
                         {service.title}
                       </p>
-                      <p className="text-sm text-[#888] line-clamp-1">
+                      <p className="text-sm text-[#888] line-clamp-1 transition-colors duration-300 hover:text-gray-600">
                         {service.description}
                       </p>
                     </div>
@@ -284,5 +298,5 @@ export default function Banner({
         </div>
       </div>
     </>
-  );
+  )
 }

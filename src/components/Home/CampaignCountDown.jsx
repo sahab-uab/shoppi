@@ -15,12 +15,12 @@ export default function CampaignCountDown({
   const { showDate, showHour, showMinute, showSecound } = CountDown(lastDate);
   return (
     <div>
-      <div className={`w-full lg:h-[460px] ${className || ""}`}>
+      <div className={`w-full lg:h-[460px]  ${className || ""}`}>
         <div className="container-x mx-auto h-full">
           <div className="lg:flex xl:space-x-[30px] lg:space-x-5 rtl:space-x-reverse items-center h-full">
             <div
               data-aos="fade-right"
-              className="campaign-countdown lg:w-1/2 group h-[300px] sm:h-[400px] lg:h-full w-full mb-5 lg:mb-0 "
+              className="campaign-countdown  shadow-md rounded-xl  border-1 lg:w-1/2 group h-[300px] sm:h-[400px] lg:h-full w-full mb-5 lg:mb-0 "
               style={{
                 background: `url(${
                   process.env.NEXT_PUBLIC_BASE_URL +
@@ -89,7 +89,7 @@ export default function CampaignCountDown({
             </div>
             <div
               data-aos="fade-left"
-              className="download-app flex-1 lg:h-full h-[430px] xl:p-12 p-5"
+              className="download-app shadow-md rounded-xl  border-1 flex-1 lg:h-full h-[430px] xl:p-12 p-5"
               style={{
                 backgroundImage: `url(${
                   downloadData.image
