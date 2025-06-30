@@ -35,7 +35,7 @@ export default function NewArrivalsSection({ products = [], sectionTitle, seeMor
 
   return (
     <>
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;

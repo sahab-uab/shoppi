@@ -1,6 +1,6 @@
 import axios from "axios";
-import * as firebase from 'firebase/app';
-import 'firebase/messaging';
+import { initializeApp, getApps } from "firebase/app";
+import { getMessaging, onMessage } from "firebase/messaging";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useContext, useEffect, useState } from "react";
@@ -28,59 +28,59 @@ import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
 export default function DefaultLayout({ children }) {
   useEffect(() => {
-    setToken()
+    setToken();
     // this is working
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.addEventListener('message', (event) => {
         console.log(event);
-       const {title,body}=event.data?.firebaseMessagingData?.notification;
-       const options = {
-        body:body
-      };
-       new Notification(title, options);
-
-      })
+        const {title,body} = event.data?.firebaseMessagingData?.notification || {};
+        if (title && body) {
+          const options = {
+            body: body
+          };
+          new Notification(title, options);
+        }
+      });
     }
 
     async function setToken() {
       try {
-        const token = await firebaseCloudMessaging.init()
+        const token = await firebaseCloudMessaging.init();
         if (token) {
           apiRequest
-              .pushNotification(auth().access_token, {
-                user_id: auth().user.id,
-                device_token: token,
-              })
-              .then((res) => {
-                console.log(res.data[0]);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          // not working
-          getMessage()
+            .pushNotification(auth().access_token, {
+              user_id: auth().user.id,
+              device_token: token,
+            })
+            .then((res) => {
+              console.log(res.data[0]);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+          // working now with new messaging
+          getMessage();
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
-    
-  },[])
-// not working
+  }, []);
+
+  // updated getMessage to firebase v9 modular style
   function getMessage() {
-    const messaging = firebase.messaging()
-    console.log(messaging)
-    messaging.onMessage((message) => {
-      console.log(message)
-      const title = message.notification.title;
-      const options = {
-        body: message.notification.body
-      };
-      new Notification(title, options);
-    })
+    const messaging = getMessaging();
+    onMessage(messaging, (message) => {
+      console.log(message);
+      if (message.notification) {
+        const title = message.notification.title;
+        const options = {
+          body: message.notification.body
+        };
+        new Notification(title, options);
+      }
+    });
   }
-
-
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -92,35 +92,30 @@ export default function DefaultLayout({ children }) {
   const [load, setLoad] = useState(true);
   const [popupView, setPopupView] = useState("login");
   const [messageWid, setMessageWid] = useState(null);
+
   const apiFetch = () => {
     axios
       .get(`${process.env.NEXT_PUBLIC_BASE_URL}api/website-setup`)
       .then((res) => {
         // currency
-        const {currencies} = res.data;
-        const getDefaultCurrency = currencies && currencies.length>0 ? currencies.find((item)=>item.is_default==='Yes' || item.is_default==='yes') :{};
-        if(!localStorage.getItem("shopoDefaultCurrency")){
+        const { currencies } = res.data;
+        const getDefaultCurrency = currencies && currencies.length > 0
+          ? currencies.find((item) => item.is_default === 'Yes' || item.is_default === 'yes')
+          : {};
+        if (!localStorage.getItem("shopoDefaultCurrency")) {
           localStorage.setItem("shopoDefaultCurrency", JSON.stringify(getDefaultCurrency));
         }
 
         // handle success
         dispatch(setupAction(res.data));
-        localStorage.setItem(
-          "settings",
-          JSON.stringify(res.data && res.data.setting)
-        );
-        localStorage.setItem(
-          "pusher",
-          JSON.stringify(
-            res.data && res.data.pusher_info ? res.data.pusher_info : null
-          )
-        );
+        localStorage.setItem("settings", JSON.stringify(res.data && res.data.setting));
+        localStorage.setItem("pusher", JSON.stringify(res.data && res.data.pusher_info ? res.data.pusher_info : null));
 
         if (res.data) {
-          setgTagId(res.data.googleAnalytic.analytic_id);
+          setgTagId(res.data.googleAnalytic?.analytic_id);
           setTwkData({
-            widgetId: res.data.tawk_setting.widget_id,
-            propertyId: res.data.tawk_setting.property_id,
+            widgetId: res.data.tawk_setting?.widget_id,
+            propertyId: res.data.tawk_setting?.property_id,
           });
           setFbPixel(res.data.facebookPixel);
           localStorage.setItem("language", JSON.stringify(res.data.language));
@@ -137,33 +132,30 @@ export default function DefaultLayout({ children }) {
         }
       })
       .catch((error) => {
-        // handle error
         console.log(error);
       });
     dispatch(fetchWishlist());
   };
+
   useEffect(() => {
-    !websiteSetup ? apiFetch() : false;
+    if (!websiteSetup) {
+      apiFetch();
+    }
     dispatch(fetchCart());
     dispatch(fetchCompareProducts());
     const themeColor = JSON.parse(localStorage.getItem("settings"));
     if (themeColor) {
       const root = document.querySelector(":root");
       if (themeColor.theme_one && themeColor.theme_two) {
-        root.style.setProperty(
-          "--primary-color",
-          `${hexToRgb(themeColor.theme_one)}`
-        );
-        root.style.setProperty(
-          "--secondary-color",
-          `${hexToRgb(themeColor.theme_two)}`
-        );
+        root.style.setProperty("--primary-color", `${hexToRgb(themeColor.theme_one)}`);
+        root.style.setProperty("--secondary-color", `${hexToRgb(themeColor.theme_two)}`);
       }
     }
     if (languageModel()) {
       setLoad(false);
     }
-  }, [websiteSetup, apiFetch, dispatch]);
+  }, [websiteSetup, dispatch]);
+
   useEffect(() => {
     if (fbPixexl) {
       import("react-facebook-pixel")
@@ -178,11 +170,14 @@ export default function DefaultLayout({ children }) {
         });
     }
   }, [fbPixexl, router.events]);
+
   const { text_direction, enable_multivendor } = settings();
+
   useEffect(() => {
     const html = document.getElementsByTagName("html");
     html[0].dir = text_direction;
-  });
+  }, [text_direction]);
+
   // components actions
   const loginActionPopup = () => {
     setPopupView("signup");
@@ -207,24 +202,18 @@ export default function DefaultLayout({ children }) {
         const holdData = JSON.parse(localStorage.getItem("data-hold"));
         if (holdData && holdData.type === "add-to-cart") {
           if (holdData.variants) {
-            const variantQuery = holdData.variants.map((value, index) => {
+            const variantQuery = holdData.variants.map((value) => {
               return value ? `variants[]=${value}` : `variants[]=-1`;
             });
-            const variantString = variantQuery
-              .map((value) => value + "&")
-              .join("");
-            const itemsQuery = holdData.variantItems.map((value, index) => {
+            const variantString = variantQuery.map((value) => value + "&").join("");
+            const itemsQuery = holdData.variantItems.map((value) => {
               return value ? `items[]=${value}` : `items[]=-1`;
             });
-            const itemQueryStr = itemsQuery
-              .map((value) => value + "&")
-              .join("");
-            const uri = `token=${auth().access_token}&product_id=${
-              holdData.id
-            }&${variantString}${itemQueryStr}quantity=${holdData.quantity}`;
+            const itemQueryStr = itemsQuery.map((value) => value + "&").join("");
+            const uri = `token=${auth().access_token}&product_id=${holdData.id}&${variantString}${itemQueryStr}quantity=${holdData.quantity}`;
             apiRequest
               .addToCard(uri)
-              .then((res) => {
+              .then(() => {
                 toast.success(ServeLangItem()?.Item_added);
                 localStorage.removeItem("data-hold");
                 router.push("/cart");
@@ -239,12 +228,10 @@ export default function DefaultLayout({ children }) {
               });
             dispatch(fetchCart());
           } else {
-            const uri = `token=${auth().access_token}&product_id=${
-              holdData.id
-            }&quantity=${holdData.quantity}`;
+            const uri = `token=${auth().access_token}&product_id=${holdData.id}&quantity=${holdData.quantity}`;
             apiRequest
               .addToCard(uri)
-              .then((res) => {
+              .then(() => {
                 toast.success(ServeLangItem()?.Item_added);
                 localStorage.removeItem("data-hold");
                 router.push("/cart");
@@ -290,9 +277,10 @@ export default function DefaultLayout({ children }) {
               <Consent />
               <div>{children}</div>
               {twkData && (
-                  <TawkMessengerReact
-                      propertyId={twkData.widgetId}
-                      widgetId={twkData.propertyId}/>
+                <TawkMessengerReact
+                  propertyId={twkData.widgetId}
+                  widgetId={twkData.propertyId}
+                />
               )}
 
               {getLoginContexts.loginPopup && (
@@ -380,11 +368,6 @@ export default function DefaultLayout({ children }) {
           )}
         </div>
       </div>
-      {/*<LoginContext.Consumer>*/}
-      {/*  {({ loginPopup, handlerPopup }) => (*/}
-      {/*   */}
-      {/*  )}*/}
-      {/*</LoginContext.Consumer>*/}
     </>
   );
 }

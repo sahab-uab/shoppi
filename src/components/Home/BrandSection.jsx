@@ -21,7 +21,7 @@ export default function BrandSection({ className, sectionTitle, brands = [] }) {
 
   return (
     <>
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;

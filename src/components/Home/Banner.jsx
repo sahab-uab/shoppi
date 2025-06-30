@@ -9,6 +9,7 @@ import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom"
 
 export default function Banner({ className, images = [], sidebarImgOne, sidebarImgTwo, services = [] }) {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [bgImages, setBgImages] = useState([])
 
   const settingBanner = {
     infinite: true,
@@ -30,16 +31,29 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
   }, [text_direction])
 
   useEffect(() => {
-    // Trigger animations after component mounts
     const timer = setTimeout(() => {
       setIsLoaded(true)
     }, 100)
     return () => clearTimeout(timer)
   }, [])
 
+  // Preload images and apply fallback if they fail
+  useEffect(() => {
+    const preloadImages = images.map((item) => {
+      return new Promise((resolve) => {
+        const img = new Image()
+        img.src = process.env.NEXT_PUBLIC_BASE_URL + item.image
+        img.onload = () => resolve(`url(${img.src})`)
+        img.onerror = () => resolve("linear-gradient(135deg, #667eea 0%, #764ba2 100%)")
+      })
+    })
+
+    Promise.all(preloadImages).then(setBgImages)
+  }, [images])
+
   return (
     <>
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes slideInLeft {
           from {
             opacity: 0;
@@ -50,7 +64,7 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
             transform: translateX(0);
           }
         }
-        
+
         @keyframes slideInRight {
           from {
             opacity: 0;
@@ -61,7 +75,7 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
             transform: translateX(0);
           }
         }
-        
+
         @keyframes slideInUp {
           from {
             opacity: 0;
@@ -72,7 +86,7 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
             transform: translateY(0);
           }
         }
-        
+
         @keyframes fadeInScale {
           from {
             opacity: 0;
@@ -83,7 +97,7 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
             transform: scale(1);
           }
         }
-        
+
         @keyframes bounceIn {
           0% {
             opacity: 0;
@@ -101,43 +115,43 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
             transform: scale(1);
           }
         }
-        
+
         .animate-slide-in-left {
           animation: slideInLeft 0.8s ease-out forwards;
         }
-        
+
         .animate-slide-in-right {
           animation: slideInRight 0.8s ease-out forwards;
         }
-        
+
         .animate-slide-in-up {
           animation: slideInUp 0.6s ease-out forwards;
         }
-        
+
         .animate-fade-in-scale {
           animation: fadeInScale 0.7s ease-out forwards;
         }
-        
+
         .animate-bounce-in {
           animation: bounceIn 0.8s ease-out forwards;
         }
-        
+
         .animate-delay-200 {
           animation-delay: 0.2s;
         }
-        
+
         .animate-delay-400 {
           animation-delay: 0.4s;
         }
-        
+
         .animate-delay-600 {
           animation-delay: 0.6s;
         }
-        
+
         .banner-content > * {
           opacity: 0;
         }
-        
+
         .banner-content.loaded > * {
           opacity: 1;
         }
@@ -147,7 +161,7 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
         <div className="container-x mx-auto">
           <div className="main-wrapper w-full">
             <div className="banner-card flex flex-col lg:flex-row lg:space-x-[30px] rtl:space-x-0 mb-[30px]">
-              {/* Banner Slider - Left Side, Smaller */}
+              {/* Banner Slider */}
               <div
                 className={`w-full lg:w-[60%] xl:w-[65%] h-[280px] md:h-[320px] lg:h-[350px] mb-4 lg:mb-0 opacity-0 ${
                   isLoaded ? "animate-slide-in-left" : ""
@@ -160,15 +174,12 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
                         <div key={i} className="item w-full h-full group">
                           <div
                             style={{
-                              backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + item.image})`,
+                              backgroundImage: bgImages[i],
                               backgroundSize: "cover",
                               backgroundRepeat: "no-repeat",
                               backgroundPosition: "center",
                             }}
                             className="flex w-full h-full relative items-center rtl:pr-[20px] ltr:pl-[20px] rounded-2xl bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-500"
-                            onError={(e) => {
-                              e.target.style.backgroundImage = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-                            }}
                           >
                             <div className={`banner-content p-6 md:p-8 ${isLoaded ? "loaded" : ""}`}>
                               <div
@@ -225,44 +236,33 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
                 </div>
               </div>
 
-              {/* Right Side Content - Optional sidebar images */}
+              {/* Sidebar Banners */}
               {(sidebarImgOne || sidebarImgTwo) && (
                 <div
                   className={`w-full lg:w-[40%] xl:w-[35%] flex flex-col space-y-4 opacity-0 ${
                     isLoaded ? "animate-slide-in-right animate-delay-200" : ""
                   }`}
                 >
-                  {sidebarImgOne && (
-                    <div className="h-[140px] lg:h-[170px] rounded-xl overflow-hidden shadow-md transform transition-all duration-300 hover:shadow-xl hover:scale-105">
-                      <div
-                        style={{
-                          backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + sidebarImgOne.image})`,
-                          backgroundSize: "cover",
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "center",
-                        }}
-                        className="w-full h-full rounded-xl transition-transform duration-500 hover:scale-110"
-                      />
-                    </div>
-                  )}
-                  {sidebarImgTwo && (
-                    <div className="h-[140px] lg:h-[170px] rounded-xl overflow-hidden shadow-md transform transition-all duration-300 hover:shadow-xl hover:scale-105">
-                      <div
-                        style={{
-                          backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + sidebarImgTwo.image})`,
-                          backgroundSize: "cover",
-                          backgroundRepeat: "no-repeat",
-                          backgroundPosition: "center",
-                        }}
-                        className="w-full h-full rounded-xl transition-transform duration-500 hover:scale-110"
-                      />
-                    </div>
-                  )}
+                  {[sidebarImgOne, sidebarImgTwo].map((img, i) => (
+                    img && (
+                      <div key={i} className="h-[140px] lg:h-[170px] rounded-xl overflow-hidden shadow-md transform transition-all duration-300 hover:shadow-xl hover:scale-105">
+                        <div
+                          style={{
+                            backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + img.image})`,
+                            backgroundSize: "cover",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                          }}
+                          className="w-full h-full rounded-xl transition-transform duration-500 hover:scale-110"
+                        />
+                      </div>
+                    )
+                  ))}
                 </div>
               )}
             </div>
 
-            {/* Services Section */}
+            {/* Services */}
             <div
               className={`best-services w-full bg-[#dcf5d3] rounded-2xl overflow-x-auto flex flex-row space-x-10 px-6 py-6 lg:px-10 lg:py-8 lg:space-x-0 lg:justify-between lg:items-center lg:h-[110px] lg:overflow-x-visible transform transition-all duration-300 hover:shadow-lg opacity-0 ${
                 isLoaded ? "animate-slide-in-up animate-delay-400" : ""

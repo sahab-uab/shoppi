@@ -1,20 +1,21 @@
-import firebase from "firebase/app";
-import "firebase/messaging";
+import { initializeApp, getApps } from "firebase/app";
+import { getMessaging, getToken } from "firebase/messaging";
 import store from "./src/store/store";
+
 let getConfig = null;
+
 function render() {
-  getConfig =
-    store.getState().websiteSetup?.websiteSetup?.payload?.firebase_info;
+  getConfig = store.getState().websiteSetup?.websiteSetup?.payload?.firebase_info;
 }
 render();
 store.subscribe(() => {
   render();
 });
+
 const firebaseCloudMessaging = {
-  //initializing firebase app
   init: async function () {
-    if (!firebase.apps.length && getConfig) {
-      firebase.initializeApp({
+    if (getApps().length === 0 && getConfig) {
+      initializeApp({
         apiKey: getConfig.apiKey,
         authDomain: getConfig.authDomain,
         projectId: getConfig.projectId,
@@ -25,15 +26,11 @@ const firebaseCloudMessaging = {
       });
 
       try {
-        const messaging = firebase.messaging();
-        //requesting notification permission from browser
+        const messaging = getMessaging();
         const status = await Notification.requestPermission();
-        if (status && status === "granted") {
-          //getting token from FCM
-          const fcm_token = await messaging.getToken({
-            vapidKey: getConfig.certificates,
-          });
 
+        if (status === "granted") {
+          const fcm_token = await getToken(messaging, { vapidKey: getConfig.certificates });
           if (fcm_token) {
             return fcm_token;
           }

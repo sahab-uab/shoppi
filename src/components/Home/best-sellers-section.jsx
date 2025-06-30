@@ -22,7 +22,7 @@ export default function BestSellersSection({ sellers = [], sectionTitle, seeMore
 
   return (
     <>
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;

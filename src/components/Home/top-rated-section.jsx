@@ -34,7 +34,7 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
 
   return (
     <>
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;
