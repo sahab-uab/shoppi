@@ -17,13 +17,279 @@ export default function FeaturedProductsSection({
   const [isLoading, setIsLoading] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // Process products data
-  const processedProducts = products.map((item) => ({
+  // Additional demo products to add after existing products - 28 total (14 per category)
+  const additionalDemoProducts = [
+    // Category 1 Products (14 products)
+    {
+      id: 201,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: 'Ultra HD Smart TV 65"',
+      slug: "ultra-hd-smart-tv-65",
+      price: 899.99,
+      offer_price: 699.99,
+      averageRating: 5,
+    },
+    {
+      id: 202,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Smartphone 256GB Pro Max",
+      slug: "smartphone-256gb-pro-max",
+      price: 1199.99,
+      offer_price: 999.99,
+      averageRating: 5,
+    },
+    {
+      id: 203,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Laptop 16GB RAM 1TB SSD",
+      slug: "laptop-16gb-ram-1tb-ssd",
+      price: 1299.99,
+      offer_price: 1099.99,
+      averageRating: 5,
+    },
+    {
+      id: 204,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Smart Watch Series 9",
+      slug: "smart-watch-series-9",
+      price: 399.99,
+      offer_price: 329.99,
+      averageRating: 5,
+    },
+    {
+      id: 205,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Gaming Laptop RTX 4080",
+      slug: "gaming-laptop-rtx-4080",
+      price: 2199.99,
+      offer_price: 1899.99,
+      averageRating: 5,
+    },
+    {
+      id: 206,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Wireless Headphones Pro",
+      slug: "wireless-headphones-pro",
+      price: 299.99,
+      offer_price: 199.99,
+      averageRating: 4,
+    },
+    {
+      id: 207,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "4K Action Camera",
+      slug: "4k-action-camera",
+      price: 399.99,
+      offer_price: 299.99,
+      averageRating: 4,
+    },
+    {
+      id: 208,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Smart Home Hub Pro",
+      slug: "smart-home-hub-pro",
+      price: 199.99,
+      offer_price: 149.99,
+      averageRating: 4,
+    },
+    {
+      id: 209,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Wireless Charging Pad",
+      slug: "wireless-charging-pad",
+      price: 89.99,
+      offer_price: 69.99,
+      averageRating: 4,
+    },
+    {
+      id: 210,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Bluetooth Speaker Premium",
+      slug: "bluetooth-speaker-premium",
+      price: 179.99,
+      offer_price: 129.99,
+      averageRating: 5,
+    },
+    {
+      id: 211,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Gaming Mouse RGB",
+      slug: "gaming-mouse-rgb",
+      price: 79.99,
+      offer_price: 59.99,
+      averageRating: 4,
+    },
+    {
+      id: 212,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Mechanical Keyboard Pro",
+      slug: "mechanical-keyboard-pro",
+      price: 159.99,
+      offer_price: 119.99,
+      averageRating: 5,
+    },
+    {
+      id: 213,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "USB-C Hub 8-in-1",
+      slug: "usb-c-hub-8-in-1",
+      price: 49.99,
+      offer_price: 39.99,
+      averageRating: 4,
+    },
+    {
+      id: 214,
+      category_id: categories.length > 0 ? categories[0].category_id : 1,
+      name: "Portable SSD 2TB",
+      slug: "portable-ssd-2tb",
+      price: 299.99,
+      offer_price: 249.99,
+      averageRating: 5,
+    },
+
+    // Category 2 Products (14 products)
+    {
+      id: 215,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Wireless Gaming Controller Pro",
+      slug: "wireless-gaming-controller-pro",
+      price: 79.99,
+      offer_price: 59.99,
+      averageRating: 4,
+    },
+    {
+      id: 216,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Electric Scooter Pro",
+      slug: "electric-scooter-pro",
+      price: 599.99,
+      offer_price: 499.99,
+      averageRating: 4,
+    },
+    {
+      id: 217,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Drone 4K Camera GPS",
+      slug: "drone-4k-camera-gps",
+      price: 799.99,
+      offer_price: 649.99,
+      averageRating: 5,
+    },
+    {
+      id: 218,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Smart Air Purifier HEPA",
+      slug: "smart-air-purifier-hepa",
+      price: 249.99,
+      offer_price: 199.99,
+      averageRating: 4,
+    },
+    {
+      id: 219,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Robot Vacuum Cleaner",
+      slug: "robot-vacuum-cleaner",
+      price: 399.99,
+      offer_price: 299.99,
+      averageRating: 4,
+    },
+    {
+      id: 220,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Smart Doorbell Camera",
+      slug: "smart-doorbell-camera",
+      price: 199.99,
+      offer_price: 149.99,
+      averageRating: 4,
+    },
+    {
+      id: 221,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Fitness Tracker Pro",
+      slug: "fitness-tracker-pro",
+      price: 149.99,
+      offer_price: 119.99,
+      averageRating: 4,
+    },
+    {
+      id: 222,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Smart Thermostat WiFi",
+      slug: "smart-thermostat-wifi",
+      price: 179.99,
+      offer_price: 139.99,
+      averageRating: 5,
+    },
+    {
+      id: 223,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "LED Strip Lights RGB",
+      slug: "led-strip-lights-rgb",
+      price: 39.99,
+      offer_price: 29.99,
+      averageRating: 4,
+    },
+    {
+      id: 224,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Wireless Car Charger",
+      slug: "wireless-car-charger",
+      price: 59.99,
+      offer_price: 44.99,
+      averageRating: 4,
+    },
+    {
+      id: 225,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Smart Light Bulbs 4-Pack",
+      slug: "smart-light-bulbs-4-pack",
+      price: 79.99,
+      offer_price: 59.99,
+      averageRating: 4,
+    },
+    {
+      id: 226,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Portable Power Bank 20000mAh",
+      slug: "portable-power-bank-20000mah",
+      price: 49.99,
+      offer_price: 39.99,
+      averageRating: 5,
+    },
+    {
+      id: 227,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Webcam 4K Ultra HD",
+      slug: "webcam-4k-ultra-hd",
+      price: 129.99,
+      offer_price: 99.99,
+      averageRating: 4,
+    },
+    {
+      id: 228,
+      category_id: categories.length > 1 ? categories[1].category_id : 2,
+      name: "Smart Security Camera Set",
+      slug: "smart-security-camera-set",
+      price: 299.99,
+      offer_price: 229.99,
+      averageRating: 5,
+    },
+  ]
+
+  // Combine existing products with additional demo products
+  const allProducts = [...products, ...additionalDemoProducts]
+
+  // Process products data with Picsum fallback for missing images
+  const processedProducts = allProducts.map((item, index) => ({
     id: item.id,
     category_id: item.category_id,
     title: item.name,
     slug: item.slug,
-    image: process.env.NEXT_PUBLIC_BASE_URL + item.thumb_image,
+    image: item.thumb_image?.startsWith("/placeholder")
+      ? item.thumb_image
+      : item.thumb_image
+        ? process.env.NEXT_PUBLIC_BASE_URL + item.thumb_image
+        : `https://picsum.photos/300/300?random=${item.id || index + 2000}`,
     price: item.price,
     offer_price: item.offer_price,
     review: Number.parseInt(item.averageRating || 0),
@@ -189,11 +455,14 @@ export default function FeaturedProductsSection({
                 <div className="relative h-32 sm:h-40 lg:h-48 bg-gradient-to-br from-gray-500 to-gray-900 overflow-hidden">
                   {categoryBackground && (
                     <Image
-                      src={categoryBackground || "/placeholder.svg"}
+                      src={categoryBackground || `https://picsum.photos/400/200?random=category`}
                       alt="Category Background"
                       fill
                       style={{ objectFit: "cover" }}
                       className="opacity-30"
+                      onError={(e) => {
+                        e.target.src = `https://picsum.photos/400/200?random=${Math.floor(Math.random() * 1000)}`
+                      }}
                     />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -271,7 +540,7 @@ export default function FeaturedProductsSection({
               {isLoading ? (
                 // Loading State - Mobile 2 Columns
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                  {[...Array(6)].map((_, index) => (
+                  {[...Array(14)].map((_, index) => (
                     <div key={index} className="bg-white rounded-xl shadow-md p-3 sm:p-6 animate-pulse">
                       <div className="w-full h-32 sm:h-48 bg-gray-200 rounded-lg mb-2 sm:mb-4"></div>
                       <div className="space-y-2 sm:space-y-3">
@@ -285,7 +554,7 @@ export default function FeaturedProductsSection({
               ) : filteredProducts.length > 0 ? (
                 // Products Grid - Mobile 2 Columns, Desktop 3 Columns
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                  {filteredProducts.slice(0, 6).map((product, index) => (
+                  {filteredProducts.slice(0, 14).map((product, index) => (
                     <div
                       key={product.id}
                       className={`product-card group bg-white rounded-lg sm:rounded-xl shadow-sm hover:shadow-xl border border-gray-100 hover:border-purple-200 overflow-hidden opacity-0 ${
@@ -320,13 +589,13 @@ export default function FeaturedProductsSection({
                         {/* Product Image */}
                         <div className="relative w-full h-full p-2 sm:p-3 lg:p-4 flex items-center justify-center">
                           <Image
-                            src={product.image || "/placeholder.svg"}
+                            src={product.image || `https://picsum.photos/300/300?random=${product.id}`}
                             alt={product.title}
                             fill
                             style={{ objectFit: "contain" }}
                             className="transition-transform duration-500 group-hover:scale-110"
                             onError={(e) => {
-                              e.target.src = "/placeholder.svg?height=200&width=200"
+                              e.target.src = `https://picsum.photos/300/300?random=${Math.floor(Math.random() * 1000)}`
                             }}
                           />
                         </div>

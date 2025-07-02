@@ -8,12 +8,113 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
   const [isLoaded, setIsLoaded] = useState(false)
   const [hoveredProduct, setHoveredProduct] = useState(null)
 
-  // Process products data
-  const processedProducts = products.map((item) => ({
+  // Additional demo products to add after existing products
+  const additionalDemoProducts = [
+    {
+      id: 101,
+      name: "Premium Wireless Headphones",
+      slug: "premium-wireless-headphones",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 299.99,
+      offer_price: 199.99,
+      averageRating: 5,
+    },
+    {
+      id: 102,
+      name: "Smart Fitness Watch",
+      slug: "smart-fitness-watch",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 399.99,
+      offer_price: 299.99,
+      averageRating: 4,
+    },
+    {
+      id: 103,
+      name: "Professional Camera Lens",
+      slug: "professional-camera-lens",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 899.99,
+      offer_price: null,
+      averageRating: 5,
+    },
+    {
+      id: 104,
+      name: "Gaming Mechanical Keyboard",
+      slug: "gaming-mechanical-keyboard",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 159.99,
+      offer_price: 129.99,
+      averageRating: 4,
+    },
+    {
+      id: 105,
+      name: "4K Ultra HD Monitor",
+      slug: "4k-ultra-hd-monitor",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 599.99,
+      offer_price: 449.99,
+      averageRating: 5,
+    },
+    {
+      id: 106,
+      name: "Wireless Charging Pad",
+      slug: "wireless-charging-pad",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 49.99,
+      offer_price: 29.99,
+      averageRating: 4,
+    },
+    {
+      id: 107,
+      name: "Bluetooth Speaker Pro",
+      slug: "bluetooth-speaker-pro",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 199.99,
+      offer_price: 149.99,
+      averageRating: 5,
+    },
+    {
+      id: 108,
+      name: "Smart Home Hub",
+      slug: "smart-home-hub",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 129.99,
+      offer_price: null,
+      averageRating: 4,
+    },
+    {
+      id: 109,
+      name: "Ergonomic Office Chair",
+      slug: "ergonomic-office-chair",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 449.99,
+      offer_price: 349.99,
+      averageRating: 5,
+    },
+    {
+      id: 110,
+      name: "Portable SSD Drive",
+      slug: "portable-ssd-drive",
+      // Remove thumb_image to trigger Unsplash fallback
+      price: 199.99,
+      offer_price: 159.99,
+      averageRating: 4,
+    },
+  ]
+
+  // Combine existing products with additional demo products
+  const allProducts = [...products, ...additionalDemoProducts]
+
+  // Process products data - keep existing products and add demo products
+  const processedProducts = allProducts.map((item, index) => ({
     id: item.id,
     title: item.name,
     slug: item.slug,
-    image: process.env.NEXT_PUBLIC_BASE_URL + item.thumb_image,
+    image: item.thumb_image?.startsWith("/placeholder")
+      ? item.thumb_image
+      : item.thumb_image
+        ? process.env.NEXT_PUBLIC_BASE_URL + item.thumb_image
+        : `https://picsum.photos/300/300?random=${item.id || index}`,
     price: item.price,
     offer_price: item.offer_price,
     review: Number.parseInt(item.averageRating || 0),
@@ -99,6 +200,16 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
         .stagger-4 {
           animation-delay: 0.4s;
         }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+        .stagger-8 { animation-delay: 0.8s; }
+        .stagger-9 { animation-delay: 0.9s; }
+        .stagger-10 { animation-delay: 1.0s; }
+        .stagger-11 { animation-delay: 1.1s; }
+        .stagger-12 { animation-delay: 1.2s; }
+        .stagger-13 { animation-delay: 1.3s; }
+        .stagger-14 { animation-delay: 1.4s; }
         .product-card {
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -150,11 +261,11 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
 
           {/* Mobile-Optimized Product Grid - 2 Columns on Mobile */}
           <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
-            {processedProducts.slice(0, 4).map((product, index) => (
+            {processedProducts.slice(0, 14).map((product, index) => (
               <div
                 key={product.id}
                 className={`product-card group bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-xl border border-gray-100 hover:border-gray-200 overflow-hidden opacity-0 ${
-                  isLoaded ? `animate-scale-in stagger-${index + 1}` : ""
+                  isLoaded ? `animate-scale-in stagger-${Math.min(index + 1, 14)}` : ""
                 }`}
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
@@ -186,13 +297,13 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                     {/* Product Image */}
                     <div className="relative w-full h-full p-2 sm:p-4 lg:p-6 flex items-center justify-center">
                       <Image
-                        src={product.image || "/placeholder.svg"}
+                        src={product.image || `https://picsum.photos/300/300?random=${product.id}`}
                         alt={product.title}
                         fill
                         style={{ objectFit: "contain" }}
                         className="product-image"
                         onError={(e) => {
-                          e.target.src = "/placeholder.svg?height=200&width=200"
+                          e.target.src = `https://picsum.photos/300/300?random=${Math.floor(Math.random() * 1000)}`
                         }}
                       />
                     </div>

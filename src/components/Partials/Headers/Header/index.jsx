@@ -58,7 +58,7 @@ export default function Header({
                     alt="logo"
                     // layout="fill"
                     objectFit="scale-down"
-                    width={180}
+                    width={195}
                     height={48}
                   />
                 )}
