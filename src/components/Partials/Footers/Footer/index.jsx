@@ -258,7 +258,7 @@ export default function ModernFooter({ settings, contact }) {
                     height={24}
                     src={`${process.env.NEXT_PUBLIC_BASE_URL + footerContent.payment_image}`}
                     alt="payment methods"
-                    className="h-6 w-auto opacity-70"
+                    className="h-6 w-auto "
                   />
                 </div>
               )}
