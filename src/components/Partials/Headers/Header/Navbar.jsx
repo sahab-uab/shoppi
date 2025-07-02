@@ -6,7 +6,14 @@ import Arrow from "../../../Helpers/icons/Arrow";
 import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
 import Multivendor from "../../../Shared/Multivendor";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-export default function Navbar({ className }) {
+export default function Navbar({ className, topBarProps }) {
+  const {
+    allCurrency,
+    defaultCurrency,
+    handler1,
+    toggleCurrency,
+    toggleHandler,
+  } = topBarProps;
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
   const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
@@ -52,9 +59,11 @@ export default function Navbar({ className }) {
                         <rect y="4" width="10" height="1" />
                       </svg>
                     </span>
-                    {<span className="text-sm font-600 text-qblacktext">
-                      {ServeLangItem()?.All_Categories}
-                    </span>}
+                    {
+                      <span className="text-sm font-600 text-qblacktext">
+                        {ServeLangItem()?.All_Categories}
+                      </span>
+                    }
                   </div>
                   <div>
                     <Arrow
@@ -141,7 +150,7 @@ export default function Navbar({ className }) {
                                 ? "bg-white"
                                 : ""
                             }`}
-                            style={{ height: `${subCatHeight}px` }}
+                            style={{ maxHeight: "10px" }}
                           >
                             <ul className="">
                               {item.active_sub_categories.length > 0 &&
@@ -249,7 +258,7 @@ export default function Navbar({ className }) {
                 </div>
               </div>
               <div className="nav">
-                <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5">
+                <ul className="nav-wrapper flex xl:space-x-7 rtl:space-x-reverse space-x-5">
                   <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext ">
                       <span>{ServeLangItem()?.Shop}</span>
@@ -536,11 +545,97 @@ export default function Navbar({ className }) {
                       </div>
                     </div>
                   </li>
+                  <li>
+                    <Link href="/account" passHref legacyBehavior>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
+                          <span>{ServeLangItem()?.Account}</span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/track-order" passHref legacyBehavior>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
+                          <span>{ServeLangItem()?.Track_Order || "Track Order"}</span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                     {defaultCurrency && (
+                  <div className="relative flex items-center space-x-1 text-sm font-600">
+                    <span>Currency:</span>
+                    <button
+                      onClick={() => toggleHandler(!toggleCurrency)}
+                      className="px-2 py-1 bg-[#222] hover:bg-[#333] rounded text-white text-xs font-semibold"
+                    >
+                      {defaultCurrency.currency_icon}{" "}
+                      {defaultCurrency.currency_code}
+                    </button>
+                    {toggleCurrency && (
+                      <div className="absolute mt-2 bg-white text-black rounded shadow z-50">
+                        <ul className="text-sm max-h-40 overflow-y-scroll">
+                          {allCurrency.map((item, i) => (
+                            <li
+                              key={i}
+                              onClick={() => handler(item)}
+                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            >
+                              {item.currency_icon} {item.currency_code}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
+                  </li>
                 </ul>
               </div>
             </div>
             {Multivendor() === 1 && (
-              <div className="become-seller-btn">
+              <div className="flex items-center gap-4 rtl:space-x-reverse">
+
+                {/* Track Order
+                <Link href="/track-order" passHref legacyBehavior>
+                  <a className="text-sm font-600 text-qblacktext hover:underline">
+                    
+                  </a>
+                </Link> */}
+
+                {/* Currency Dropdown */}
+                {/* {defaultCurrency && (
+                  <div className="relative flex items-center space-x-1 text-sm font-600">
+                    <span>Currency:</span>
+                    <button
+                      onClick={() => toggleHandler(!toggleCurrency)}
+                      className="px-2 py-1 bg-[#222] hover:bg-[#333] rounded text-white text-xs font-semibold"
+                    >
+                      {defaultCurrency.currency_icon}{" "}
+                      {defaultCurrency.currency_code}
+                    </button>
+                    {toggleCurrency && (
+                      <div className="absolute mt-2 bg-white text-black rounded shadow z-50">
+                        <ul className="text-sm max-h-40 overflow-y-scroll">
+                          {allCurrency.map((item, i) => (
+                            <li
+                              key={i}
+                              onClick={() => handler(item)}
+                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            >
+                              {item.currency_icon} {item.currency_code}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )} */}
+
+                {/* Become Seller Button */}
+                 <div className="become-seller-btn">
                 <Link href="/become-seller" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
                     <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
@@ -576,6 +671,7 @@ export default function Navbar({ className }) {
                     </div>
                   </a>
                 </Link>
+              </div>
               </div>
             )}
           </div>

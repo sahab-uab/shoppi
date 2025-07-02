@@ -1,12 +1,16 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function TopRatedSection({ products = [], sectionTitle, seeMoreUrl }) {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [hoveredProduct, setHoveredProduct] = useState(null)
+export default function TopRatedSection({
+  products = [],
+  sectionTitle,
+  seeMoreUrl,
+}) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hoveredProduct, setHoveredProduct] = useState(null);
 
   // Process products data
   const processedProducts = products.map((item) => ({
@@ -18,19 +22,19 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
     offer_price: item.offer_price,
     review: Number.parseInt(item.averageRating || 0),
     variants: item.active_variants,
-  }))
+  }));
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 300)
-    return () => clearTimeout(timer)
-  }, [])
+      setIsLoaded(true);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
 
   const calculateDiscount = (originalPrice, offerPrice) => {
-    if (!offerPrice || offerPrice >= originalPrice) return 0
-    return Math.round(((originalPrice - offerPrice) / originalPrice) * 100)
-  }
+    if (!offerPrice || offerPrice >= originalPrice) return 0;
+    return Math.round(((originalPrice - offerPrice) / originalPrice) * 100);
+  };
 
   return (
     <>
@@ -45,7 +49,7 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
             transform: translateY(0);
           }
         }
-        
+
         @keyframes slideInLeft {
           from {
             opacity: 0;
@@ -56,7 +60,7 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
             transform: translateX(0);
           }
         }
-        
+
         @keyframes slideInRight {
           from {
             opacity: 0;
@@ -67,7 +71,7 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
             transform: translateX(0);
           }
         }
-        
+
         @keyframes scaleIn {
           from {
             opacity: 0;
@@ -78,40 +82,48 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
             transform: scale(1);
           }
         }
-        
+
         .animate-fade-in-up {
           animation: fadeInUp 0.6s ease-out forwards;
         }
-        
+
         .animate-slide-in-left {
           animation: slideInLeft 0.6s ease-out forwards;
         }
-        
+
         .animate-slide-in-right {
           animation: slideInRight 0.6s ease-out forwards;
         }
-        
+
         .animate-scale-in {
           animation: scaleIn 0.5s ease-out forwards;
         }
-        
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-        
+
+        .stagger-1 {
+          animation-delay: 0.1s;
+        }
+        .stagger-2 {
+          animation-delay: 0.2s;
+        }
+        .stagger-3 {
+          animation-delay: 0.3s;
+        }
+        .stagger-4 {
+          animation-delay: 0.4s;
+        }
+
         .product-card {
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .product-card:hover {
           transform: translateY(-8px) scale(1.02);
         }
-        
+
         .product-image {
           transition: all 0.5s ease;
         }
-        
+
         .product-card:hover .product-image {
           transform: scale(1.1);
         }
@@ -119,29 +131,16 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
 
       <div className="w-full bg-gradient-to-b from-gray-50 to-white py-16">
         <div className="container-x mx-auto px-4">
-          {/* Clean Modern Header */}
-          <div className={`flex justify-between items-center mb-12 opacity-0 ${isLoaded ? "animate-fade-in-up" : ""}`}>
-            <div className="flex flex-col space-y-4">
-              {/* Badge Section */}
-              <div className="flex items-center space-x-3">
-                <div className="w-1 h-8 bg-gradient-to-b from-orange-400 to-red-500 rounded-full"></div>
-                <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 px-4 py-2 rounded-full">
-                  <span className="text-sm font-bold text-orange-600 uppercase tracking-wider flex items-center">
-                    <svg className="w-4 h-4 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    Premium Quality
-                  </span>
-                </div>
-              </div>
-
-              {/* Title and Description */}
-              <div className="ml-7">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                  {sectionTitle || "Top Rated Products"}
-                </h2>
-                <p className="text-gray-600 text-lg">Discover our highest-rated products loved by customers</p>
-              </div>
+          {/* Enhanced Section Header */}
+          <div className="flex flex-col md:flex-row md:items-center mb-4 md:justify-between">
+            <div className="mb-6 md:mb-0">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900  bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                {sectionTitle || "Shop by Brand"}
+              </h2>
+              <p className="text-gray-600 text-sm max-w-xl">
+                Discover premium products from world-renowned brands that
+                deliver quality and innovation
+              </p>
             </div>
 
             {/* Enhanced View More Button */}
@@ -154,7 +153,12 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
                 </svg>
               </button>
             </Link>
@@ -175,18 +179,28 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                   {/* Compact Product Image Section */}
                   <div className="relative md:w-2/5 h-48 md:h-auto bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
                     {/* Discount Badge */}
-                    {product.offer_price && product.offer_price < product.price && (
-                      <div className="absolute top-4 left-4 z-10">
-                        <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                          -{calculateDiscount(product.price, product.offer_price)}%
+                    {product.offer_price &&
+                      product.offer_price < product.price && (
+                        <div className="absolute top-4 left-4 z-10">
+                          <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                            
+                            {calculateDiscount(
+                              product.price,
+                              product.offer_price
+                            )}
+                            % Off
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
 
                     {/* Top Rated Badge */}
                     <div className="absolute top-4 right-4 z-10">
                       <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg flex items-center">
-                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <svg
+                          className="w-3 h-3 mr-1"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                         {product.review}.0
@@ -202,7 +216,8 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                         style={{ objectFit: "contain" }}
                         className="product-image"
                         onError={(e) => {
-                          e.target.src = "/placeholder.svg?height=200&width=200"
+                          e.target.src =
+                            "/placeholder.svg?height=200&width=200";
                         }}
                       />
                     </div>
@@ -220,7 +235,9 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                           <svg
                             key={i}
                             className={`w-4 h-4 ${
-                              i < product.review ? "text-yellow-400" : "text-gray-300"
+                              i < product.review
+                                ? "text-yellow-400"
+                                : "text-gray-300"
                             } transition-colors duration-200`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
@@ -228,7 +245,9 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
-                        <span className="ml-2 text-xs text-gray-600 font-medium">({product.review}.0)</span>
+                        <span className="ml-2 text-xs text-gray-600 font-medium">
+                          ({product.review}.0)
+                        </span>
                       </div>
 
                       {/* Product Title - Smaller */}
@@ -238,16 +257,24 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
 
                       {/* Price Section - Compact */}
                       <div className="flex items-center space-x-2 mb-3">
-                        {product.offer_price && product.offer_price < product.price ? (
+                        {product.offer_price &&
+                        product.offer_price < product.price ? (
                           <>
-                            <span className="text-2xl font-bold text-red-500">${product.offer_price}</span>
-                            <span className="text-lg text-gray-500 line-through">${product.price}</span>
+                            <span className="text-2xl font-bold text-red-500">
+                              ${product.offer_price}
+                            </span>
+                            <span className="text-lg text-gray-500 line-through">
+                              ${product.price}
+                            </span>
                             <span className="text-sm text-green-600 font-semibold bg-green-50 px-2 py-1 rounded-full">
-                              Save ${(product.price - product.offer_price).toFixed(2)}
+                              Save $
+                              {(product.price - product.offer_price).toFixed(2)}
                             </span>
                           </>
                         ) : (
-                          <span className="text-2xl font-bold text-gray-900">${product.price}</span>
+                          <span className="text-2xl font-bold text-gray-900">
+                            ${product.price}
+                          </span>
                         )}
                       </div>
 
@@ -260,7 +287,12 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M5 13l4 4L19 7"
+                            />
                           </svg>
                           Free Shipping
                         </div>
@@ -285,15 +317,15 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
 
                     {/* Compact Action Buttons */}
                     <div className="flex flex-col space-y-2">
-                      <Link href={`/single-product?slug=${product.slug}`}>
-                        <button className="w-full bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg text-sm">
-                          Add To Cart
-                        </button>
-                      </Link>
 
                       <div className="flex space-x-2">
                         <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-1.5 px-3 rounded-md font-medium transition-all duration-300 flex items-center justify-center text-xs">
-                          <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg
+                            className="w-3 h-3 mr-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
@@ -304,7 +336,12 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                           Wishlist
                         </button>
                         <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-1.5 px-3 rounded-md font-medium transition-all duration-300 flex items-center justify-center text-xs">
-                          <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg
+                            className="w-3 h-3 mr-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
@@ -321,6 +358,11 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
                           Quick View
                         </button>
                       </div>
+                      <Link href={`/single-product?slug=${product.slug}`}>
+                        <button className="w-full bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg text-sm">
+                          Add To Cart
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -332,12 +374,19 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
           </div>
 
           {/* Bottom Stats Section */}
-          <div className={`mt-12 text-center opacity-0 ${isLoaded ? "animate-fade-in-up stagger-4" : ""}`}>
+          <div
+            className={`mt-12 text-center opacity-0 ${
+              isLoaded ? "animate-fade-in-up stagger-4" : ""
+            }`}
+          >
             <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6 border border-orange-200">
               <p className="text-gray-700 text-lg">
                 ⭐ These products have an average rating of{" "}
                 <span className="font-bold text-orange-600">
-                  {(processedProducts.reduce((acc, p) => acc + p.review, 0) / processedProducts.length).toFixed(1)}
+                  {(
+                    processedProducts.reduce((acc, p) => acc + p.review, 0) /
+                    processedProducts.length
+                  ).toFixed(1)}
                 </span>{" "}
                 stars from thousands of satisfied customers
               </p>
@@ -346,5 +395,5 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
         </div>
       </div>
     </>
-  )
+  );
 }

@@ -96,12 +96,12 @@ export default function Layout({ children, childrenClasses }) {
         />
         <div
           className={`w-full  min-h-screen  ${
-            childrenClasses || "pt-[30px] pb-[60px]"
+            childrenClasses || "pt-[30px] pb-[0px]"
           }`}
         >
           {children && children}
         </div>
-        {/* {subscribeData && <DiscountBanner datas={subscribeData} />} */}
+
 
         <Footer settings={settings} contact={contact && contact} />
       </div>

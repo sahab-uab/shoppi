@@ -137,10 +137,10 @@ function CombinedCategorySection({
         }
       `}</style>
 
-      <div className="w-full bg-gray-50 py-16">
+      <div className="w-full bg-gray-50  pt-[50px] ">
         <div className="container-x mx-auto px-4">
           {/* Main Grid Layout */}
-          <div className="grid lg:grid-cols-12 gap-8">
+          <div className="grid lg:grid-cols-12 gap-4">
             {/* Featured Categories - Left Side (8 columns) */}
             <div
               className={`lg:col-span-8 opacity-0 ${
@@ -149,18 +149,41 @@ function CombinedCategorySection({
             >
               {/* Featured Categories Header */}
               <div className="mb-8">
-                <div className="flex items-center mb-3">
-                  <div className="w-1 h-6 bg-gray-900 rounded-full mr-3"></div>
-                  <span className="text-sm font-semibold text-gray-600 uppercase tracking-wider">
-                    Featured
-                  </span>
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mx-4">
+                  {/* Left: Heading and Description */}
+                  <div>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-1 md:mb-0">
+                      Browse Categories
+                    </h2>
+                    <p className="text-gray-500 text-sm">
+                      Discover products across our most popular categories
+                    </p>
+                  </div>
+
+                  {/* Right: View All Categories Button */}
+                  <div className="text-left md:text-right">
+                    <Link href="/categories">
+                      <button className="group inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-300">
+                        <span className="text-sm font-medium mr-2">
+                          View All Categories
+                        </span>
+                        <svg
+                          className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </button>
+                    </Link>
+                  </div>
                 </div>
-                <h2 className="text-1xl md:text-2xl font-bold text-gray-900 mb-2">
-                  Browse Categories
-                </h2>
-                <p className="text-gray-500 text-sm">
-                  Discover products across our most popular categories
-                </p>
               </div>
 
               {/* Featured Categories Grid */}
@@ -177,7 +200,7 @@ function CombinedCategorySection({
                   >
                     <a rel="noopener noreferrer">
                       <div
-                        className={`group relative overflow-hidden bg-[#FFFAF0] rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.08)] hover:shadow-md border border-gray-100 transition-all duration-300 transform hover:scale-105 cursor-pointer h-[120px] opacity-0 ${
+                        className={`group relative overflow-hidden bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.08)] hover:shadow-md border border-gray-100 transition-all duration-300 transform hover:scale-105 cursor-pointer h-[120px] opacity-0 ${
                           isLoaded ? `animate-bounce-in stagger-${i + 1}` : ""
                         }`}
                       >
@@ -188,7 +211,8 @@ function CombinedCategorySection({
                               <Image
                                 src={
                                   item.image
-                                    ? process.env.NEXT_PUBLIC_BASE_URL + item.image
+                                    ? process.env.NEXT_PUBLIC_BASE_URL +
+                                      item.image
                                     : "/placeholder.svg"
                                 }
                                 alt={item.name}
@@ -196,7 +220,8 @@ function CombinedCategorySection({
                                 height={24}
                                 className="transition-all duration-300 group-hover:scale-110"
                                 onError={(e) => {
-                                  e.target.src = "/placeholder.svg?height=24&width=24";
+                                  e.target.src =
+                                    "/placeholder.svg?height=24&width=24";
                                 }}
                               />
                             </div>
@@ -215,30 +240,6 @@ function CombinedCategorySection({
                   </Link>
                 ))}
               </div>
-
-              {/* View All Categories Button */}
-              <div className="text-left">
-                <Link href="/categories">
-                  <button className="group inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-300">
-                    <span className="text-sm font-medium mr-2">
-                      View All Categories
-                    </span>
-                    <svg
-                      className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </button>
-                </Link>
-              </div>
             </div>
 
             {/* Popular Categories - Right Side (4 columns) */}
@@ -248,13 +249,12 @@ function CombinedCategorySection({
               }`}
             >
               {/* Header */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-3">
+              <div className="mb-6 mt-2">
+                <div className="flex items-center justify-between ">
                   <div className="flex items-center">
-                    <div className="w-1 h-6 bg-gray-900 rounded-full mr-3"></div>
-                    <span className="text-sm font-semibold text-gray-600 uppercase tracking-wider">
-                      Popular
-                    </span>
+                    <h2 className="text-xl font-bold text-gray-900">
+                      Trending Now
+                    </h2>
                   </div>
                   <Link
                     href="/products?highlight=popular_category"
@@ -263,75 +263,39 @@ function CombinedCategorySection({
                     View More →
                   </Link>
                 </div>
-                <h2 className="text-xl font-bold text-gray-900">
-                  Trending Now
-                </h2>
+                <p className="text-gray-500 text-sm">
+                  Discover our Trending Now products
+                </p>
               </div>
 
               {/* Category Buttons */}
               <div className="p-4">
-                <div className="space-y-3">
-                  {popularCategories?.slice(0, 4).map((category, index) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                  {popularCategories?.slice(0, 3).map((category, index) => (
                     <button
                       key={category.category_id}
                       onClick={() =>
                         setSelectedCategoryId(category.category_id)
                       }
-                      className={`group w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-102 relative overflow-hidden ${
+                      className={`group w-full px-3 py-4 rounded-lg text-sm font-semibold text-center transition-all duration-300 border shadow-sm hover:shadow-md hover:-translate-y-1 transform ${
                         selectedCategoryId === category.category_id
                           ? "bg-gray-900 text-white shadow-lg"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border border-gray-200 hover:border-gray-300"
+                          : "bg-white text-gray-700 hover:bg-gray-50"
                       }`}
                     >
-                      {/* Background Effect for Active State */}
-                      {selectedCategoryId === category.category_id && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900"></div>
-                      )}
-
-                      {/* Content */}
-                      <div className="relative z-10 flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          {/* Category Icon/Indicator */}
-                          <div
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                              selectedCategoryId === category.category_id
-                                ? "bg-white"
-                                : "bg-gray-400 group-hover:bg-gray-600"
-                            }`}
-                          ></div>
-
-                          {/* Category Name */}
-                          <span className="font-medium">{category.name}</span>
-                        </div>
-
-                        {/* Arrow Indicator */}
-                        <svg
-                          className={`w-4 h-4 transition-all duration-300 ${
-                            selectedCategoryId === category.category_id
-                              ? "text-white transform rotate-90"
-                              : "text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1"
-                          }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
+                      {/* Numbered Badge */}
+                      <div className="w-6 h-6 mx-auto mb-1 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 font-bold text-xs group-hover:bg-gray-300">
+                        {index + 1}
                       </div>
 
-                      {/* Hover Effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                      {/* Category Name */}
+                      <span className="block text-sm">{category.name}</span>
                     </button>
                   ))}
                 </div>
 
                 {/* View All Categories Link */}
-                <div className="mt-4 pt-3 border-t border-gray-100">
+                {/* <div className="mt-6 pt-4 border-t border-gray-100">
                   <Link
                     href="/categories"
                     className="group flex items-center justify-center w-full py-2 text-xs font-medium text-gray-500 hover:text-gray-700 transition-colors duration-300"
@@ -351,9 +315,9 @@ function CombinedCategorySection({
                       />
                     </svg>
                   </Link>
-                </div>
+                </div> */}
               </div>
-              
+
               {/* Product List */}
               <div className="space-y-3 mt-6">
                 {/* Fixed: Removed unnecessary fragment and closing divs */}
@@ -367,26 +331,34 @@ function CombinedCategorySection({
                     passHref
                   >
                     <div
-                      className="group bg-white rounded-xl shadow-sm border border-gray-100 p-4 hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 relative overflow-hidden"
+                      className="group bg-white mb-3  rounded-xl shadow-sm border border-gray-100 p-4 hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1 relative overflow-hidden"
                       style={{
                         animationDelay: `${index * 0.1}s`,
                         opacity: isLoaded ? 1 : 0,
-                        transform: isLoaded ? "translateY(0)" : "translateY(10px)",
+                        transform: isLoaded
+                          ? "translateY(0)"
+                          : "translateY(10px)",
                       }}
                     >
                       {/* Subtle Background Gradient */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                       {/* Sale Badge */}
-                      {product.offer_price && product.offer_price < product.price && (
-                        <div className="absolute -top-1 -right-1 z-10">
-                          <div className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold shadow-sm">
-                            {Math.round(((product.price - product.offer_price) / product.price) * 100)}% OFF
+                      {product.offer_price &&
+                        product.offer_price < product.price && (
+                          <div className="absolute -top-1 -right-1 z-10">
+                            <div className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold shadow-sm">
+                              {Math.round(
+                                ((product.price - product.offer_price) /
+                                  product.price) *
+                                  100
+                              )}
+                              % OFF
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
 
-                      <div className="flex items-center space-x-4 relative z-10">
+                      <div className="flex items-center space-x-4  relative z-10">
                         {/* Enhanced Product Image */}
                         <div className="relative w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
                           <Image
@@ -396,7 +368,8 @@ function CombinedCategorySection({
                             height={64}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             onError={(e) => {
-                              e.target.src = "/placeholder.svg?height=64&width=64";
+                              e.target.src =
+                                "/placeholder.svg?height=64&width=64";
                             }}
                           />
 
@@ -438,18 +411,26 @@ function CombinedCategorySection({
 
                           {/* Enhanced Price Section */}
                           <div className="flex items-center space-x-2 mb-2">
-                            {product.offer_price && product.offer_price < product.price ? (
+                            {product.offer_price &&
+                            product.offer_price < product.price ? (
                               <>
-                                <span className="text-base font-bold text-gray-900">${product.offer_price}</span>
+                                <span className="text-base font-bold text-gray-900">
+                                  ${product.offer_price}
+                                </span>
                                 <span className="text-xs text-gray-500 line-through font-medium">
                                   ${product.price}
                                 </span>
                                 <span className="text-xs text-green-600 font-semibold bg-green-50 px-2 py-0.5 rounded-full">
-                                  Save ${(product.price - product.offer_price).toFixed(2)}
+                                  Save $
+                                  {(
+                                    product.price - product.offer_price
+                                  ).toFixed(2)}
                                 </span>
                               </>
                             ) : (
-                              <span className="text-base font-bold text-gray-900">${product.price}</span>
+                              <span className="text-base font-bold text-gray-900">
+                                ${product.price}
+                              </span>
                             )}
                           </div>
 
@@ -460,7 +441,9 @@ function CombinedCategorySection({
                                 <svg
                                   key={i}
                                   className={`w-3.5 h-3.5 transition-colors duration-200 ${
-                                    i < (product.averageRating || 0) ? "text-yellow-400" : "text-gray-300"
+                                    i < (product.averageRating || 0)
+                                      ? "text-yellow-400"
+                                      : "text-gray-300"
                                   }`}
                                   fill="currentColor"
                                   viewBox="0 0 20 20"
@@ -475,7 +458,9 @@ function CombinedCategorySection({
                             {/* Stock Status */}
                             <div className="flex items-center">
                               <div className="w-2 h-2 bg-green-400 rounded-full mr-1"></div>
-                              <span className="text-xs text-green-600 font-medium">In Stock</span>
+                              <span className="text-xs text-green-600 font-medium">
+                                In Stock
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -490,7 +475,12 @@ function CombinedCategorySection({
                               stroke="currentColor"
                               viewBox="0 0 24 24"
                             >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M9 5l7 7-7 7"
+                              />
                             </svg>
                           </div>
                         </div>

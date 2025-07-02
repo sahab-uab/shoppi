@@ -215,7 +215,8 @@ export default function BestSellersSection({
                       onMouseLeave={() => setHoveredSeller(null)}
                     >
                       {/* ---------- CARD CONTAINER ---------- */}
-                      <div className="relative w-full max-w-[240px] bg-white rounded-xl shadow-sm hover:shadow-2xl border-2 border-gray-100 hover:border-blue-200 p-6 transition-all duration-400 overflow-visible">
+<div className="relative w-full max-w-[240px] bg-white rounded-2xl shadow-lg hover:shadow-2xl border-2 border-gray-100 hover:border-blue-200 p-6 transition-all duration-400 overflow-visible">
+
                         {/* ------ VISUAL EFFECTS WRAPPER (clipped) ------ */}
                         <div className="card-visuals absolute inset-0 overflow-hidden rounded-2xl">
                           {/* Background dots / blobs */}
@@ -342,10 +343,12 @@ export default function BestSellersSection({
 
                 <div className="flex items-center space-x-6">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-900">
+                    <div className="text-2xl font-bold text-blue-600">
                       {sellers.length}+
                     </div>
-                    <div className="text-sm text-gray-600">Trusted Sellers</div>
+                    <div className="text-sm text-gray-600">
+                      Trusted Sellers
+                    </div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-green-600">
@@ -354,7 +357,7 @@ export default function BestSellersSection({
                     <div className="text-sm text-gray-600">Avg Rating</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-900">
+                    <div className="text-2xl font-bold text-purple-600">
                       24/7
                     </div>
                     <div className="text-sm text-gray-600">Support</div>

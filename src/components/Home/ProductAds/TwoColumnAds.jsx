@@ -12,7 +12,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
         >
           <div className="container-x mx-auto h-full">
             <div
-              className={`sm:flex xl:space-x-[30px] md:space-x-5 rtl:space-x-reverse items-center w-full h-full  overflow-hidden`}
+              className={`sm:flex xl:space-x-[10px] md:space-x-4 rtl:space-x-reverse items-center w-full h-full  overflow-hidden`}
             >
               {bannerOne && (
                 <div data-aos="fade-right" className={`h-full sm:w-1/2 w-full`}>
@@ -24,7 +24,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                       backgroundSize: `cover`,
                       backgroundRepeat: `no-repeat`,
                     }}
-                    className="w-full  shadow-md rounded-2xl h-full relative ltr:pl-[50px] rtl:pr-[50px] py-[35px] flex flex-col justify-between group"
+                    className="w-full  shadow-sm rounded-lg h-full relative ltr:pl-[50px] rtl:pr-[50px] py-[35px] flex flex-col justify-between group"
                   >
                     <div>
                       <div className="lg:mb-[22px] mb-2.5">

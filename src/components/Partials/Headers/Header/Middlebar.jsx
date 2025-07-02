@@ -14,7 +14,7 @@ import SearchBox from "../../../Helpers/SearchBox";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import LoginContext from "../../../Contexts/LoginContext";
 import TopStickyBar from "./TopStickyBar";
-export default function Middlebar({ className, settings , topBarProps }) {
+export default function Middlebar({ className, settings, topBarProps }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const getLoginContexts = useContext(LoginContext);
@@ -45,7 +45,7 @@ export default function Middlebar({ className, settings , topBarProps }) {
   useEffect(() => {
     cart && setCartItem(cart.cartProducts);
   }, [cart]);
-   const {
+  const {
     allCurrency,
     defaultCurrency,
     handler,
@@ -56,31 +56,32 @@ export default function Middlebar({ className, settings , topBarProps }) {
     <div className={`w-full h-[86px] bg-[#FCF5E5] ${className}`}>
       <div className="container-x mx-auto h-full">
         <div className="relative h-full">
-          <div className="flex justify-between items-center h-full">
-            <div className="relative mt-8">
-              <Link href="/" passHref legacyBehavior>
-                <a rel="noopener noreferrer">
-                  {settings && (
-                    <Image
-                      width="158"
-                      height="44"
-                      objectFit="scale-down"
-                      src={`${
-                        process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                      }`}
-                      alt="logo"
-                    />
-                  )}
-                </a>
-              </Link>
-            </div>
-            <div className="w-[517px] h-[44px]">
-              <SearchBox className="search-com" />
+          <div className="flex  flex-row justify-between items-center h-full">
+            <div className="flex items-center" style={{ gap: "50px" }}> 
+              <div className="relative mt-8">
+                <Link href="/" passHref legacyBehavior>
+                  <a rel="noopener noreferrer">
+                    {settings && (
+                      <Image
+                        width="158"
+                        height="44"
+                        objectFit="scale-down"
+                        src={`${
+                          process.env.NEXT_PUBLIC_BASE_URL + settings.logo
+                        }`}
+                        alt="logo"
+                      />
+                    )}
+                  </a>
+                </Link>
+              </div>
+              <div className="w-[517px] h-[44px]">
+                <SearchBox className="search-com" />
+              </div>
             </div>
             <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
-               <TopStickyBar {...topBarProps} />
+              {/* <TopStickyBar {...topBarProps} /> */}
               <div className="compaire relative">
-                
                 {auth ? (
                   <Link href="/products-compaire" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
@@ -150,69 +151,72 @@ export default function Middlebar({ className, settings , topBarProps }) {
                     </a>
                   </Link>
                 )}
-                  {profile && (
-        <>
-          <div
-            onClick={() => setProfile(false)}
-            className="w-full h-full fixed top-0 left-0 z-30"
-            style={{ zIndex: "35", margin: "0" }}
-          ></div>
-          <div
-            className="w-[208px] h-[267px] bg-white absolute right-0 top-11 z-40 border-t-[3px] primary-border flex flex-col justify-between"
-            style={{
-              boxShadow: " 0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
-            }}
-          >
-            <div className="menu-item-area w-full  p-5">
-              <ul className="w-full  flex flex-col space-y-7">
-                <li className="text-base text-qgraytwo">
-                  <span>
-                    {ServeLangItem()?.Hi}, {auth && auth.user.name}{" "}
-                  </span>
-                </li>
-                <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
-                  <Link href="/profile#dashboard" passHref legacyBehavior>
-                    <a rel="noopener noreferrer">
-                      <span className="capitalize">
-                        {ServeLangItem()?.profile}
-                      </span>
-                    </a>
-                  </Link>
-                </li>
-                <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
-                  <Link href="/contact" passHref legacyBehavior>
-                    <a rel="noopener noreferrer">
-                      <span className="capitalize">
-                        {ServeLangItem()?.Support}
-                      </span>
-                    </a>
-                  </Link>
-                </li>
-                <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
-                  <Link href="/faq" passHref legacyBehavior>
-                    <a rel="noopener noreferrer">
-                      <span className="capitalize">{ServeLangItem()?.FAQ}</span>
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="w-full h-10 flex justify-center items-center border-t border-qgray-border">
-              <button
-                onClick={logout}
-                type="button"
-                className="text-qblack text-base font-semibold"
-              >
-                {ServeLangItem()?.Sign_Out}
-              </button>
-            </div>
-          </div>
-        </>
-      )}
+                {profile && (
+                  <>
+                    <div
+                      onClick={() => setProfile(false)}
+                      className="w-full h-full fixed top-0 left-0 z-30"
+                      style={{ zIndex: "35", margin: "0" }}
+                    ></div>
+                    <div
+                      className="w-[208px] h-[267px] bg-white absolute right-0 top-11 z-40 border-t-[3px] primary-border flex flex-col justify-between"
+                      style={{
+                        boxShadow: " 0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
+                      }}
+                    >
+                      <div className="menu-item-area w-full  p-5">
+                        <ul className="w-full  flex flex-col space-y-7">
+                          <li className="text-base text-qgraytwo">
+                            <span>
+                              {ServeLangItem()?.Hi}, {auth && auth.user.name}{" "}
+                            </span>
+                          </li>
+                          <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                            <Link
+                              href="/profile#dashboard"
+                              passHref
+                              legacyBehavior
+                            >
+                              <a rel="noopener noreferrer">
+                                <span className="capitalize">
+                                  {ServeLangItem()?.profile}
+                                </span>
+                              </a>
+                            </Link>
+                          </li>
+                          <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                            <Link href="/contact" passHref legacyBehavior>
+                              <a rel="noopener noreferrer">
+                                <span className="capitalize">
+                                  {ServeLangItem()?.Support}
+                                </span>
+                              </a>
+                            </Link>
+                          </li>
+                          <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                            <Link href="/faq" passHref legacyBehavior>
+                              <a rel="noopener noreferrer">
+                                <span className="capitalize">
+                                  {ServeLangItem()?.FAQ}
+                                </span>
+                              </a>
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="w-full h-10 flex justify-center items-center border-t border-qgray-border">
+                        <button
+                          onClick={logout}
+                          type="button"
+                          className="text-qblack text-base font-semibold"
+                        >
+                          {ServeLangItem()?.Sign_Out}
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
-
-            
-
             </div>
           </div>
         </div>

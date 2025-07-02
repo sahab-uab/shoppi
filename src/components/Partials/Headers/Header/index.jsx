@@ -75,7 +75,9 @@ export default function Header({
           </div>
         </div>
       </div>
-      <Navbar className="quomodo-shop-nav-bar  lg:block hidden  shadow-sm border-b  "/>
+      <Navbar
+      topBarProps={topBarProps} 
+      className="quomodo-shop-nav-bar  lg:block hidden  shadow-sm border-b  "/>
     </header>
   );
 }

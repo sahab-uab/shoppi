@@ -18,7 +18,7 @@ function OneColumnAdsOne({ data }) {
               backgroundSize: `cover`,
               backgroundRepeat: `no-repeat`,
             }}
-            className="w-full h-full flex  shadow-md rounded-2xl justify-center items-center xl:py-[60px] md:py-[40px] py-4 group"
+            className="w-full h-full flex  shadow-sm rounded-lg justify-center items-center xl:py-[60px] md:py-[40px] py-1 group"
           >
             <div className="w-full h-full flex flex-col justify-between items-center">
               <div>
@@ -28,7 +28,7 @@ function OneColumnAdsOne({ data }) {
                   </span>
                 </div>
                 <div className="flex justify-center">
-                  <h1 className="w-[300px] md:text-[30px] text-[20px] md:leading-[40px] leading-1 text-[#65c741] font-semibold text-center">
+                  <h1 className="w-[300px] md:text-[30px] text-[20px] md:leading-[40px] leading-1 text-black/90  font-semibold text-center">
                     {data.title_two}
                   </h1>
                 </div>

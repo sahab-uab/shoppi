@@ -15,7 +15,7 @@ function OneColumnAdsTwo({ data }) {
             backgroundSize: `cover`,
             backgroundRepeat: `no-repeat`,
           }}
-          className="w-full h-full shadow-md rounded-2xl flex justify-center items-center ltr:md:pl-[80px] rtl:md:pr-[80px] ltr:pl-3 rtl:pr-3 md:py-[40px] py-4 group"
+          className="w-full h-full shadow-sm rounded-lg flex justify-center items-center ltr:md:pl-[80px] rtl:md:pr-[80px] ltr:pl-3 rtl:pr-3 md:py-[40px]  group"
         >
           <div className="w-full h-full flex flex-col justify-evenly">
             <div>

@@ -105,16 +105,10 @@ export default function BrandSection({ className, sectionTitle, brands = [] }) {
       <div className={`w-full bg-white py-16 ${className || ""}`}>
         <div className="container-x mx-auto px-4">
           {/* Enhanced Section Header */}
-          <div className={`mb-12 opacity-0 ${isLoaded ? "animate-fade-in-up" : ""}`}>
+          <div className={`mb-8 opacity-0 ${isLoaded ? "animate-fade-in-up" : ""}`}>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
               <div className="mb-6 md:mb-0">
-                <div className="flex items-center mb-4">
-                  <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-600 rounded-full mr-4"></div>
-                  <span className="text-sm font-bold text-gray-600 uppercase tracking-wider bg-gray-100 px-3 py-1 rounded-full">
-                    Trusted Partners
-                  </span>
-                </div>
-                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-900  bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                   {sectionTitle || "Shop by Brand"}
                 </h2>
                 <p className="text-gray-600 text-sm max-w-xl">
@@ -134,7 +128,7 @@ export default function BrandSection({ className, sectionTitle, brands = [] }) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
-                <button className="brand-next group w-12 h-12 bg-gray-100 hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
+                <button className="brand-next group w-12 h-12 bg-gray-100 hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-sm hover:shadow-xl">
                   <svg
                     className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300"
                     fill="none"

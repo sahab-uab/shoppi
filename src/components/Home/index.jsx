@@ -49,7 +49,7 @@ export default function Home({ homepageData }) {
   }, [isMultivendor]);
   return (
     <>
-      <Layout childrenClasses="pt-[30px] pb-[60px]">
+      <Layout childrenClasses="pt-[20px]">
         <Ads />
         {homepage && homepage.sliders.length > 0 && (
           <Banner
@@ -67,15 +67,9 @@ export default function Home({ homepageData }) {
                 ? homepage.sliderBannerTwo
                 : null
             }
-            className="banner-wrapper md:mb-[60px] mb-[30px]"
+            className="banner-wrapper md:mb-[30px] mb-[10px]"
           />
         )}
-        {/* {homepage && (
-          <CategorySection
-            categories={homepage.homepage_categories}
-            sectionTitle={sectionTitles && sectionTitles.Trending_Category}
-          />
-        )} */}
 
         {homepage && (
           <CombinedCategorySection
@@ -89,20 +83,7 @@ export default function Home({ homepageData }) {
             sectionTitles={sectionTitles}
           />
         )}
-        {/* {homepage && (
-          <SectionStyleOne
-            products={homepage.popularCategoryProducts}
-            categories={homepage.popularCategories}
-            categoryBackground={
-              process.env.NEXT_PUBLIC_BASE_URL +
-              homepage.popularCategorySidebarBanner
-            }
-            categoryTitle={sectionTitles && sectionTitles.Popular_Category}
-            sectionTitle={sectionTitles && sectionTitles.Popular_Category}
-            seeMoreUrl={`/products?highlight=popular_category`}
-            className="category-products md:mb-[60px] mb-[30px]"
-          />
-        )} */}
+
         {homepage && (
           <BrandSection
             brands={homepage.brands.length > 0 ? homepage.brands : []}
@@ -189,7 +170,7 @@ export default function Home({ homepageData }) {
           />
         )}
         {homepage && (
-          <NewArrivalsSection
+          <SectionStyleFour
             products={
               homepage.newArrivalProducts.length > 0
                 ? homepage.newArrivalProducts.slice(
@@ -202,11 +183,12 @@ export default function Home({ homepageData }) {
             }
             sectionTitle={sectionTitles && sectionTitles.New_Arrivals}
             seeMoreUrl={`/products?highlight=new_arrival`}
-            className="new-products md:mb-[60px] mb-[30px]"
+            className="new-products md:mb-[30px] mb-[30px]"
+            section="new-arrivals"
           />
         )}
         {homepage && (
-          <div className="w-full text-white md:mb-[60px] mb-[30px]">
+          <div className="w-full text-white md:mb-[30px] mb-[30px]">
             <div className="container-x mx-auto">
               <OneColumnAdsTwo
                 data={
@@ -227,6 +209,7 @@ export default function Home({ homepageData }) {
             sectionTitle={sectionTitles && sectionTitles.Best_Products}
             seeMoreUrl={`/products?highlight=best_product`}
             className="category-products md:mb-[60px] mb-[30px]"
+            section="best-products"
           />
         )}
       </Layout>

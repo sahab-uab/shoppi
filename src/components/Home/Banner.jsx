@@ -160,14 +160,14 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
       <div className={`w-full ${className || ""}`}>
         <div className="container-x mx-auto">
           <div className="main-wrapper w-full">
-            <div className="banner-card flex flex-col lg:flex-row lg:space-x-[30px] rtl:space-x-0 mb-[30px]">
+            <div className="banner-card flex flex-col lg:flex-row lg:space-x-[15px] rtl:space-x-0 mb-[12px]">
               {/* Banner Slider */}
               <div
                 className={`w-full lg:w-[60%] xl:w-[65%] h-[280px] md:h-[320px] lg:h-[350px] mb-4 lg:mb-0 opacity-0 ${
                   isLoaded ? "animate-slide-in-left" : ""
                 }`}
               >
-                <div className="slider-wrapper w-full h-full rounded-2xl overflow-hidden shadow-lg bg-gray-100 min-h-[280px] md:min-h-[320px] lg:min-h-[350px] transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                <div className="slider-wrapper w-full h-full  overflow-hidden shadow-sm bg-gray-100 min-h-[280px] md:min-h-[320px] lg:min-h-[350px] transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
                   {images.length > 0 ? (
                     <SimpleSlider settings={settingBanner}>
                       {images.map((item, i) => (
@@ -179,11 +179,11 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
                               backgroundRepeat: "no-repeat",
                               backgroundPosition: "center",
                             }}
-                            className="flex w-full h-full relative items-center rtl:pr-[20px] ltr:pl-[20px] rounded-2xl bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-500"
+                            className="flex w-full h-full relative items-center rtl:pr-[20px] ltr:pl-[20px]  bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-500"
                           >
                             <div className={`banner-content p-6 md:p-8 ${isLoaded ? "loaded" : ""}`}>
                               <div
-                                className={`inline-block w-[90px] md:w-[110px] shadow h-5 md:h-6 flex items-center justify-center bg-[#101010] rounded-full mb-4 md:mb-6 transform transition-all duration-300 hover:scale-110 ${
+                                className={`inline-block w-[90px] md:w-[110px] shadow h-5 md:h-6 flex items-center justify-center bg-[#101010]  mb-4 md:mb-6 transform transition-all duration-300 hover:scale-110 ${
                                   isLoaded ? "animate-bounce-in animate-delay-200" : ""
                                 }`}
                               >
@@ -226,7 +226,7 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
                       ))}
                     </SimpleSlider>
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-500 ">
                       <div className={`text-center text-white ${isLoaded ? "animate-fade-in-scale" : ""}`}>
                         <h2 className="text-2xl font-bold mb-2">No Banner Images</h2>
                         <p>Please add banner images to display the slider</p>
@@ -239,13 +239,13 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
               {/* Sidebar Banners */}
               {(sidebarImgOne || sidebarImgTwo) && (
                 <div
-                  className={`w-full lg:w-[40%] xl:w-[35%] flex flex-col space-y-4 opacity-0 ${
+                  className={`w-full lg:w-[40%] xl:w-[35%] flex flex-col space-y-2 opacity-0 ${
                     isLoaded ? "animate-slide-in-right animate-delay-200" : ""
                   }`}
                 >
                   {[sidebarImgOne, sidebarImgTwo].map((img, i) => (
                     img && (
-                      <div key={i} className="h-[140px] lg:h-[170px] rounded-xl overflow-hidden shadow-md transform transition-all duration-300 hover:shadow-xl hover:scale-105">
+                      <div key={i} className="h-[140px] lg:h-[170px] overflow-hidden shadow-md transform transition-all duration-300 hover:shadow-xl hover:scale-105">
                         <div
                           style={{
                             backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + img.image})`,
@@ -253,7 +253,7 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
                             backgroundRepeat: "no-repeat",
                             backgroundPosition: "center",
                           }}
-                          className="w-full h-full rounded-xl transition-transform duration-500 hover:scale-110"
+                          className="w-full h-full  transition-transform duration-500 hover:scale-110"
                         />
                       </div>
                     )
@@ -264,14 +264,14 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
 
             {/* Services */}
             <div
-              className={`best-services w-full bg-[#dcf5d3] rounded-2xl overflow-x-auto flex flex-row space-x-10 px-6 py-6 lg:px-10 lg:py-8 lg:space-x-0 lg:justify-between lg:items-center lg:h-[110px] lg:overflow-x-visible transform transition-all duration-300 hover:shadow-lg opacity-0 ${
+              className={`best-services w-full  overflow-x-auto flex flex-row space-x-10 px-6 py-6 lg:px-10 lg:py-8 lg:space-x-0 lg:justify-between lg:items-center lg:h-[110px] lg:overflow-x-visible transform transition-all duration-300 hover:shadow-lg opacity-0 ${
                 isLoaded ? "animate-slide-in-up animate-delay-400" : ""
               }`}
             >
               {services.map((service, index) => (
                 <div
                   key={service.id}
-                  className={`min-w-[200px] flex-shrink-0 transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
+                  className={`min-w-[200px] border-r-4 border-[#101010] px-6 py-2 flex-shrink-0 transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
                     isLoaded ? "animate-fade-in-scale" : ""
                   }`}
                   style={{ animationDelay: `${0.6 + index * 0.1}s` }}
