@@ -49,7 +49,7 @@ export default function Home({ homepageData }) {
   }, [isMultivendor]);
   return (
     <>
-      <Layout childrenClasses="pt-[20px]">
+      <Layout childrenClasses="pt-[12px]">
         <Ads />
         {homepage && homepage.sliders.length > 0 && (
           <Banner

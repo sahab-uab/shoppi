@@ -28,7 +28,7 @@ export default function Header({
       /> */}
       <Middlebar
         settings={settings && settings}
-         topBarProps={topBarProps}
+        topBarProps={topBarProps}
         className="quomodo-shop-middle-bar lg:block hidden "
       />
       <div className="quomodo-shop-drawer lg:hidden block w-full h-[60px] bg-white">
@@ -49,20 +49,23 @@ export default function Header({
               />
             </svg>
           </div>
-          <div className="w-[200px] h-full relative">
+         
             <Link href="/" passHref legacyBehavior>
               <a>
                 {settings && (
                   <Image
-                    layout="fill"
-                    objectFit="scale-down"
-                    src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo}`}
+                    src="/images/icons/Globebeyy.png"
                     alt="logo"
+                    // layout="fill"
+                    objectFit="scale-down"
+                    width={120}
+                    height={48}
+                    className="w-full h-full "
                   />
                 )}
               </a>
             </Link>
-          </div>
+
           <div className="cart relative cursor-pointer">
             <Link href="/cart">
               <span>
@@ -76,8 +79,9 @@ export default function Header({
         </div>
       </div>
       <Navbar
-      topBarProps={topBarProps} 
-      className="quomodo-shop-nav-bar  lg:block hidden  shadow-sm border-b  "/>
+        topBarProps={topBarProps}
+        className="quomodo-shop-nav-bar  lg:block hidden  shadow-sm border-b  "
+      />
     </header>
   );
 }

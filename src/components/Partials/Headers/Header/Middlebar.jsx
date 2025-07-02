@@ -14,6 +14,8 @@ import SearchBox from "../../../Helpers/SearchBox";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import LoginContext from "../../../Contexts/LoginContext";
 import TopStickyBar from "./TopStickyBar";
+// import image from "/images/Globebeyy.png"
+
 export default function Middlebar({ className, settings, topBarProps }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -57,18 +59,19 @@ export default function Middlebar({ className, settings, topBarProps }) {
       <div className="container-x mx-auto h-full">
         <div className="relative h-full">
           <div className="flex  flex-row justify-between items-center h-full">
-            <div className="flex items-center" style={{ gap: "50px" }}> 
+            <div className="flex items-center" style={{ gap: "30px" }}> 
               <div className="relative mt-8">
                 <Link href="/" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
                     {settings && (
                       <Image
-                        width="158"
+                        width="240"
                         height="44"
                         objectFit="scale-down"
-                        src={`${
-                          process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                        }`}
+                        // src={`${
+                        //           image    // process.env.NEXT_PUBLIC_BASE_URL + settings.logo 
+                        // }`}
+                        src="/images/icons/Globebeyy.png" 
                         alt="logo"
                       />
                     )}

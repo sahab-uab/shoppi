@@ -1,86 +1,62 @@
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import Arrow from "../../../Helpers/icons/Arrow";
-import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
-import Multivendor from "../../../Shared/Multivendor";
-import ServeLangItem from "../../../Helpers/ServeLangItem";
+"use client"
+import Link from "next/link"
+import React, { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import Arrow from "../../../Helpers/icons/Arrow"
+import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom"
+import Multivendor from "../../../Shared/Multivendor"
+import ServeLangItem from "../../../Helpers/ServeLangItem"
+
 export default function Navbar({ className, topBarProps }) {
-  const {
-    allCurrency,
-    defaultCurrency,
-    handler1,
-    toggleCurrency,
-    toggleHandler,
-  } = topBarProps;
-  const { websiteSetup } = useSelector((state) => state.websiteSetup);
-  const categoryList = websiteSetup && websiteSetup.payload.productCategories;
-  const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
-  const megaMenuBanner = websiteSetup && websiteSetup.payload.megaMenuBanner;
-  const customPages = websiteSetup && websiteSetup.payload.customPages;
-  const [categoryToggle, setToggle] = useState(false);
-  const [subCatHeight, setHeight] = useState(null);
+  const { allCurrency, defaultCurrency, handler1, toggleCurrency, toggleHandler } = topBarProps
+
+  const { websiteSetup } = useSelector((state) => state.websiteSetup)
+  const categoryList = websiteSetup && websiteSetup.payload.productCategories
+  const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories
+  const megaMenuBanner = websiteSetup && websiteSetup.payload.megaMenuBanner
+  const customPages = websiteSetup && websiteSetup.payload.customPages
+
+  const [categoryToggle, setToggle] = useState(false)
+  const [subCatHeight, setHeight] = useState(null)
+
   const handler = () => {
-    setToggle(!categoryToggle);
-  };
+    setToggle(!categoryToggle)
+  }
 
   useEffect(() => {
-    let categorySelector = document.querySelector(".category-dropdown");
-    setHeight(categorySelector.offsetHeight);
-  }, [categoryToggle]);
+    const categorySelector = document.querySelector(".category-dropdown")
+    setHeight(categorySelector.offsetHeight)
+  }, [categoryToggle])
+
   return (
-    <div
-      className={`nav-widget-wrapper w-full bg-[#FCF5E5] h-[60px] relative z-30  ${
-        className || ""
-      }`}
-    >
+    <div className={`nav-widget-wrapper w-full bg-[#FCF5E5] h-[60px] relative z-30  ${className || ""}`}>
       <div className="container-x mx-auto h-full ">
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-between items-center">
             <div className="category-and-nav flex xl:rtl:space-x-reverse space-x-7 rtl:space-x-reverse space-x-3 items-center">
               <div className="category w-[270px] h-[53px]  px-5 rounded-t-md mt-[6px] relative">
-                <button
-                  onClick={handler}
-                  type="button"
-                  className="w-full h-full flex justify-between items-center"
-                >
+                <button onClick={handler} type="button" className="w-full h-full flex justify-between items-center">
                   <div className="flex rtl:space-x-reverse space-x-3 items-center">
                     <span>
-                      <svg
-                        width="14"
-                        height="9"
-                        viewBox="0 0 14 9"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="14" height="1" />
                         <rect y="8" width="14" height="1" />
                         <rect y="4" width="10" height="1" />
                       </svg>
                     </span>
-                    {
-                      <span className="text-sm font-600 text-qblacktext">
-                        {ServeLangItem()?.All_Categories}
-                      </span>
-                    }
+                    {<span className="text-sm font-600 text-qblacktext">{ServeLangItem()?.All_Categories}</span>}
                   </div>
                   <div>
-                    <Arrow
-                      width="5.78538"
-                      height="1.28564"
-                      className="fill-current text-qblacktext"
-                    />
+                    <Arrow width="5.78538" height="1.28564" className="fill-current text-qblacktext" />
                   </div>
                 </button>
+
                 {categoryToggle && (
                   <>
-                    <div
-                      className="fixed top-0 left-0 w-full h-full -z-10"
-                      onClick={handler}
-                    ></div>
+                    <div className="fixed top-0 left-0 w-full h-full -z-10" onClick={handler}></div>
                   </>
                 )}
+
                 <div
                   style={{
                     boxShadow: " 0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
@@ -105,14 +81,9 @@ export default function Navbar({ className, topBarProps }) {
                               <div className=" flex justify-between items-center px-5 h-10 transition-all duration-100 ease-out cursor-pointer">
                                 <div className="flex items-center rtl:space-x-reverse space-x-6">
                                   <span>
-                                    <FontAwesomeCom
-                                      className="w-4 h-4"
-                                      icon={item.icon}
-                                    />
+                                    <FontAwesomeCom className="w-4 h-4" icon={item.icon} />
                                   </span>
-                                  <span className="text-xs font-400">
-                                    {item.name}
-                                  </span>
+                                  <span className="text-xs font-400">{item.name}</span>
                                 </div>
                                 <div>
                                   <span>
@@ -144,21 +115,17 @@ export default function Navbar({ className, topBarProps }) {
                               </div>
                             </a>
                           </Link>
+
                           <div
                             className={`sub-category-lvl-two absolute ltr:left-[270px] rtl:right-[270px] top-0 z-10 w-[270px] ${
-                              item.active_sub_categories.length > 0
-                                ? "bg-white"
-                                : ""
+                              item.active_sub_categories.length > 0 ? "bg-white" : ""
                             }`}
                             style={{ maxHeight: "10px" }}
                           >
                             <ul className="">
                               {item.active_sub_categories.length > 0 &&
                                 item.active_sub_categories.map((subItem) => (
-                                  <li
-                                    key={subItem.id}
-                                    className="category-item"
-                                  >
+                                  <li key={subItem.id} className="category-item">
                                     <Link
                                       href={{
                                         pathname: "/products",
@@ -170,9 +137,7 @@ export default function Navbar({ className, topBarProps }) {
                                       <a rel="noopener noreferrer">
                                         <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                           <div>
-                                            <span className="text-xs font-400">
-                                              {subItem.name}
-                                            </span>
+                                            <span className="text-xs font-400">{subItem.name}</span>
                                           </div>
                                           <div>
                                             <span>
@@ -204,48 +169,37 @@ export default function Navbar({ className, topBarProps }) {
                                         </div>
                                       </a>
                                     </Link>
+
                                     <div
                                       className={`sub-category-lvl-three absolute ltr:left-[270px] rtl:right-[270px] top-0 z-10 w-[270px] ${
-                                        subItem.active_child_categories.length >
-                                        0
-                                          ? "bg-white"
-                                          : ""
+                                        subItem.active_child_categories.length > 0 ? "bg-white" : ""
                                       }`}
                                       style={{ height: `${subCatHeight}px` }}
                                     >
                                       <ul className="">
-                                        {subItem.active_child_categories
-                                          .length > 0 &&
-                                          subItem.active_child_categories.map(
-                                            (subsubitem) => (
-                                              <li
-                                                key={subsubitem.id}
-                                                className="category-item"
+                                        {subItem.active_child_categories.length > 0 &&
+                                          subItem.active_child_categories.map((subsubitem) => (
+                                            <li key={subsubitem.id} className="category-item">
+                                              <Link
+                                                href={{
+                                                  pathname: "/products",
+                                                  query: {
+                                                    child_category: subsubitem.slug,
+                                                  },
+                                                }}
+                                                passHref
+                                                legacyBehavior
                                               >
-                                                <Link
-                                                  href={{
-                                                    pathname: "/products",
-                                                    query: {
-                                                      child_category:
-                                                        subsubitem.slug,
-                                                    },
-                                                  }}
-                                                  passHref
-                                                  legacyBehavior
-                                                >
-                                                  <a rel="noopener noreferrer">
-                                                    <div className=" flex justify-between items-center px-5 h-10  transition-all duration-100 ease-out cursor-pointer">
-                                                      <div>
-                                                        <span className="text-xs font-400">
-                                                          {subsubitem.name}
-                                                        </span>
-                                                      </div>
+                                                <a rel="noopener noreferrer">
+                                                  <div className=" flex justify-between items-center px-5 h-10  transition-all duration-100 ease-out cursor-pointer">
+                                                    <div>
+                                                      <span className="text-xs font-400">{subsubitem.name}</span>
                                                     </div>
-                                                  </a>
-                                                </Link>
-                                              </li>
-                                            )
-                                          )}
+                                                  </div>
+                                                </a>
+                                              </Link>
+                                            </li>
+                                          ))}
                                       </ul>
                                     </div>
                                   </li>
@@ -257,8 +211,9 @@ export default function Navbar({ className, topBarProps }) {
                   </ul>
                 </div>
               </div>
+
               <div className="nav">
-                <ul className="nav-wrapper flex xl:space-x-7 rtl:space-x-reverse space-x-5">
+                <ul className="nav-wrapper flex xl:space-x-7 rtl:space-x-reverse space-x-5 items-center">
                   <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext ">
                       <span>{ServeLangItem()?.Shop}</span>
@@ -292,9 +247,7 @@ export default function Navbar({ className, topBarProps }) {
                                             href={{
                                               pathname: "/products",
                                               query: {
-                                                sub_category:
-                                                  subItem.sub_category &&
-                                                  subItem.sub_category.slug,
+                                                sub_category: subItem.sub_category && subItem.sub_category.slug,
                                               },
                                             }}
                                             passHref
@@ -302,8 +255,7 @@ export default function Navbar({ className, topBarProps }) {
                                           >
                                             <a rel="noopener noreferrer">
                                               <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
-                                                {subItem.sub_category &&
-                                                  subItem.sub_category.name}
+                                                {subItem.sub_category && subItem.sub_category.name}
                                               </span>
                                             </a>
                                           </Link>
@@ -314,83 +266,80 @@ export default function Navbar({ className, topBarProps }) {
                               </div>
                             ))}
                         </div>
-                        {megaMenuBanner &&
-                          parseInt(megaMenuBanner.status) === 1 && (
-                            <div
-                              style={{
-                                backgroundImage: `url(${
-                                  process.env.NEXT_PUBLIC_BASE_URL +
-                                  megaMenuBanner.image
-                                })`,
-                                backgroundSize: "contain",
-                                backgroundRepeat: "no-repeat",
-                              }}
-                              className="thumbnil w-[348px] h-[235px] relative flex items-center ltr:pl-[40px] rtl:pr-[40px] group"
-                            >
-                              <div className="flex flex-col justify-between">
-                                <div>
-                                  <div className=" mb-[10px]">
-                                    <span className="text-qblack uppercase text-xs font-semibold">
-                                      {megaMenuBanner.title_one}
-                                    </span>
-                                  </div>
-                                  <div className="mb-[30px]">
-                                    <h1 className="w-[160px] text-[24px] leading-[32px] text-qblack font-semibold">
-                                      {megaMenuBanner.title_two}
-                                    </h1>
-                                  </div>
+
+                        {megaMenuBanner && Number.parseInt(megaMenuBanner.status) === 1 && (
+                          <div
+                            style={{
+                              backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + megaMenuBanner.image})`,
+                              backgroundSize: "contain",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                            className="thumbnil w-[348px] h-[235px] relative flex items-center ltr:pl-[40px] rtl:pr-[40px] group"
+                          >
+                            <div className="flex flex-col justify-between">
+                              <div>
+                                <div className=" mb-[10px]">
+                                  <span className="text-qblack uppercase text-xs font-semibold">
+                                    {megaMenuBanner.title_one}
+                                  </span>
                                 </div>
-                                <div className="w-[90px]">
-                                  <Link
-                                    href={{
-                                      pathname: "/products",
-                                      query: {
-                                        category: megaMenuBanner.product_slug,
-                                      },
-                                    }}
-                                    passHref
-                                    legacyBehavior
-                                  >
-                                    <a rel="noopener noreferrer">
-                                      <div className="cursor-pointer w-full relative  ">
-                                        <div className="inline-flex  rtl:space-x-reverse space-x-1.5 items-center relative z-20">
-                                          <span className="text-sm text-qblack font-medium leading-[30px]">
-                                            {ServeLangItem()?.Shop_Now}
-                                          </span>
-                                          <span className="leading-[30px]">
-                                            <svg
-                                              className={`transform rtl:rotate-180 fill-current`}
-                                              width="7"
-                                              height="11"
-                                              viewBox="0 0 7 11"
-                                              fill="none"
-                                              xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                              <rect
-                                                x="2.08984"
-                                                y="0.636719"
-                                                width="6.94219"
-                                                height="1.54271"
-                                                transform="rotate(45 2.08984 0.636719)"
-                                              />
-                                              <rect
-                                                x="7"
-                                                y="5.54492"
-                                                width="6.94219"
-                                                height="1.54271"
-                                                transform="rotate(135 7 5.54492)"
-                                              />
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <div className="w-[82px] transition-all duration-100 ease-out  group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 bottom-0 z-10"></div>
-                                      </div>
-                                    </a>
-                                  </Link>
+                                <div className="mb-[30px]">
+                                  <h1 className="w-[160px] text-[24px] leading-[32px] text-qblack font-semibold">
+                                    {megaMenuBanner.title_two}
+                                  </h1>
                                 </div>
                               </div>
+                              <div className="w-[90px]">
+                                <Link
+                                  href={{
+                                    pathname: "/products",
+                                    query: {
+                                      category: megaMenuBanner.product_slug,
+                                    },
+                                  }}
+                                  passHref
+                                  legacyBehavior
+                                >
+                                  <a rel="noopener noreferrer">
+                                    <div className="cursor-pointer w-full relative  ">
+                                      <div className="inline-flex  rtl:space-x-reverse space-x-1.5 items-center relative z-20">
+                                        <span className="text-sm text-qblack font-medium leading-[30px]">
+                                          {ServeLangItem()?.Shop_Now}
+                                        </span>
+                                        <span className="leading-[30px]">
+                                          <svg
+                                            className={`transform rtl:rotate-180 fill-current`}
+                                            width="7"
+                                            height="11"
+                                            viewBox="0 0 7 11"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <rect
+                                              x="2.08984"
+                                              y="0.636719"
+                                              width="6.94219"
+                                              height="1.54271"
+                                              transform="rotate(45 2.08984 0.636719)"
+                                            />
+                                            <rect
+                                              x="7"
+                                              y="5.54492"
+                                              width="6.94219"
+                                              height="1.54271"
+                                              transform="rotate(135 7 5.54492)"
+                                            />
+                                          </svg>
+                                        </span>
+                                      </div>
+                                      <div className="w-[82px] transition-all duration-100 ease-out  group-hover:h-4 h-[0px] bg-[#101010] absolute left-0 bottom-0 z-10"></div>
+                                    </div>
+                                  </a>
+                                </Link>
+                              </div>
                             </div>
-                          )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </li>
@@ -404,17 +353,17 @@ export default function Navbar({ className, topBarProps }) {
                       </a>
                     </Link>
                   </li>
+
                   <li>
                     <Link href="/blogs" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
-                          <span className="capitalize">
-                            {ServeLangItem()?.blogs}
-                          </span>
+                          <span className="capitalize">{ServeLangItem()?.blogs}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
+
                   <li>
                     <Link href="/about" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
@@ -424,6 +373,7 @@ export default function Navbar({ className, topBarProps }) {
                       </a>
                     </Link>
                   </li>
+
                   <li>
                     <Link href="/contact" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
@@ -433,6 +383,7 @@ export default function Navbar({ className, topBarProps }) {
                       </a>
                     </Link>
                   </li>
+
                   <li className="relative">
                     <span className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
                       <span>{ServeLangItem()?.Pages}</span>
@@ -452,11 +403,7 @@ export default function Navbar({ className, topBarProps }) {
                             <div className="category-items">
                               <ul className="flex flex-col space-y-2">
                                 <li>
-                                  <Link
-                                    href="/privacy-policy"
-                                    passHref
-                                    legacyBehavior
-                                  >
+                                  <Link href="/privacy-policy" passHref legacyBehavior>
                                     <a rel="noopener noreferrer">
                                       <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                         {ServeLangItem()?.Privacy_Policy}
@@ -465,11 +412,7 @@ export default function Navbar({ className, topBarProps }) {
                                   </Link>
                                 </li>
                                 <li>
-                                  <Link
-                                    href="/terms-condition"
-                                    passHref
-                                    legacyBehavior
-                                  >
+                                  <Link href="/terms-condition" passHref legacyBehavior>
                                     <a rel="noopener noreferrer">
                                       <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                         {ServeLangItem()?.Term_and_Conditions}
@@ -479,17 +422,10 @@ export default function Navbar({ className, topBarProps }) {
                                 </li>
                                 {Multivendor() === 1 && (
                                   <li>
-                                    <Link
-                                      href="seller-terms-condition"
-                                      passHref
-                                      legacyBehavior
-                                    >
+                                    <Link href="seller-terms-condition" passHref legacyBehavior>
                                       <a rel="noopener noreferrer">
                                         <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
-                                          {
-                                            ServeLangItem()
-                                              ?.Seller_terms_and_conditions
-                                          }
+                                          {ServeLangItem()?.Seller_terms_and_conditions}
                                         </span>
                                       </a>
                                     </Link>
@@ -507,14 +443,9 @@ export default function Navbar({ className, topBarProps }) {
                                 {customPages &&
                                   customPages.length > 0 &&
                                   customPages.map((item, i) => (
-                                    // eslint-disable-next-line react/jsx-key
                                     <React.Fragment key={i}>
                                       <li>
-                                        <Link
-                                          href={`/pages?custom=${item.slug}`}
-                                          passHref
-                                          legacyBehavior
-                                        >
+                                        <Link href={`/pages?custom=${item.slug}`} passHref legacyBehavior>
                                           <a rel="noopener noreferrer">
                                             <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">
                                               {item.page_name}
@@ -524,20 +455,6 @@ export default function Navbar({ className, topBarProps }) {
                                       </li>
                                     </React.Fragment>
                                   ))}
-                                {/*<li>*/}
-                                {/*  <Link href="#">*/}
-                                {/*    <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">*/}
-                                {/*      Shop Category Icon*/}
-                                {/*    </span>*/}
-                                {/*  </Link>*/}
-                                {/*</li>*/}
-                                {/*<li>*/}
-                                {/*  <Link href="#">*/}
-                                {/*    <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-[#101010] cursor-pointer">*/}
-                                {/*      Shop List View*/}
-                                {/*    </span>*/}
-                                {/*  </Link>*/}
-                                {/*</li>*/}
                               </ul>
                             </div>
                           </div>
@@ -545,6 +462,7 @@ export default function Navbar({ className, topBarProps }) {
                       </div>
                     </div>
                   </li>
+
                   <li>
                     <Link href="/account" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
@@ -554,6 +472,7 @@ export default function Navbar({ className, topBarProps }) {
                       </a>
                     </Link>
                   </li>
+
                   <li>
                     <Link href="/track-order" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
@@ -563,120 +482,80 @@ export default function Navbar({ className, topBarProps }) {
                       </a>
                     </Link>
                   </li>
-                  <li>
-                     {defaultCurrency && (
-                  <div className="relative flex items-center space-x-1 text-sm font-600">
-                    <span>Currency:</span>
-                    <button
-                      onClick={() => toggleHandler(!toggleCurrency)}
-                      className="px-2 py-1 bg-[#222] hover:bg-[#333] rounded text-white text-xs font-semibold"
-                    >
-                      {defaultCurrency.currency_icon}{" "}
-                      {defaultCurrency.currency_code}
-                    </button>
-                    {toggleCurrency && (
-                      <div className="absolute mt-2 bg-white text-black rounded shadow z-50">
-                        <ul className="text-sm max-h-40 overflow-y-scroll">
-                          {allCurrency.map((item, i) => (
-                            <li
-                              key={i}
-                              onClick={() => handler(item)}
-                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                            >
-                              {item.currency_icon} {item.currency_code}
-                            </li>
-                          ))}
-                        </ul>
+
+                  {/* Fixed Currency Selector - Now properly aligned */}
+                  <li className="relative">
+                    {defaultCurrency && (
+                      <div className="flex items-center text-sm font-600 cursor-pointer text-qblacktext">
+                        <span className="mr-2">Currency:</span>
+                        <button
+                          onClick={() => toggleHandler(!toggleCurrency)}
+                          className="flex items-center px-2 py-1 bg-[#222] hover:bg-[#333] rounded text-white text-xs font-semibold transition-colors duration-200"
+                        >
+                          <span className="mr-1">{defaultCurrency.currency_icon}</span>
+                          <span>{defaultCurrency.currency_code}</span>
+                        </button>
+                        {toggleCurrency && (
+                          <div className="absolute top-full left-0 mt-2 bg-white text-black rounded shadow-lg z-50 border border-gray-200">
+                            <ul className="text-sm max-h-40 overflow-y-auto py-1">
+                              {allCurrency.map((item, i) => (
+                                <li
+                                  key={i}
+                                  onClick={() => handler1(item)}
+                                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center space-x-2 transition-colors duration-150"
+                                >
+                                  <span>{item.currency_icon}</span>
+                                  <span>{item.currency_code}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     )}
-                  </div>
-                )}
                   </li>
                 </ul>
               </div>
             </div>
+
             {Multivendor() === 1 && (
               <div className="flex items-center gap-4 rtl:space-x-reverse">
-
-                {/* Track Order
-                <Link href="/track-order" passHref legacyBehavior>
-                  <a className="text-sm font-600 text-qblacktext hover:underline">
-                    
-                  </a>
-                </Link> */}
-
-                {/* Currency Dropdown */}
-                {/* {defaultCurrency && (
-                  <div className="relative flex items-center space-x-1 text-sm font-600">
-                    <span>Currency:</span>
-                    <button
-                      onClick={() => toggleHandler(!toggleCurrency)}
-                      className="px-2 py-1 bg-[#222] hover:bg-[#333] rounded text-white text-xs font-semibold"
-                    >
-                      {defaultCurrency.currency_icon}{" "}
-                      {defaultCurrency.currency_code}
-                    </button>
-                    {toggleCurrency && (
-                      <div className="absolute mt-2 bg-white text-black rounded shadow z-50">
-                        <ul className="text-sm max-h-40 overflow-y-scroll">
-                          {allCurrency.map((item, i) => (
-                            <li
-                              key={i}
-                              onClick={() => handler(item)}
-                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                            >
-                              {item.currency_icon} {item.currency_code}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                )} */}
-
                 {/* Become Seller Button */}
-                 <div className="become-seller-btn">
-                <Link href="/become-seller" passHref legacyBehavior>
-                  <a rel="noopener noreferrer">
-                    <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
-                      <div className="flex rtl:space-x-reverse space-x-2 items-center">
-                        <span className="text-sm font-600">
-                          {ServeLangItem()?.Become_seller}
-                        </span>
-                        <span className="transform rtl:rotate-180 fill-current ">
-                          <svg
-                            width="6"
-                            height="10"
-                            viewBox="0 0 6 10"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="fill-current"
-                          >
-                            <rect
-                              x="1.08984"
-                              width="6.94106"
-                              height="1.54246"
-                              transform="rotate(45 1.08984 0)"
-                            />
-                            <rect
-                              x="6"
-                              y="4.9082"
-                              width="6.94106"
-                              height="1.54246"
-                              transform="rotate(135 6 4.9082)"
-                            />
-                          </svg>
-                        </span>
+                <div className="become-seller-btn">
+                  <Link href="/become-seller" passHref legacyBehavior>
+                    <a rel="noopener noreferrer">
+                      <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
+                        <div className="flex rtl:space-x-reverse space-x-2 items-center">
+                          <span className="text-sm font-600">{ServeLangItem()?.Become_seller}</span>
+                          <span className="transform rtl:rotate-180 fill-current ">
+                            <svg
+                              width="6"
+                              height="10"
+                              viewBox="0 0 6 10"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="fill-current"
+                            >
+                              <rect x="1.08984" width="6.94106" height="1.54246" transform="rotate(45 1.08984 0)" />
+                              <rect
+                                x="6"
+                                y="4.9082"
+                                width="6.94106"
+                                height="1.54246"
+                                transform="rotate(135 6 4.9082)"
+                              />
+                            </svg>
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </Link>
-              </div>
+                    </a>
+                  </Link>
+                </div>
               </div>
             )}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

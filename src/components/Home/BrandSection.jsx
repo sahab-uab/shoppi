@@ -251,14 +251,14 @@ export default function BrandSection({ className, sectionTitle, brands = [] }) {
 
               <div className="flex items-center space-x-4">
                 {/* Brand Count Badge */}
-                <div className="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-200">
-                  <span className="text-sm font-bold text-gray-900">{brands.length}+ Brands</span>
+                <div className="bg-white px-2  sm:px-4 py-2 rounded-md shadow-sm border border-gray-200">
+                  <span className="text-sm font-bold text-center text-gray-900">{brands.length}+ Brands</span>
                 </div>
 
                 {/* View All Button */}
                 <Link href="/brands">
-                  <button className="group bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2">
-                    <span>View All Brands</span>
+                  <button className="group bg-gray-900 hover:bg-gray-800 text-white px-2 py-2 sm:px-6 sm:py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center space-x-2">
+                    <span className="line-clamp-1">View All Brands</span>
                     <svg
                       className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
