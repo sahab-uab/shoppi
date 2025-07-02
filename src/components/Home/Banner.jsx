@@ -259,7 +259,7 @@ export default function Banner({ className, images = [], sidebarImgOne, sidebarI
               {services.map((service, index) => (
                 <div
                   key={service.id}
-                  className={`min-w-[140px] sm:min-w-[160px] md:min-w-[200px] border-r-2 sm:border-r-3 md:border-r-4 border-[#101010] border-opacity-60 px-2 sm:px-4 md:px-6 py-2 flex-shrink-0 transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
+                  className={`min-w-[140px] sm:min-w-[160px] md:min-w-[200px] border-r-2 md:border-r-1 border-[#101010] border-opacity-30 px-2 sm:px-4 md:px-6 py-2 flex-shrink-0 transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
                     isLoaded ? "animate-fade-in-scale" : ""
                   }`}
                   style={{ animationDelay: `${0.6 + index * 0.1}s` }}
