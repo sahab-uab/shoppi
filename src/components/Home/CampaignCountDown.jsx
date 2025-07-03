@@ -15,7 +15,7 @@ export default function CampaignCountDown({
   const { showDate, showHour, showMinute, showSecound } = CountDown(lastDate);
   return (
     <div>
-      <div className={`w-full lg:h-[460px]  ${className || ""}`}>
+      <div className={`w-full -mt-20 md:-mt-5 lg:h-[460px]  ${className || ""}`}>
         <div className="container-x mx-auto h-full">
           <div className="lg:flex xl:space-x-[20px] lg:space-x-4 rtl:space-x-reverse items-center h-full">
             <div

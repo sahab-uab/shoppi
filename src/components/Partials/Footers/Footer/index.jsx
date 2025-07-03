@@ -303,7 +303,7 @@ We’re committed to delivering a seamless shopping experience with excellent cu
                       footerContent.payment_image
                     }`}
                     alt="payment methods"
-                    className="h-12 w-[80px] "
+                    className="h-12 w-[220px]"
                   />
                 </div>
               )}

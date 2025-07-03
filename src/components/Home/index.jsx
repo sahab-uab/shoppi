@@ -88,13 +88,13 @@ export default function Home({ homepageData }) {
           <BrandSection
             brands={homepage.brands.length > 0 ? homepage.brands : []}
             sectionTitle={sectionTitles && sectionTitles.Shop_by_Brand}
-            className="brand-section-wrapper md:mb-[60px] mb-[30px]"
+            className="brand-section-wrapper md:mb-[30px] mb-[15px]"
           />
         )}
 
         {homepage && (
           <CampaignCountDown
-            className="md:mb-[60px] mb-[30px]"
+            className="md:mb-[60px] mb-[15px]"
             flashSaleData={homepage.flashSale}
             downloadData={homepage.flashSaleSidebarBanner}
             lastDate={homepage.flashSale.end_time}

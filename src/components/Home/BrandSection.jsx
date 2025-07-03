@@ -105,20 +105,20 @@ export default function BrandSection({ className, sectionTitle, brands = [] }) {
       <div className={`w-full bg-white py-16 ${className || ""}`}>
         <div className="container-x mx-auto px-4">
           {/* Enhanced Section Header */}
-          <div className={`mb-8 opacity-0 ${isLoaded ? "animate-fade-in-up" : ""}`}>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+          <div className={` opacity-0 ${isLoaded ? "animate-fade-in-up" : ""}`}>
+            <div className="flex flex-row items-center justify-between">
               <div className="mb-6 md:mb-0">
                 <h2 className="text-xl md:text-2xl font-bold text-gray-900  bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                   {sectionTitle || "Shop by Brand"}
                 </h2>
-                <p className="text-gray-600 text-sm max-w-xl">
+                <p className="text-gray-600 text-sm mt-1 md:text-sm max-w-md sm:max-w-xl">
                   Discover premium products from world-renowned brands that deliver quality and innovation
                 </p>
               </div>
 
               {/* Navigation Arrows */}
-              <div className="flex items-center space-x-3">
-                <button className="brand-prev group w-12 h-12 bg-gray-100 hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
+              <div className="flex items-center space-x-3 -mt-[90px] md:-mt-0">
+                <button className="brand-prev group md:w-12 md:h-12 bg-gray-100 hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl">
                   <svg
                     className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors duration-300"
                     fill="none"
@@ -239,7 +239,7 @@ export default function BrandSection({ className, sectionTitle, brands = [] }) {
           </div>
 
           {/* Enhanced Bottom Section */}
-          <div className={`mt-12 opacity-0 ${isLoaded ? "animate-fade-in-up animate-delay-400" : ""}`}>
+          <div className={`mt-6 opacity-0 ${isLoaded ? "animate-fade-in-up animate-delay-400" : ""}`}>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-6 md:p-8">
               <div className="mb-4 md:mb-0">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Explore All Brands</h3>
