@@ -3,8 +3,12 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import ShopNowBtn from "../Helpers/Buttons/ShopNowBtn"
+import SimpleSlider from "../Helpers/SliderCom"
+import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom"
 
-export default function SectionStyleFour({ className, sectionTitle, seeMoreUrl, products = [], section }) {
+
+export default function SectionStyleFour({ className, sectionTitle, seeMoreUrl, products = [], section ,services = [] }) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hoveredProduct, setHoveredProduct] = useState(null)
 
@@ -128,7 +132,7 @@ export default function SectionStyleFour({ className, sectionTitle, seeMoreUrl, 
           {/* Header - Reduced margin */}
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h2 className="text-2xl font-bold text-gray-800">{sectionTitle || "New Arrivals"}</h2>
+              <h2 className="text-2xl font-bold text-gray-800">{ section == "flashsale" ? "Flash Sale" : sectionTitle}</h2>
               <p className="text-gray-500 text-sm">
                 Discover premium products from world‑renowned brands that deliver quality and innovation
               </p>
@@ -187,9 +191,45 @@ export default function SectionStyleFour({ className, sectionTitle, seeMoreUrl, 
             </div>
           </div>
 
+
+
+          {/* Services - Made more mobile-friendly */}
+          {section == "best-products" && (
+            <div
+              className={` ml-2best-services w-full overflow-x-auto flex flex-row space-x-4 sm:space-x-6 md:space-x-10 px-2 sm:px-4 md:px-6 lg:px-10 py-3 sm:py-4 md:py-6 lg:py-8 lg:space-x-0 lg:justify-between lg:items-center lg:h-[110px] lg:overflow-x-visible transform transition-all duration-300 hover:shadow-lg opacity-0 ${
+                isLoaded ? "animate-slide-in-up animate-delay-400" : ""
+              }`}
+            >
+              {services.map((service, index) => (
+                <div
+                  key={service.id}
+                  className={`min-w-[140px] sm:min-w-[160px] md:min-w-[200px] border-r-2 md:border-r-1 border-[#101010] border-opacity-30 px-2 sm:px-4 md:px-6 py-2 flex-shrink-0 transform transition-all duration-300 hover:scale-105 hover:-translate-y-1 ${
+                    isLoaded ? "animate-fade-in-scale" : ""
+                  }`}
+                  style={{ animationDelay: `${0.6 + index * 0.1}s` }}
+                >
+                  <div className="flex space-x-2 sm:space-x-3 md:space-x-5 rtl:space-x-reverse items-center">
+                    <div className="transform transition-all duration-300 hover:rotate-12 hover:scale-110">
+                      <span className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-[#101010]">
+                        <FontAwesomeCom className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" icon={service.icon} />
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-black text-[11px] sm:text-[13px] md:text-[15px] font-medium tracking-wide mb-1 transition-colors duration-300 hover:text-green-700">
+                        {service.title}
+                      </p>
+                      <p className="text-[10px] sm:text-xs md:text-sm text-[#888] line-clamp-1 transition-colors duration-300 hover:text-gray-600">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
           {/* Bottom Stats Section - Reduced margin */}
           {section == "best-products" && (
-            <div className={`mt-8 opacity-0 ${isLoaded ? "animate-fade-in-up stagger-4" : ""}`}>
+            <div className={`mt-8  opacity-0 ${isLoaded ? "animate-fade-in-up stagger-4" : ""}`}>
               <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-4 border border-blue-100">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                   <div className="mb-3 md:mb-0">

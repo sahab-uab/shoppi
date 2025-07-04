@@ -8,7 +8,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
     return (
       <>
         <div
-          className={`two-column-ads-section md:mb-[60px] lg:h-[295px] h-[200px] mb-[30px] w-full`}
+          className={`-mt-6 two-column-ads-section md:mb-[60px] lg:h-[295px] h-[200px] mb-[30px] w-full`}
         >
           <div className="container-x mx-auto h-full">
             <div

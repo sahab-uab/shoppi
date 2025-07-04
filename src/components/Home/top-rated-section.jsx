@@ -230,7 +230,7 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
         }
       `}</style>
 
-      <div className="w-full bg-gradient-to-b from-gray-50 to-white py-8 sm:py-12 lg:py-16">
+      <div className="w-full bg-gradient-to-b from-gray-50 to-white py-6 sm:py-6 lg:py-8">
         <div className="container-x mx-auto px-4">
           {/* Enhanced Section Header */}
           <div className="flex flex-col md:flex-row md:items-center mb-4 md:justify-between">
@@ -296,6 +296,7 @@ export default function TopRatedSection({ products = [], sectionTitle, seeMoreUr
 
                     {/* Product Image */}
                     <div className="relative w-full h-full p-2 sm:p-4 lg:p-6 flex items-center justify-center">
+                      {console.log(product.image)}
                       <Image
                         src={product.image || `https://picsum.photos/300/300?random=${product.id}`}
                         alt={product.title}

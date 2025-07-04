@@ -70,6 +70,7 @@ export default function About({ aboutData }) {
       slug: item.blog.slug,
     };
   });
+  console.log(aboutData);
   return (
     <Layout childrenClasses="pt-0 pb-0">
       <div className="about-page-wrapper w-full">

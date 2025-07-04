@@ -250,7 +250,7 @@ export default function BestSellersSection({ sellers = [], sectionTitle, seeMore
       `}</style>
 
       {/* SECTION WRAPPER */}
-      <div className="w-full bg-gradient-to-b from-white to-gray-50 py-16 overflow-visible">
+      <div className="w-full -mt-12 bg-gradient-to-b from-white to-gray-50 py-16 overflow-visible">
         <div className="container-x mx-auto px-4 overflow-visible">
           {/* ----- HEADER ----- */}
           <div className="flex flex-col md:flex-row md:items-center mb-4 md:justify-between">
@@ -297,7 +297,7 @@ export default function BestSellersSection({ sellers = [], sectionTitle, seeMore
                 1280: { slidesPerView: 6, spaceBetween: 24 },
               }}
               modules={[Autoplay, Navigation, Pagination]}
-              className="best-sellers-swiper pb-12 pt-8"
+              className="best-sellers-swiper pb-16 pt-8"
             >
               {sellers?.map((seller, index) => (
                 <SwiperSlide key={seller.id}>
@@ -408,7 +408,7 @@ export default function BestSellersSection({ sellers = [], sectionTitle, seeMore
           </div>
 
           {/* ----- BOTTOM INFO BLOCK ----- */}
-          <div className={`mt-12 opacity-0 ${isLoaded ? "animate-fade-in-up stagger-4" : ""}`}>
+          <div className={`mt-4 opacity-0 ${isLoaded ? "animate-fade-in-up stagger-4" : ""}`}>
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 md:p-8 border border-blue-100">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div className="mb-4 md:mb-0">

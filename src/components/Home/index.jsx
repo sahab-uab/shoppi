@@ -67,7 +67,7 @@ export default function Home({ homepageData }) {
                 ? homepage.sliderBannerTwo
                 : null
             }
-            className="banner-wrapper md:mb-[30px] mb-[10px]"
+            className="banner-wrapper md:mb-[30px] mb-[15px]"
           />
         )}
 
@@ -81,6 +81,18 @@ export default function Home({ homepageData }) {
               homepage.popularCategorySidebarBanner
             }
             sectionTitles={sectionTitles}
+          />
+        )}
+         {homepage && (
+          <SectionStyleFour
+            products={
+              homepage.bestProducts.length > 0 ? homepage.bestProducts : []
+            }
+            sectionTitle={sectionTitles && sectionTitles.Best_Products}
+            seeMoreUrl={`/products?highlight=best_product`}
+            className="category-products md:mb-[30px] mb-[15px]"
+            services={homepage.services}
+            section="flashsale"
           />
         )}
 
@@ -156,7 +168,7 @@ export default function Home({ homepageData }) {
             }
             sectionTitle={sectionTitles && sectionTitles.Featured_Products}
             seeMoreUrl={`/products?highlight=featured_product`}
-            className="category-products md:mb-[60px] mb-[30px]"
+            className="category-products md:mb-[30px] mb-[15px]"
           />
         )}
         {homepage && (
@@ -183,12 +195,12 @@ export default function Home({ homepageData }) {
             }
             sectionTitle={sectionTitles && sectionTitles.New_Arrivals}
             seeMoreUrl={`/products?highlight=new_arrival`}
-            className="new-products md:mb-[30px] mb-[30px]"
+            className="new-products md:mb-[30px] mb-[15px]"
             section="new-arrivals"
           />
         )}
         {homepage && (
-          <div className="w-full text-white md:mb-[30px] mb-[30px]">
+          <div className="w-full text-white md:mb-[30px] mb-[15px]">
             <div className="container-x mx-auto">
               <OneColumnAdsTwo
                 data={
@@ -208,7 +220,8 @@ export default function Home({ homepageData }) {
             }
             sectionTitle={sectionTitles && sectionTitles.Best_Products}
             seeMoreUrl={`/products?highlight=best_product`}
-            className="category-products md:mb-[60px] mb-[30px]"
+            className="category-products md:mb-[30px] mb-[15px]"
+            services={homepage.services}
             section="best-products"
           />
         )}

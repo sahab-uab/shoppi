@@ -127,7 +127,7 @@ function CombinedCategorySection({
         }
       `}</style>
 
-      <div className="w-full bg-gray-50 pt-[50px]">
+      <div className="w-full bg-gray-50 pt-[10px]">
         <div className="container-x mx-auto px-4">
           {/* Main Grid Layout - Fixed responsive behavior */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">

@@ -6,7 +6,7 @@ function OneColumnAdsOne({ data }) {
   if (data) {
     return (
       <div
-        className={`one-column-ads-one md:h-[295px] h-[190px] md:mb-[60px] mb-[30px] w-full`}
+        className={`one-column-ads-one md:h-[295px] h-[190px] md:mb-[30px] mb-[15px] w-full`}
       >
         <div className="container-x mx-auto h-full">
           <div

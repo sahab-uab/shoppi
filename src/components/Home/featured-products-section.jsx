@@ -417,7 +417,7 @@ export default function FeaturedProductsSection({
         }
       `}</style>
 
-      <div className={`w-full bg-gradient-to-b from-white to-gray-50 py-8 sm:py-12 lg:py-16 ${className || ""}`}>
+      <div className={`w-full bg-gradient-to-b from-white to-gray-50 py-4 sm:py-6 lg:py-8 ${className || ""}`}>
         <div className="container-x mx-auto px-4">
           {/* Enhanced Header */}
           <div className="flex flex-col md:flex-row md:items-center mb-4 md:justify-between">
