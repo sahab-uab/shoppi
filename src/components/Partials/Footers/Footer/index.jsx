@@ -5,6 +5,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { useSelector } from "react-redux"
 import { Mail, Phone, MapPin, ArrowRight, Heart } from "lucide-react"
+import {  Facebook, Twitter, Instagram } from 'lucide-react';
+
 
 export default function ModernFooter({ settings, contact }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup)
@@ -178,6 +180,19 @@ We’re committed to delivering a seamless shopping experience with excellent cu
                     <span className="text-sm">London, United Kingdom</span>
                   </div>
                 )}
+                  {/* Follow Us */}
+  <div className="flex items-center space-x-3 mt-2 text-gray-600">
+    <span className="text-sm font-medium">Follow us:</span>
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+      <Facebook className="w-4 h-4 hover:text-blue-600" />
+    </a>
+    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+      <Twitter className="w-4 h-4 hover:text-sky-500" />
+    </a>
+    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+      <Instagram className="w-4 h-4 hover:text-pink-500" />
+    </a>
+  </div>
               </div>
             </div>
 
